@@ -1,0 +1,28 @@
+/* Dashboard */
+
+.events {
+  ul {
+    list-style: none;
+  }
+  li {
+    display: flex;
+    justify-content: center;
+    line-height: .8em;
+  }
+  a {
+    display: block;
+    padding: .8em 0;
+    text-decoration: none;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+div.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid yellow;
+}
