@@ -15,7 +15,9 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.scss"
+        "assets/styles/reset.scss",
+        "assets/styles/oresults-app-theme.scss",
+        "assets/styles/styles.scss"
       ],
       "scripts": [],
       "environments": {
