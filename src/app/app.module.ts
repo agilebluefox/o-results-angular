@@ -9,12 +9,16 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EventAddComponent } from './events/event-add/event-add.component';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    EventAddComponent,
+    EventDetailsComponent
   ],
   imports: [
     MaterialModule.forRoot(),
