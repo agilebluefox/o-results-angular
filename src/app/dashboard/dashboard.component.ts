@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-export class Event {
-  name: string;
-  location: string;
-  date: string;
-}
+import { Event } from '../events/shared/event';
 
 const EVENTS: Event[] = [
   {
@@ -33,18 +30,23 @@ const EVENTS: Event[] = [
 export class DashboardComponent implements OnInit {
 
   events = EVENTS;
+  selectedEvent: Event;
 
-  constructor() { }
+  constructor(private router: Router) { 
+        
+  }
 
   ngOnInit() {
   }
 
   onSelect(event: Event): void {
-
+    console.log(event.name);
+    this.selectedEvent = event;
+    //  this.router.navigate(['/event-details', event.name]);
   }
 
   addNewEvent(): void {
-    
+        this.router.navigate(['/event-add']);
   }
 
 }

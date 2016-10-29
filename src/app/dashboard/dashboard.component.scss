@@ -1,28 +1,37 @@
 /* Dashboard */
 
-.events {
-  ul {
-    list-style: none;
-  }
-  li {
-    display: flex;
-    justify-content: center;
-    line-height: .8em;
-  }
-  a {
-    display: block;
-    padding: .8em 0;
-    text-decoration: none;
-  }
+div.events {
+  display: flex;
+  flex-flow: row wrap;
+  line-height: 36dp;
+  padding-left: 16dp;
+  padding-right: 16dp;
+  padding-top: 8dp;
 }
 
-h2 {
-  text-align: center;
+div {
+  border: 1px solid red;
 }
 
-div.dashboard {
+div.main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: 1px solid yellow;
+}
+
+div.list-container {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+div.button {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+div.details {
+  margin: 1rem 0 0 0;
+
 }

@@ -1,9 +1,22 @@
-<div class="dashboard">
-  <h2>
+<div class="main-container">
+  <h2 class="section">
     List of Events
   </h2>
-  <ul class="events">
-    <li *ngFor="let event of events" (onClick)="onSelect(event)"><span>{{ event.name }}</span></li>
-  </ul>
-  <button (onClick)="addNewEvent()"></button>
+  <div class="list-container">
+    <md-list class="events">
+      <md-list-item *ngFor="let event of events" (click)="onSelect(event)">
+        <span>{{ event.name }}</span>
+      </md-list-item>
+    </md-list>
+  </div>
+  <div class="button">
+    <button md-raised-button color="primary" (click)="addNewEvent()">Add New Event</button>
+  </div>
+  <div class="details" *ngIf="selectedEvent">
+    <md-list>
+      <md-list-item>Name: {{selectedEvent.name}}</md-list-item>
+      <md-list-item>Location: {{selectedEvent.location}}</md-list-item>
+      <md-list-item>Date: {{selectedEvent.date}}</md-list-item>
+    </md-list>
+  </div>
 </div>
