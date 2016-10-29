@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Import a pre-built theme
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.scss';
+// Import your custom input theme file so you can call the custom-input-theme function
+@import './oresults-app-theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,400');
+
+/* Variables */
+
+$basic-font: 'Raleway',
+sans-serif;
+$heading-font: 'Raleway',
+sans-serif;
+
+/* General Styles */
+
+body {
+  font-family: $basic-font;
+  font-size: 1.2em;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $heading-font;
+}
+
+h1 {
+  font-weight: 400;
+  text-align: center;
+}
+
+h2.section {
+  color: md-color($oresults-app-primary);
+  margin: 1rem auto 1rem auto;
+  text-align: center;
+}
+
+div.container {
+  width: 100%;
+  margin: 0 auto 1em auto;
+}
+
+li {
+  list-style: none;
+  display: block;
+  border: 1px solid blue;
+}
