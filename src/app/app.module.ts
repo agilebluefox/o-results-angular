@@ -13,6 +13,8 @@ import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { ClassAddComponent } from './classes/class-add/class-add.component';
 
+import { EventService } from './services/event.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { ClassAddComponent } from './classes/class-add/class-add.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
