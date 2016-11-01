@@ -4,7 +4,7 @@
   </h2>
   <div class="list-container">
     <md-list class="events">
-      <md-list-item *ngFor="let event of events" (click)="onSelect(event)">
+      <md-list-item *ngFor="let event of events" (click)="goToDetails(event)">
         <span>{{ event.name }}</span>
       </md-list-item>
       <span class="link"><a>show more past events</a></span>
