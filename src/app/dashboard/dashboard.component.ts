@@ -7,14 +7,12 @@ import { EventService } from '../services/event.service';
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  providers: [EventService]
+  styleUrls: ['./dashboard.component.scss']
 })
 
 export class DashboardComponent implements OnInit {
 
-  events: Event[];
-  selectedEvent: Event;
+  events: Event[] = [];
 
 /**
  * Creates an instance of DashboardComponent.
@@ -26,11 +24,12 @@ export class DashboardComponent implements OnInit {
  */
   constructor(
     private router: Router,
-    private EventService: EventService
+    private eventService: EventService
   ) { }
 
   ngOnInit(): void {
-    this.getEvents();
+    this.eventService.getEvents()
+      .then(events => this.events = events.slice(0,3));
   }
 
   /**
@@ -38,13 +37,12 @@ export class DashboardComponent implements OnInit {
    */
   getEvents(): void {
     // Resolves a promise from the EventService
-    this.EventService.getEvents().then(events => this.events = events);
+    this.eventService.getEvents().then(events => this.events = events);
   }
 
-  onSelect(event: Event): void {
-    console.log(event.name);
-    this.selectedEvent = event;
-    this.router.navigate(['/event-details', this.selectedEvent.id]);
+  goToDetails(event: Event): void {
+    let link = ['/event-details', event.id];
+    this.router.navigate(link);
   }
 /**
  * Add a new event

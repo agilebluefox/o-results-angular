@@ -5,6 +5,8 @@ import { EVENTS } from '../shared/mock-events';
 
 @Injectable()
 export class EventService {
+  events: Event[] = [];
+  event: Event;
 
   constructor() { }
 
@@ -20,14 +22,15 @@ export class EventService {
   }
 
 /**
- * Retrieve an event object using an id.
  * 
- * @param {any} id
+ * 
+ * @param {String} id
+ * @returns {Promise<Event>}
  * 
  * @memberOf EventService
  */
-  getEventById(id) {
-    this.getEvents().then(events => events.find(event => event.id === id));
+  getEvent(id: string): Promise<Event> {
+    return this.getEvents().then(events => events.find(event => event.id === id));
   }
 
 }

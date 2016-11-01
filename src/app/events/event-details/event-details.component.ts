@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 
 import { Event } from '../../events/shared/event';
-import { EVENTS } from '../../shared/mock-events';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'event-details',
@@ -13,20 +12,24 @@ import { EVENTS } from '../../shared/mock-events';
 })
 export class EventDetailsComponent implements OnInit {
 
-  events = EVENTS;
+  events: Event[] = [];
   event: Event;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private eventService: EventService
   ) { }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
-      let id = params['id'];
-      this.event = this.events.find(event => event.id === id); // move to service
+      let id: string = params['id'];
+      // Get event from service
+      this.eventService.getEvent(id)
+        .then(event => this.event = event);
+        console.log(this.event);
       // this.heroService.getHero(id)
       //   .then(hero => this.hero = hero);
     });
