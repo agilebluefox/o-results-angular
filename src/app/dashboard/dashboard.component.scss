@@ -9,15 +9,12 @@ div.events {
   padding-top: 8dp;
 }
 
-div {
-  border: 1px solid red;
-}
-
 div.main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid yellow;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 div.list-container {
@@ -27,11 +24,17 @@ div.list-container {
 }
 
 div.button {
-  text-align: center;
-  margin: 1rem 0;
+  text-align: right;
+  margin: 1.5rem 10%;
 }
 
 div.details {
   margin: 1rem 0 0 0;
+}
 
+.link {
+  display: block;
+  font-size: .8rem;
+  color: red;
+  margin: 1.5rem auto;
 }
