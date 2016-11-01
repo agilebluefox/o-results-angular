@@ -2,51 +2,56 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Event } from '../events/shared/event';
-
-const EVENTS: Event[] = [
-  {
-    name: '2016 Fall Umstead Park',
-    location: 'Umstead Park',
-    date: '2016-12-04'
-  },
-  {
-    name: '2016 Spring Umstead Park',
-    location: 'Umstead Park',
-    date: '2016-02-21'
-  },
-  {
-    name: '2015 Fall Umstead Park',
-    location: 'Umstead Park',
-    date: '2015-12-05'
-  }
-];
+import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [EventService]
 })
 
 export class DashboardComponent implements OnInit {
 
-  events = EVENTS;
+  events: Event[];
   selectedEvent: Event;
 
-  constructor(private router: Router) { 
-        
+/**
+ * Creates an instance of DashboardComponent.
+ * 
+ * @param {Router} router
+ * @param {EventService} EventService
+ * 
+ * @memberOf DashboardComponent
+ */
+  constructor(
+    private router: Router,
+    private EventService: EventService
+  ) { }
+
+  ngOnInit(): void {
+    this.getEvents();
   }
 
-  ngOnInit() {
+  /**
+   * Get the events.
+   */
+  getEvents(): void {
+    // Resolves a promise from the EventService
+    this.EventService.getEvents().then(events => this.events = events);
   }
 
   onSelect(event: Event): void {
     console.log(event.name);
     this.selectedEvent = event;
-    //  this.router.navigate(['/event-details', event.name]);
+    this.router.navigate(['/event-details', this.selectedEvent.id]);
   }
-
+/**
+ * Add a new event
+ */
   addNewEvent(): void {
-        this.router.navigate(['/event-add']);
+    // Navigate to the add form component
+    this.router.navigate(['/event-add']);
   }
 
 }
