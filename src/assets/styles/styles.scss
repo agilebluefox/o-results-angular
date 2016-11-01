@@ -36,8 +36,17 @@ h1 {
 
 h2.section {
   color: md-color($oresults-app-primary);
-  margin: 1rem auto 1rem auto;
+  margin: 1.5rem auto 1.5rem auto;
   text-align: center;
+}
+
+h3 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+div {
+    // border: 1px solid green;
 }
 
 div.container {
@@ -45,8 +54,37 @@ div.container {
   margin: 0 auto 1em auto;
 }
 
+div.form-container {
+    font-size: 1rem;
+    line-height: 2rem;
+    margin: 1.5rem auto;
+    max-width: 70%;
+}
+
 li {
   list-style: none;
   display: block;
-  border: 1px solid blue;
+//   border: 1px solid blue;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.btn-right {
+    text-align: right;
+}
+
+.btn-left {
+    text-align: left;
+}
+
+button.submit {
+    margin: 1.2rem 0;
+}
+
+.active-checkbox {
+    font-size: .9rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
