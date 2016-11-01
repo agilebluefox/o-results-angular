@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { ClassAddComponent } from './classes/class-add/class-add.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
     AppComponent,
     DashboardComponent,
     EventAddComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    ClassAddComponent
   ],
   imports: [
     MaterialModule.forRoot(),
