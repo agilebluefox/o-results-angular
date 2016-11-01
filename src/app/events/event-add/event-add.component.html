@@ -1,2 +1,15 @@
-
 <h2 class="section">Add an Event</h2>
+<h3>Event Information</h3>
+<div class="form-container">
+  <form>
+    <md-input class="full-width" placeholder="Event Name" required></md-input>
+    <md-input class="full-width" placeholder="Event Location" required></md-input>
+    <md-input class="full-width" placeholder="Event Date" required></md-input>
+    <table class="full-width">
+      <tr>
+        <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack('dashboard')">Cancel</button></td>
+        <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit">Save</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
