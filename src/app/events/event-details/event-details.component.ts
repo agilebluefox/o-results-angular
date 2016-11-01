@@ -26,8 +26,6 @@ export class EventDetailsComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
       let id = params['id'];
-      console.log(id);
-      console.log(this.events);
       this.event = this.events.find(event => event.id === id); // move to service
       // this.heroService.getHero(id)
       //   .then(hero => this.hero = hero);
