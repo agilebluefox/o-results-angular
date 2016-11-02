@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { ClassAddComponent } from './classes/class-add/class-add.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'event-details/:id',
     component: EventDetailsComponent
+  },
+  {
+    path: 'class-add',
+    component: ClassAddComponent
   }
 ];
 

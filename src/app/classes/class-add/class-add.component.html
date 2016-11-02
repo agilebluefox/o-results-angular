@@ -1,3 +1,18 @@
-<p>
-  class-add works!
-</p>
+<h1 class="section">Add a Class</h1>
+  <h3>Class Information</h3>
+  <div class="component-container">
+    <form>
+      <md-input class="full-width" placeholder="Year" required></md-input>
+      <md-input class="full-width" placeholder="Semester" required></md-input>
+      <md-input class="full-width" placeholder="Prefix" required></md-input>
+      <md-input class="full-width" placeholder="Number" required></md-input>
+      <md-input class="full-width" placeholder="Name" required></md-input>
+      <md-input class="full-width" placeholder="Section" required></md-input>
+      <table class="full-width">
+        <tr>
+          <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack('event-details')">Cancel</button></td>
+          <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit">Save</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
