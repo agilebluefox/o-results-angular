@@ -29,6 +29,8 @@ h4 {
   font-family: $heading-font;
 }
 
+/* General Component Styles */
+
 h1 {
   font-weight: 700;
   text-align: center;
@@ -77,6 +79,12 @@ li {
   //   border: 1px solid blue;
 }
 
+button.submit {
+  margin: 1.2rem 0;
+}
+
+/* Styles to help with layout */
+
 .full-width {
   width: 100%;
 }
@@ -91,10 +99,6 @@ li {
 
 .btn-center {
   text-align: center;
-}
-
-button.submit {
-  margin: 1.2rem 0;
 }
 
 .active-checkbox {
