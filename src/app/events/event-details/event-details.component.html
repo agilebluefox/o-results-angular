@@ -1,14 +1,32 @@
 <div class="main-container">
-  <h2 class="section">
+  <h1 class="section">
     Event Details
-  </h2>
-  <div class="list-container">
+  </h1>
+  <div class="component-container">
     <div class="details">
-      <md-list>
-        <md-list-item>Id: {{event.id}}</md-list-item>
-        <md-list-item>Name: {{event.name}}</md-list-item>
-        <md-list-item>Location: {{event.location}}</md-list-item>
-        <md-list-item>Date: {{event.date}}</md-list-item>
-      </md-list>
+      <div *ngIf="event">
+        <h2 class="">{{event.name}}</h2>
+        <p class="detail-date">{{event.date | date:'longDate'}}</p>
+      </div>
     </div>
+      <h2 class="component">Classes</h2>
+    <div class="component-container">
+      <div *ngIf="!classes">
+        <p class="missing-data">You must add at least one class to the event.</p>
+      </div>
+      <div class="btn-center"><button md-raised-button type="submit" color="primary" class="submit" (click)="addClass()">Add Class</button></div>
+    </div>
+      <h2 class="component">Courses</h2>
+    <div class="component-container">
+            <div *ngIf="!courses">
+        <p class="missing-data">You must add at least one course to the event.</p>
+      </div>
+      <div class="btn-center"><button md-raised-button type="submit" color="primary" class="submit" (click)="addCourse()">Add Course</button></div>
+    </div>
+    <table class="full-width">
+      <tr>
+        <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack('dashboard')">Cancel</button></td>
+        <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit">Run Event</button></td>
+      </tr>
+    </table>
   </div>

@@ -35,4 +35,13 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
+  goBack(link) {
+    this.location.back();
+  }
+
+  addClass() {
+    let link = ['/class-add'];
+    this.router.navigate(link);
+  }
+
 }
