@@ -30,8 +30,6 @@ export class EventDetailsComponent implements OnInit {
       this.eventService.getEvent(id)
         .then(event => this.event = event);
         console.log(this.event);
-      // this.heroService.getHero(id)
-      //   .then(hero => this.hero = hero);
     });
   }
 
