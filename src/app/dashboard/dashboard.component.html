@@ -1,13 +1,13 @@
 <div class="main-container">
-  <h2 class="section">
+  <h1 class="section">
     List of Events
-  </h2>
-  <div class="list-container">
+  </h1>
+  <div class="component-container">
     <md-list class="events">
       <md-list-item *ngFor="let event of events" (click)="goToDetails(event)">
         <span>{{ event.name }}</span>
       </md-list-item>
-      <span class="link"><a>show more past events</a></span>
+      <span class="link"><a>show more events</a></span>
     </md-list>
   </div>
   <div class="button">
