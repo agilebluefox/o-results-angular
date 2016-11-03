@@ -1,0 +1,21 @@
+<h1 class="section">Add a Course</h1>
+<h3>Course Information</h3>
+<div class="component-container">
+  <form>
+    <md-input class="full-width" placeholder="Location" required></md-input>
+    <md-input class="full-width" placeholder="Name" required></md-input>
+    <md-input class="full-width" placeholder="Mapdate" required></md-input>
+    <md-input class="full-width" placeholder="Type" required></md-input>
+    <label for="order">The course must be completed in order.</label>
+    <select class="full-width form-item" id="order" name="order" placeholder="Must Be completed in order" required>
+        <option value="No" selected>No</option>
+        <option value="Yes">Yes</option>
+  </select>
+    <table class="full-width">
+      <tr>
+        <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack('event-details')">Cancel</button></td>
+        <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit">Save</button></td>
+      </tr>
+    </table>
+  </form>
+</div>

@@ -42,4 +42,9 @@ export class EventDetailsComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  addCourse() {
+    let link = ['/course-add'];
+    this.router.navigate(link);
+  }
+
 }

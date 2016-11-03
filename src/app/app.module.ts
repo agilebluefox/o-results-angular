@@ -14,6 +14,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { ClassAddComponent } from './classes/class-add/class-add.component';
 
 import { EventService } from './services/event.service';
+import { CourseAddComponent } from './courses/course-add/course-add.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { EventService } from './services/event.service';
     DashboardComponent,
     EventAddComponent,
     EventDetailsComponent,
-    ClassAddComponent
+    ClassAddComponent,
+    CourseAddComponent
   ],
   imports: [
     MaterialModule.forRoot(),

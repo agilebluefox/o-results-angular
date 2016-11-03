@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { ClassAddComponent } from './classes/class-add/class-add.component';
+import { CourseAddComponent } from './courses/course-add/course-add.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'class-add',
     component: ClassAddComponent
+  },
+  {
+    path: 'course-add',
+    component: CourseAddComponent
   }
 ];
 
