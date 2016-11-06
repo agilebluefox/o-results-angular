@@ -1,0 +1,32 @@
+<div class="main-container">
+  <h1 class="section">
+    Event Dashboard
+  </h1>
+  <div class="component-container">
+    <div class="details">
+      <div *ngIf="event">
+        <h2 class="">{{event.name}}</h2>
+        <p class="detail-date">{{event.date | date:'longDate'}}</p>
+      </div>
+    </div>
+    <div class="stack">
+      <md-card class="event-card" (click)="goToClasses()">
+        <h2 class="component">Classes</h2>
+      </md-card>
+    </div>
+    <div class="stack">
+      <md-card class="event-card" (click)="goToCourses()">
+        <h2 class="component">Courses</h2>
+      </md-card>
+    </div>
+    <div class="stack">
+      <md-card class="event-card" (click)="goToStudents()">
+        <h2 class="component">Students</h2>
+      </md-card>
+    </div>
+    <div class="stack">
+      <md-card class="event-card" (click)="goToResults(event.id)">
+        <h2 class="component">Results</h2>
+      </md-card>
+    </div>
+  </div>

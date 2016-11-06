@@ -1,0 +1,28 @@
+
+@import '../../../assets/styles/oresults-app-theme.scss';
+
+.details {
+    margin-bottom: 1rem;
+}
+
+
+.detail-date {
+    font-size: .9rem;
+    text-align: center;
+    line-height: 1.2rem;
+}
+
+i.edit-event {
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+
+.stack {
+    margin: .5rem auto;
+}
+
+.event-card {
+    background-color: md-color($oresults-app-primary);
+    color: white;
+    font-size: 1.5rem;
+}

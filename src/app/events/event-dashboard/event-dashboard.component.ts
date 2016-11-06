@@ -6,11 +6,11 @@ import { Event } from '../../events/shared/event';
 import { EventService } from '../../services/event.service';
 
 @Component({
-  selector: 'event-details',
-  templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.scss']
+  selector: 'event-dashboard',
+  templateUrl: './event-dashboard.component.html',
+  styleUrls: ['./event-dashboard.component.scss']
 })
-export class EventDetailsComponent implements OnInit {
+export class EventDashboardComponent implements OnInit {
 
   events: Event[] = [];
   event: Event;
@@ -29,7 +29,7 @@ export class EventDetailsComponent implements OnInit {
       // Get event from service
       this.eventService.getEvent(id)
         .then(event => this.event = event);
-        console.log(this.event);
+      console.log(this.event);
     });
   }
 
@@ -37,14 +37,23 @@ export class EventDetailsComponent implements OnInit {
     this.location.back();
   }
 
-  addClass() {
-    let link = ['/class-add'];
+  goToClasses() {
+    let link = ['/class-list'];
     this.router.navigate(link);
   }
 
-  addCourse() {
-    let link = ['/course-add'];
+  goToCourses() {
+    let link = ['/course-list'];
     this.router.navigate(link);
   }
 
+  goToStudents() {
+    let link = ['/student-list'];
+    this.router.navigate(link);
+  }
+
+  goToResults() {
+    let link = ['/event-results'];
+    this.router.navigate(link);
+  }
 }
