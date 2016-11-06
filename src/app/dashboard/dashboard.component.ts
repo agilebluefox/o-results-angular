@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToDetails(event: Event): void {
-    let link = ['/event-details', event.id];
+    let link = ['/event-dashboard', event.id];
     this.router.navigate(link);
   }
 /**
