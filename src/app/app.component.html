@@ -1,8 +1,20 @@
 <div class="container">
-  <md-toolbar color="primary">
-    <h1>
-    {{title}}
-  </h1>
-  </md-toolbar>
-  <router-outlet></router-outlet>
+  <md-sidenav-layout>
+    <md-sidenav #start>
+      <h2>Site Menu</h2>
+      <button md-button class="menu-button">Home</button>
+      <button md-button class="menu-button">Classes</button>
+      <button md-button class="menu-button">Courses</button>
+      <button md-button class="menu-button">Students</button>
+    </md-sidenav>
+    <md-toolbar color="primary">
+      <button md-icon-button (click)="start.open()">
+        <md-icon>menu</md-icon>
+      </button>
+      <h1>
+        {{title}}
+      </h1>
+    </md-toolbar>
+    <router-outlet></router-outlet>
+  </md-sidenav-layout>
 </div>
