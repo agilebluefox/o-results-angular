@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import { Class } from '../classes/shared/class';
-import { CLASSES } from '../shared/mock-classes';
+import { Course } from '../courses/shared/course';
+import { COURSES } from '../shared/mock-courses';
 
 @Injectable()
 export class CourseService {
+  courses: Course[] = [];
+  course: Course;
 
   constructor() { }
 
-  getClasses(): Promise<Class[]> {
-    return Promise.resolve(CLASSES);
+  getCourses(): Promise<Course[]> {
+    return Promise.resolve(COURSES);
   }
 
 }
