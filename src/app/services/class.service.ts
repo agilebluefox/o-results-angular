@@ -13,5 +13,9 @@ export class ClassService {
   getClasses(): Promise<Class[]> {
     return Promise.resolve(CLASSES);
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 838813c... Setup services for data models
 }
