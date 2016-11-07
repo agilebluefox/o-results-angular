@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Class } from '../shared/class';
+import { ClassService } from '../../services/class.service';
 
 @Component({
   selector: 'app-class-list',
@@ -6,10 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./class-list.component.scss']
 })
 export class ClassListComponent implements OnInit {
+  classes: Class[] = [];
 
-  constructor() { }
+  constructor(
+    private classService: ClassService,
+    private router: Router
+    ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.classService.getClasses()
+      .then(classes => this.classes = classes);
+  }
+
+  getClasses(): void {
+    this.classService.getClasses()
+      .then(classes => this.classes = classes);
   }
 
 }
