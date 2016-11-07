@@ -13,4 +13,5 @@ export class CourseService {
     getCourses(): Promise<Course[]> {
         return Promise.resolve(COURSES);
     }
+
 }
