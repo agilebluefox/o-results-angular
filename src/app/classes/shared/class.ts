@@ -1,4 +1,5 @@
 export class Class {
+    _id: string;
     year: number;
     semester: string;
     prefix: string;

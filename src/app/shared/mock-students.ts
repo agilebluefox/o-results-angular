@@ -3,6 +3,7 @@ import { Student } from '../students/shared/student';
 export const STUDENTS: Student[] =
     [
         {
+            "_id": "57fc2a432e75cf056c89903d",
             "unityid": "daconner",
             "email": "daconner@ncsu.edu",
             "firstname": "David",
@@ -10,6 +11,7 @@ export const STUDENTS: Student[] =
             "sex": 1,
             "class": [
                 {
+                    "_id": "57fc2a422e75cf056c89902e",
                     "year": 2016,
                     "semester": "Fall",
                     "prefix": "HESO",
@@ -20,6 +22,7 @@ export const STUDENTS: Student[] =
             ]
         },
         {
+            "_id": "57fc2a432e75cf056c89903e",
             "unityid": "jdoe",
             "email": "jdoe@ncsu.edu",
             "firstname": "John",
@@ -27,6 +30,7 @@ export const STUDENTS: Student[] =
             "sex": 1,
             "class": [
                 {
+                    "_id": "57fc2a422e75cf056c89902e",
                     "year": 2016,
                     "semester": "Fall",
                     "prefix": "HESO",
@@ -37,6 +41,7 @@ export const STUDENTS: Student[] =
             ]
         },
         {
+            "_id": "57fc2a432e75cf056c89903f",
             "unityid": "jdoe02",
             "email": "jdoe02@ncsu.edu",
             "firstname": "Jane",
@@ -44,6 +49,7 @@ export const STUDENTS: Student[] =
             "sex": 0,
             "class": [
                 {
+                    "_id": "57fc2a422e75cf056c89902f",
                     "year": 2016,
                     "semester": "Spring",
                     "prefix": "HESO",
@@ -54,6 +60,7 @@ export const STUDENTS: Student[] =
             ]
         },
         {
+            "_id": "57fc2a432e75cf056c899040",
             "unityid": "msmith",
             "email": "msmith@ncsu.edu",
             "firstname": "Michael",
@@ -61,6 +68,7 @@ export const STUDENTS: Student[] =
             "sex": 1,
             "class": [
                 {
+                    "_id": "57fc2a422e75cf056c89902f",
                     "year": 2016,
                     "semester": "Spring",
                     "prefix": "HESO",
@@ -71,6 +79,7 @@ export const STUDENTS: Student[] =
             ]
         },
         {
+            "_id": "57fc2a432e75cf056c899041",
             "unityid": "rwalker",
             "email": "rwalker@ncsu.edu",
             "firstname": "Rachel",
@@ -78,7 +87,8 @@ export const STUDENTS: Student[] =
             "sex": 0,
             "class": [
                 {
-                    "year": 2015,
+                    "_id": "57fc2a422e75cf056c89902e",
+                    "year": 2016,
                     "semester": "Fall",
                     "prefix": "HESO",
                     "number": "253",

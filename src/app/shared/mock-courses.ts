@@ -4,6 +4,7 @@ import { Control } from '../controls/shared/control';
 export const COURSES: Course[] =
     [
         {
+            "_id" : "57fc2a422e75cf056c899032",
             "location": "Umstead Park",
             "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
             "name": "Umstead Park North Course",
@@ -68,6 +69,7 @@ export const COURSES: Course[] =
             ]
         },
         {
+            "_id" : "57fc2a422e75cf056c899033",
             "location": "Umstead Park",
             "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
             "name": "Umstead Park South Course",
@@ -132,6 +134,7 @@ export const COURSES: Course[] =
             ]
         },
         {
+            "_id" : "57fc2a422e75cf056c899034",
             "location": "Lake Raleigh",
             "mapdate": "Sat, 01 Aug 2015 00:00:00 GMT -0600",
             "name": "Lake Raleigh Score Course",
