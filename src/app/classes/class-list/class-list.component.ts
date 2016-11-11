@@ -11,6 +11,7 @@ import { ClassService } from '../../services/class.service';
 })
 export class ClassListComponent implements OnInit {
   classes: Class[] = [];
+  cls: Class;
 
   constructor(
     private classService: ClassService,
@@ -25,6 +26,15 @@ export class ClassListComponent implements OnInit {
   getClasses(): void {
     this.classService.getClasses()
       .then(classes => this.classes = classes);
+  }
+
+  goToDetails(cls: Class): void {
+    let link = ['/class-details', cls._id];
+    this.router.navigate(link);
+  }
+
+  addNewClass(): void {
+    this.router.navigate(['/class-add']);
   }
 
 }

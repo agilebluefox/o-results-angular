@@ -1,3 +1,23 @@
-<p>
-  class-list works!
-</p>
+<div class="main-container">
+  <h1 class="section">
+    Classes
+  </h1>
+  <div class="component-container">
+    <div class="search">
+      
+    </div>
+    <div class="list-container">
+      <md-list class="classes">
+        <md-list-item *ngFor="let class of classes" (click)="goToDetails(class)">
+          <span>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }}</span>
+        </md-list-item>
+        <span class="more-items"><a>show more classes</a></span>
+      </md-list>
+    </div>
+  </div>
+  <div class="button">
+    <button md-fab color="primary" (click)="addNewClass()">
+      <md-icon class="md-24">add</md-icon>
+      </button>
+  </div>
+</div>
