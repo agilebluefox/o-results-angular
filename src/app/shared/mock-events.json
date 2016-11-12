@@ -3,7 +3,6 @@
   "location": "Lake Raleigh",
   "name": "Lake Raleigh Score Event",
   "date": "2016-02-09T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -12,7 +11,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -23,7 +21,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -78,7 +75,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -132,7 +128,6 @@
   "location": "Lake Johnson",
   "name": "Lake Johnson Event",
   "date": "2016-02-16T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -141,7 +136,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -152,7 +146,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -207,7 +200,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -261,7 +253,6 @@
   "location": "Schenck Forest",
   "name": "Schenck Forest Event",
   "date": "2016-02-20T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -270,7 +261,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -281,7 +271,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -336,7 +325,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -390,7 +378,6 @@
   "location": "Umstead Park",
   "name": "Umstead Park Event",
   "date": "2016-02-27T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -399,7 +386,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -410,7 +396,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -465,7 +450,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -519,7 +503,6 @@
   "location": "Lake Raleigh",
   "name": "Lake Raleigh Score Event",
   "date": "2015-11-02T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -528,7 +511,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -539,7 +521,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -594,7 +575,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -648,7 +628,6 @@
   "location": "Lake Johnson",
   "name": "Lake Johnson Event",
   "date": "2015-11-07T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -657,7 +636,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -668,7 +646,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -723,7 +700,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -777,7 +753,6 @@
   "location": "Schenck Forest",
   "name": "Schenck Forest Event",
   "date": "2015-11-14T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -786,7 +761,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -797,7 +771,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -852,7 +825,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -906,7 +878,6 @@
   "location": "Umstead Park",
   "name": "Umstead Park Event",
   "date": "2016-12-02T00:00:00.000Z",
-  "__v": 0,
   "classes": [{
     "_id": "57fc2a422e75cf056c89902f",
     "year": 2016,
@@ -915,7 +886,6 @@
     "number": "253",
     "name": "Orienteering",
     "section": "196",
-    "__v": 0,
     "active": true
   }],
   "courses": [{
@@ -926,7 +896,6 @@
     "codename": "upnc201371-7086",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",
@@ -981,7 +950,6 @@
     "codename": "upsc201371-8918",
     "type": "classic",
     "inorder": true,
-    "__v": 0,
     "controls": [{
       "number": "2",
       "type": "clear",

@@ -6,4 +6,5 @@ export class Class {
     number: string;
     name: string;
     section: string;
+    active: boolean;
 }
