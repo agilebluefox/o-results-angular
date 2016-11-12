@@ -1,17 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import { Course } from '../courses/shared/course';
-import { COURSES } from '../shared/mock-courses';
 
 @Injectable()
 export class CourseService {
-    courses: Course[] = [];
-    course: Course;
+    
+    // Provide a url to the course data in the fake web api
+ private coursesUrl = 'app/shared/mock-courses.json';
 
-    constructor() { }
+ // Setup http headers
+ private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    getCourses(): Promise<Course[]> {
-        return Promise.resolve(COURSES);
-    }
+  // Method to handle errors if the http request fails
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
+  // Inject the Http Module
+  constructor(private http: Http) { }
+
+  // Get students and return a promise
+  getCourses(): Promise<Course[]> {
+    return this.http.get(this.coursesUrl)
+      .toPromise()
+      .then(response => response.json().data as Course[])
+      .catch(this.handleError);
+  }
 
 }
