@@ -27,7 +27,7 @@ export class StudentService {
   getStudents(): Promise<Student[]> {
     return this.http.get(this.studentsUrl)
       .toPromise()
-      .then(response => response.json().data as Student[])
+      .then(response => response.json() as Student[])
       .catch(this.handleError);
   }
 

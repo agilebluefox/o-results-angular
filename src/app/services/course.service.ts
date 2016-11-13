@@ -27,7 +27,7 @@ export class CourseService {
   getCourses(): Promise<Course[]> {
     return this.http.get(this.coursesUrl)
       .toPromise()
-      .then(response => response.json().data as Course[])
+      .then(response => response.json() as Course[])
       .catch(this.handleError);
   }
 

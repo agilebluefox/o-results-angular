@@ -24,9 +24,9 @@ export class ClassService {
 
   // Get classes and return a promise
   getClasses(): Promise<Class[]> {
-    return this.http.get(this.classesUrl)
+    return this.http.get(this.classesUrl, { headers: this.headers })
       .toPromise()
-      .then(response => response.json().data as Class[])
+      .then(response => response.json() as Class[])
       .catch(this.handleError);
   }
 

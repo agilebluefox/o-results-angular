@@ -24,9 +24,9 @@ export class EventService {
 
   // Get the events and return a promise
   getEvents(): Promise<Event[]> {
-    return this.http.get(this.eventsUrl)
+    return this.http.get(this.eventsUrl, { headers: this.headers })
       .toPromise()
-      .then(response => response.json().data as Event[])
+      .then(response => response.json() as Event[])
       .catch(this.handleError);
   }
 
