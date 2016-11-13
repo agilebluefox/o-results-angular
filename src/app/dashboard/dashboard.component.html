@@ -5,7 +5,7 @@
   <div class="component-container">
     <md-list class="events">
       <md-list-item *ngFor="let event of events" (click)="goToDetails(event)">
-        <span>{{ event.name }}</span>
+        <span>{{ event.date | date:"yyyy" }} {{ event.name }}</span>
       </md-list-item>
       <span class="more-items"><a>show more events</a></span>
     </md-list>
