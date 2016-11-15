@@ -9,10 +9,14 @@ import { Event } from '../events/shared/event';
 export class EventService {
 
   // The url will be a JSON file for now
-  private eventsUrl = 'app/shared/mock-events.json';
+  // private eventsUrl = 'app/shared/mock-events.json';
+  private eventsUrl = 'http://localhost:3000/events';
 
   // Setup http headers
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private headers = new Headers({ 
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+   });
 
   // Handle error if the http request fails
   private handleError(error: any): Promise<any> {
@@ -32,7 +36,16 @@ export class EventService {
 
   // Method to get an event by id
   getEvent(id: string): Promise<Event> {
-    return this.getEvents().then(events => events.find(event => event._id === id));
+    return this.http.get(this.eventsUrl + '/' + id, { headers: this.headers })
+      .toPromise()
+      .then(response => response.json() as Event)
+      .catch(this.handleError);
+    
+    // getEvents().then(events => events.find(event => event._id === id));
+  }
+
+  addEvent(event: Event) {
+
   }
 
 }
