@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 import { Event } from '../events/shared/event';
 
@@ -44,8 +46,11 @@ export class EventService {
     // getEvents().then(events => events.find(event => event._id === id));
   }
 
-  addEvent(event: Event) {
-
+  addEvent(event: Event): Observable<Response> {
+    const body = JSON.stringify(event);
+    return this.http.post(this.eventsUrl, body, { headers: this.headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 
 }

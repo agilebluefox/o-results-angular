@@ -4,6 +4,9 @@ import { Location } from '@angular/common';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { Event } from '../shared/event';
+import { EventService } from '../../services/event.service';
+
 @Component({
   selector: 'event-add',
   templateUrl: './event-add.component.html',
@@ -15,7 +18,8 @@ export class EventAddComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private location: Location
+    private location: Location,
+    private eventService: EventService
   ) { }
 
   ngOnInit() {
@@ -27,7 +31,13 @@ export class EventAddComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.eventAddForm);
+    console.log(this.eventAddForm.value);
+    this.eventService.addEvent(this.eventAddForm.value)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
+      this.eventAddForm.reset();
   }
 
   goBack(link) {
