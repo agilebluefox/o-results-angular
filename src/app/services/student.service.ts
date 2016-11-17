@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Student } from '../students/shared/student';
+import { Student } from '../students/shared/student.model';
 
 @Injectable()
 export class StudentService {

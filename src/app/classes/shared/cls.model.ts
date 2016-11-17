@@ -1,4 +1,4 @@
-export class Class {
+export class Cls {
     _id: string;
     year: number;
     semester: string;
