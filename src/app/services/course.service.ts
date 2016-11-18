@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 import { Course } from '../courses/shared/course.model';
 
 @Injectable()
 export class CourseService {
-    
-    // Provide a url to the course data in the fake web api
- private coursesUrl = 'app/shared/mock-courses.json';
 
- // Setup http headers
- private headers = new Headers({ 'Content-Type': 'application/json' });
+  // Public property to hold courses array
+  courses: Course[] = [];
+
+  // Provide a url to the course data in the fake web api
+  // private coursesUrl = 'app/shared/mock-courses.json';
+  private coursesUrl = 'http://localhost:3000/courses';
+
+  // Setup http headers
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  });
 
   // Method to handle errors if the http request fails
   private handleError(error: any): Promise<any> {
@@ -29,6 +38,14 @@ export class CourseService {
       .toPromise()
       .then(response => response.json() as Course[])
       .catch(this.handleError);
+  }
+
+  addCourse(course: Course): Observable<Response> {
+    const body = JSON.stringify(course);
+    console.log(body);
+    return this.http.post(this.coursesUrl, body, { headers: this.headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 
 }
