@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Event } from '../../events/shared/event';
+import { Event } from '../../events/shared/event.model';
 import { EventService } from '../../services/event.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Course } from '../shared/course';
+import { Course } from '../shared/course.model';
 import { CourseService } from '../../services/course.service';
 
 @Component({

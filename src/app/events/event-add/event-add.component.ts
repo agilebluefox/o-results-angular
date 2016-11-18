@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Event } from '../shared/event';
+import { Event } from '../shared/event.model';
 import { EventService } from '../../services/event.service';
 
 @Component({

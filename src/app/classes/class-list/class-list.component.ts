@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Class } from '../shared/class';
+import { Cls } from '../shared/cls.model';
 import { ClassService } from '../../services/class.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { ClassService } from '../../services/class.service';
   styleUrls: ['./class-list.component.scss']
 })
 export class ClassListComponent implements OnInit {
-  classes: Class[] = [];
-  cls: Class;
+  classes: Cls[] = [];
+  cls: Cls;
 
   constructor(
     private classService: ClassService,
@@ -28,7 +28,7 @@ export class ClassListComponent implements OnInit {
       .then(classes => this.classes = classes);
   }
 
-  goToDetails(cls: Class): void {
+  goToDetails(cls: Cls): void {
     let link = ['/class-details', cls._id];
     this.router.navigate(link);
   }

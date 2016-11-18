@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event } from '../events/shared/event';
+import { Event } from '../events/shared/event.model';
 import { EventService } from '../services/event.service';
 
 @Component({
@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   goToDetails(event: Event): void {
     let link = ['/event-dashboard', event._id];
     this.router.navigate(link);
+    // this.eventService.getEvent(id).then(event => console.log(event));
   }
 
   // Add an event
