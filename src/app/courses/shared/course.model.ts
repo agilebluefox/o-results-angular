@@ -1,4 +1,4 @@
-import { Control } from '../../controls/shared/control';
+import { Control } from '../../controls/shared/control.model';
 
 export class Course {
     _id: string;

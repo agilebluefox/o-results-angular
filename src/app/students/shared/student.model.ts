@@ -1,4 +1,4 @@
-import { Class } from '../../classes/shared/class';
+import { Cls } from '../../classes/shared/cls.model';
 
 export class Student {
     _id: string;
@@ -7,5 +7,5 @@ export class Student {
     firstname: string;
     lastname: string;
     sex: number;
-    class: Class[];
+    cls?: Cls[];
 }
