@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 import { Student } from '../students/shared/student.model';
 
 @Injectable()
 export class StudentService {
- 
- // Provide a url to the student data in the fake web api
- private studentsUrl = 'app/shared/mock-students.json';
 
- // Setup http headers
- private headers = new Headers({ 'Content-Type': 'application/json' });
+  // Public property to hold students array
+  students: Student[] = [];
+
+  // Provide a url to the student data in the fake web api
+  // private studentsUrl = 'app/shared/mock-students.json';
+  private studentsUrl = 'http://localhost:3000/students';
+
+  // Setup http headers
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  });
 
   // Method to handle errors if the http request fails
   private handleError(error: any): Promise<any> {
@@ -25,10 +34,22 @@ export class StudentService {
 
   // Get students and return a promise
   getStudents(): Promise<Student[]> {
-    return this.http.get(this.studentsUrl)
-      .toPromise()
-      .then(response => response.json() as Student[])
-      .catch(this.handleError);
+    if (this.students.length) {
+      return Promise.resolve(this.students);
+    } else {
+      return this.http.get(this.studentsUrl)
+        .toPromise()
+        .then(response => response.json() as Student[])
+        .catch(this.handleError);
+    }
+  }
+
+  addStudent(student: Student): Observable<Response> {
+    const body = JSON.stringify(student);
+    console.log(body);
+    return this.http.post(this.studentsUrl, body, { headers: this.headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 
 }

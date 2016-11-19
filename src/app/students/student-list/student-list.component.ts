@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Student } from '../shared/student';
+import { Student } from '../shared/student.model';
 import { StudentService } from '../../services/student.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class StudentListComponent implements OnInit {
 
   students: Student[] = [];
   student: Student;
+  selectedStudent: Student;
+  studentsInEvent: Student[] = [];
 
   constructor(
     private studentService: StudentService,
@@ -36,5 +38,16 @@ export class StudentListComponent implements OnInit {
 
   addNewStudent(): void {
     this.router.navigate(['/student-add']);
+  }
+
+  addToEvent(student: Student): void {
+    this.studentsInEvent.push(student);
+    this.students.splice(this.students.indexOf(student),1);
+    console.log(this.studentsInEvent);
+  }
+
+  removeFromEvent(student: Student): void {
+    this.studentsInEvent.splice(this.studentsInEvent.indexOf(student),1);
+    this.students.push(student);
   }
 }

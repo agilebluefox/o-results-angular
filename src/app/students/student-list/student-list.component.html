@@ -3,21 +3,39 @@
     Students
   </h1>
   <div class="component-container">
+
     <div class="search">
     </div>
-    <div class="list-container">
-      <h2>Students in the Event</h2>
-      <md-list class="students">
-        <md-list-item *ngFor="let student of students" (click)="goToDetails(student)">
-          <span>{{ student.lastname }}, {{ student.firstname }}</span>
+
+    <div *ngIf="studentsInEvent.length" class="student-list">
+      <h2>Students in Event</h2>
+      <md-nav-list>
+        <md-list-item *ngFor="let student of studentsInEvent">
+          <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
+          <button md-icon-button color="primary" (click)="removeFromEvent(student)" class="student-button">
+        <md-icon>delete</md-icon>
+     </button>
         </md-list-item>
-        <span class="more-items"><a>show more classes</a></span>
-      </md-list>
+      </md-nav-list>
     </div>
+
+    <div class="student-list">
+    <h2>List of Students</h2>
+    <md-nav-list>
+      <md-list-item *ngFor="let student of students">
+        <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
+        <button md-icon-button color="primary" (click)="addToEvent(student)" class="student-button">
+        <md-icon>add</md-icon>
+     </button>
+      </md-list-item>
+    </md-nav-list>
   </div>
+
   <div class="button">
-    <button md-fab color="primary" (click)="addNewClass()">
+    <button md-fab color="primary" (click)="addNewStudent()">
       <md-icon class="md-24">add</md-icon>
       </button>
+  </div>
+
   </div>
 </div>
