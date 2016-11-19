@@ -40,6 +40,7 @@ export class ClassAddComponent implements OnInit {
         data => console.log(data),
         error => console.log(error)
       );
+      // Use state map to reset the values in the form field
       this.classAddForm.reset({
         prefix: 'HESO',
         number: '253',
