@@ -6,10 +6,22 @@
     <div class="search">
       
     </div>
+    <h2>Classes in the Event</h2>
     <div class="list-container">
       <md-list class="classes">
         <md-list-item *ngFor="let class of classes" (click)="goToDetails(class)">
           <span>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }}</span>
+          <button md-button color="danger">Remove</button>
+        </md-list-item>
+        <span class="more-items"><a>show more classes</a></span>
+      </md-list>
+    </div>
+    <h2>All classes</h2>
+    <div class="list-container">
+      <md-list class="classes">
+        <md-list-item *ngFor="let class of classes" (click)="goToDetails(class)">
+          <span>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }} </span>
+          <button md-button color="primary">Add</button>
         </md-list-item>
         <span class="more-items"><a>show more classes</a></span>
       </md-list>
