@@ -66,18 +66,6 @@ div {
   // border: 1px solid green;
 }
 
-div.container {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto 1em auto;
-}
-
-div.component-container {
-  font-size: 1rem;
-  line-height: 2rem;
-  margin: 1.5rem auto;
-  max-width: 70%;
-}
 
 li {
   list-style: none;
@@ -118,6 +106,19 @@ button.submit {
     text-align: center;
 }
 
+div.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 1em auto;
+}
+
+div.component-container {
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 1.5rem auto;
+  max-width: 70%;
+}
+
 div.main-container {
   display: flex;
   flex-direction: column;
@@ -147,4 +148,9 @@ div.details {
   font-size: .8rem;
   color: red;
   margin: 1.5rem auto;
+}
+
+/* button at the end of a list item */
+.list-button {
+    margin-left: 1.5em;
 }
