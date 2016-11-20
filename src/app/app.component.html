@@ -8,16 +8,20 @@
       </div>
       <md-nav-list>
         <md-list-item>
-          <a routerLink="dashboard">Home</a>
+          <md-icon>home</md-icon>
+          <a routerLink="dashboard" routerLinkActive="active-link" class="nav-menu-link" (click)="start.close()">Home</a>
         </md-list-item>
         <md-list-item>
-          <a routerLink="class-list">Classes</a>
+          <md-icon>school</md-icon>
+          <a routerLink="class-list" routerLinkActive="active-link" class="nav-menu-link" (click)="start.close()">Classes</a>
         </md-list-item>
         <md-list-item>
-          <a routerLink="course-list">Courses</a>
+          <md-icon>explore</md-icon>
+          <a routerLink="course-list" routerLinkActive="active-link" class="nav-menu-link" (click)="start.close()">Courses</a>
         </md-list-item>
         <md-list-item>
-          <a routerLink="student-list">Students</a>
+          <md-icon>group</md-icon>
+          <a routerLink="student-list" routerLinkActive="active-link" class="nav-menu-link" (click)="start.close()">Students</a>
         </md-list-item>
       </md-nav-list>
     </md-sidenav>
