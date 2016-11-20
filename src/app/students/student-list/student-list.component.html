@@ -3,39 +3,33 @@
     Students
   </h1>
   <div class="component-container">
-
     <div class="search">
     </div>
-
     <div *ngIf="studentsInEvent.length" class="student-list">
       <h2>Students in Event</h2>
-      <md-nav-list>
-        <md-list-item *ngFor="let student of studentsInEvent">
-          <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
-          <button md-icon-button color="primary" (click)="removeFromEvent(student)" class="student-button">
-        <md-icon>delete</md-icon>
-     </button>
-        </md-list-item>
-      </md-nav-list>
+      <div class="list-container">
+        <md-nav-list class="students">
+          <md-list-item *ngFor="let student of studentsInEvent">
+            <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
+            <button class="list-button" md-button color="primary" (click)="removeFromEvent(student)">Remove</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
     </div>
-
-    <div class="student-list">
-    <h2>List of Students</h2>
-    <md-nav-list>
-      <md-list-item *ngFor="let student of students">
-        <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
-        <button md-icon-button color="primary" (click)="addToEvent(student)" class="student-button">
-        <md-icon>add</md-icon>
-     </button>
-      </md-list-item>
-    </md-nav-list>
+    <div *ngIf="students.length" class="student-list">
+      <h2>List of Students</h2>
+      <div class="list-container">
+        <md-nav-list class="students">
+          <md-list-item *ngFor="let student of students">
+            <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
+            <button class="list-button" md-button color="primary" (click)="addToEvent(student)">Add</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
+    </div>
   </div>
-
-  <div class="button">
-    <button md-fab color="primary" (click)="addNewStudent()">
+    <div class="button">
+      <button md-fab color="primary" (click)="addNewStudent()">
       <md-icon class="md-24">add</md-icon>
       </button>
-  </div>
-
-  </div>
-</div>
+    </div>

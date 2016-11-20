@@ -1,8 +1,14 @@
-.student-button {
-    width: 50px;
-    height: 40px;
+.student-list {
+    margin-bottom: 2em;
 }
 
-.student-list {
-    margin-bottom: 3em;
+/* button at the end of a list item */
+.list-button {
+    margin-left: 1.5em;
 }
+
+div.button {
+  text-align: right;
+  margin: 1.5rem 10%;
+}
+
