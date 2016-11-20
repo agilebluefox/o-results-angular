@@ -1,11 +1,25 @@
 <div class="container">
   <md-sidenav-layout>
     <md-sidenav #start>
-      <h2>Site Menu</h2>
-      <button md-button class="menu-button">Home</button>
-      <button md-button class="menu-button">Classes</button>
-      <button md-button class="menu-button">Courses</button>
-      <button md-button class="menu-button">Students</button>
+      <div class="nav-header">
+        <button md-icon-button (click)="start.close()">
+          <md-icon>menu</md-icon>
+        </button>
+      </div>
+      <md-nav-list>
+        <md-list-item>
+          <a routerLink="dashboard">Home</a>
+        </md-list-item>
+        <md-list-item>
+          <a routerLink="class-list">Classes</a>
+        </md-list-item>
+        <md-list-item>
+          <a routerLink="course-list">Courses</a>
+        </md-list-item>
+        <md-list-item>
+          <a routerLink="student-list">Students</a>
+        </md-list-item>
+      </md-nav-list>
     </md-sidenav>
     <md-toolbar color="primary">
       <button md-icon-button (click)="start.open()">
