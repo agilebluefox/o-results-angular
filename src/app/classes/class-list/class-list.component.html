@@ -4,32 +4,32 @@
   </h1>
   <div class="component-container">
     <div class="search">
-      
     </div>
-    <h2>Classes in the Event</h2>
-    <div class="list-container">
-      <md-list class="classes">
-        <md-list-item *ngFor="let class of classes" (click)="goToDetails(class)">
-          <span>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }}</span>
-          <button md-button color="danger">Remove</button>
-        </md-list-item>
-        <span class="more-items"><a>show more classes</a></span>
-      </md-list>
+    <div *ngIf="classesInEvent.length" class="class-list">
+      <h2>Classes in the Event</h2>
+      <div class="list-container">
+        <md-nav-list class="classes">
+          <md-list-item *ngFor="let class of classesInEvent" (click)="removeFromEvent(class)">
+            <a md-line>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }}</a>
+            <button class="list-button" md-button color="primary">Remove</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
     </div>
-    <h2>All classes</h2>
-    <div class="list-container">
-      <md-list class="classes">
-        <md-list-item *ngFor="let class of classes" (click)="goToDetails(class)">
-          <span>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }} </span>
-          <button md-button color="primary">Add</button>
-        </md-list-item>
-        <span class="more-items"><a>show more classes</a></span>
-      </md-list>
+    <div *ngIf="classes.length" class="class-list">
+      <h2>All classes</h2>
+      <div class="list-container">
+        <md-nav-list class="classes">
+          <md-list-item *ngFor="let class of classes" (click)="addToEvent(class)">
+            <a md-line>{{ class.year }} {{ class.semester }} {{ class.prefix }} {{ class.number }}-{{ class.section }} {{ class.name }} </a>
+            <button class="list-button" md-button color="primary">Add</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
     </div>
   </div>
-  <div class="button">
-    <button md-fab color="primary" (click)="addNewClass()">
+    <div class="button">
+      <button md-fab color="primary" (click)="addNewClass()">
       <md-icon class="md-24">add</md-icon>
       </button>
-  </div>
-</div>
+    </div>
