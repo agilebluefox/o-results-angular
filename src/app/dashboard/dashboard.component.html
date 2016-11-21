@@ -3,12 +3,12 @@
     List of Events
   </h1>
   <div class="component-container">
-    <md-list class="events">
-      <md-list-item *ngFor="let event of events" (click)="goToDetails(event)">
-        <span>{{ event.date | date:"yyyy" }} {{ event.name }}</span>
+    <md-nav-list class="events">
+      <md-list-item *ngFor="let event of events">
+        <span md-line (click)="goToDetails(event)">{{ event.date | date:"yyyy" }} {{ event.name }}</span>
+        <button class="list-button" md-button color="primary" (click)="deleteEvent(event)">Remove</button>
       </md-list-item>
-      <span class="more-items"><a>show more events</a></span>
-    </md-list>
+    </md-nav-list>
   </div>
   <div class="button">
     <button md-fab color="primary" (click)="addNewEvent()">

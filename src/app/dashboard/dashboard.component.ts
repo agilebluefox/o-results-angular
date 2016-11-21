@@ -44,4 +44,15 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/event-add']);
   }
 
+  deleteEvent(event: Event): void {
+    this.eventService.deleteEvent(event._id)
+      .subscribe(
+        data => { 
+          console.log(data);
+          this.events.splice(this.events.indexOf(event),1);
+        },
+        error => console.log(error)
+      );
+  }
+
 }
