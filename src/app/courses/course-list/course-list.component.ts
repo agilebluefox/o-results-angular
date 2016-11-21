@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 
 import { Course } from '../shared/course.model';
@@ -13,6 +12,8 @@ import { CourseService } from '../../services/course.service';
 export class CourseListComponent implements OnInit {
   courses: Course[] = [];
   course: Course;
+  selectedCourse: Course;
+  coursesInEvent: Course[] = [];
 
   constructor(
     private courseService: CourseService,
@@ -36,6 +37,17 @@ export class CourseListComponent implements OnInit {
 
   addNewCourse(): void {
     this.router.navigate(['/course-add']);
+  }
+
+  addToEvent(course: Course): void {
+    this.coursesInEvent.push(course);
+    this.courses.splice(this.courses.indexOf(course), 1);
+    console.log(this.coursesInEvent);
+  }
+
+  removeFromEvent(course: Course): void {
+    this.coursesInEvent.splice(this.coursesInEvent.indexOf(course), 1);
+    this.courses.push(course);
   }
 
 }

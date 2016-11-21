@@ -4,15 +4,28 @@
   </h1>
   <div class="component-container">
     <div class="search">
-      
     </div>
-    <div class="list-container">
-      <md-list class="courses">
-        <md-list-item *ngFor="let course of courses" (click)="goToDetails(course)">
-          <span>{{ course.name }}</span>
-        </md-list-item>
-        <span class="more-items"><a>show more courses</a></span>
-      </md-list>
+    <div *ngIf="coursesInEvent.length" class="course-list">
+      <h2>Courses in Event</h2>
+      <div class="list-container">
+        <md-nav-list class="courses">
+          <md-list-item *ngFor="let course of coursesInEvent">
+            <a md-line>{{ course.name }}</a>
+            <button class="list-button" md-button color="primary" (click)="removeFromEvent(course)">Remove</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
+    </div>
+    <div *ngIf="courses.length" class="course-list">
+      <h2>List of Courses</h2>
+      <div class="list-container">
+        <md-nav-list class="courses">
+          <md-list-item *ngFor="let course of courses">
+            <a md-line>{{ course.name }}</a>
+            <button class="list-button" md-button color="primary" (click)="addToEvent(course)">Add</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
     </div>
   </div>
   <div class="button">
@@ -20,4 +33,3 @@
       <md-icon class="md-24">add</md-icon>
       </button>
   </div>
-</div>
