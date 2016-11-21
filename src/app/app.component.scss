@@ -36,6 +36,7 @@ md-toolbar md-toolbar-row {
   padding-left: 16px;
 }
 
-.active-link {
+md-list-item.active-link div.md-list-item {
   color: #cccccc;
+  background-color: #666666;
 }

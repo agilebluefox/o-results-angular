@@ -154,3 +154,9 @@ div.details {
 .list-button {
     margin-left: 1.5em;
 }
+
+/* Add background color to active link on side nav */
+md-list-item.active-link div.md-list-item {
+  color: #cccccc;
+  background-color: #666666;
+}
