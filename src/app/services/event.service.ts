@@ -56,4 +56,11 @@ export class EventService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  deleteEvent(id: string): Observable<Response> {
+    const body = JSON.stringify({id: id});
+    return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
 }
