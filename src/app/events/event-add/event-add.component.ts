@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -14,30 +14,69 @@ import { EventService } from '../../services/event.service';
 })
 export class EventAddComponent implements OnInit {
 
+  event: Event;
+  placeholders: any = {
+    name: null,
+    location: null,
+    date: null
+  };
   eventAddForm: FormGroup;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private location: Location,
     private eventService: EventService
   ) { }
 
   ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+      // Route params are always strings
+      let id: string = params['id'];
+      if (id) {
+        // Get event from service
+        this.eventService.getEvent(id)
+          .then((event) => {
+            this.event = event;
+            this.placeholders = {
+              name: this.event.name,
+              location: this.event.location,
+              date: this.event.date
+            };
+            console.log(this.event);
+            this.eventAddForm.setValue({
+              name: this.event.name,
+              location: this.event.location,
+              date: this.event.date
+            });
+          });
+      }
+    });
     this.eventAddForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      location: new FormControl(null, Validators.required),
-      date: new FormControl(null, Validators.required)
+      name: new FormControl(this.placeholders.name, Validators.required),
+      location: new FormControl(this.placeholders.location, Validators.required),
+      date: new FormControl(this.placeholders.date, Validators.required)
     });
   }
 
   onSubmit(): void {
     console.log(this.eventAddForm.value);
-    this.eventService.addEvent(this.eventAddForm.value)
-      .subscribe(
+    if (!this.event) {
+      this.eventService.addEvent(this.eventAddForm.value)
+        .subscribe(
         data => console.log(data),
         error => console.log(error)
-      );
-      this.eventAddForm.reset();
+        );
+    } else {
+      Object.assign(this.event, this.eventAddForm.value);
+      this.eventService.updateEvent(this.event)
+        .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+        );
+    }
+    this.eventAddForm.reset();
+    this.router.navigate(['/dashboard']);
   }
 
   goBack(link) {

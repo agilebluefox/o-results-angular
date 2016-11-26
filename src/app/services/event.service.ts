@@ -31,21 +31,30 @@ export class EventService {
 
   constructor(private http: Http) { }
 
-  // Get the events and return a promise
-  getEvents(): Promise<Event[]> {
-    if (this.events.length) {
-      return Promise.resolve(this.events);
-    } else {
-      return this.http.get(this.eventsUrl, { headers: this.headers })
+  // Get the active events and return a promise
+  getEvents(populate?: boolean, active?: boolean): Promise<Event[]> {
+    // if (this.events.length) {
+    //   return Promise.resolve(this.events);
+    // } else {
+      return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`, { headers: this.headers })
         .toPromise()
         .then(response => response.json() as Event[])
         .catch(this.handleError);
     }
+  // }
+
+  // Method to get an event by id that contains unpopulated array fields
+  getEvent(id: string): Promise<Event> {
+    let populate = false;
+    let active = true;
+    return this.getEvents(populate, active).then(events => events.find(event => event._id === id));
   }
 
-  // Method to get an event by id
-  getEvent(id: string): Promise<Event> {
-    return this.getEvents().then(events => events.find(event => event._id === id));
+  // Method to get an event by id with the MongoId fields populated
+  getPopulatedEvent(id: string): Promise<Event> {
+    let populate = true;
+    let active = true;
+    return this.getEvents(populate, active).then(events => events.find(event => event._id === id));
   }
 
   addEvent(event: Event): Observable<Response> {
@@ -59,6 +68,13 @@ export class EventService {
   deleteEvent(id: string): Observable<Response> {
     const body = JSON.stringify({id: id});
     return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  updateEvent(event: Event): Observable<Response> {
+    const body = JSON.stringify(event);
+    return this.http.put(this.eventsUrl, body, { headers: this.headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

@@ -26,6 +26,10 @@ const routes: Routes = [
     component: EventAddComponent
   },
   {
+    path: 'event-add/:id',
+    component: EventAddComponent
+  },
+  {
     path: 'event-dashboard/:id',
     component: EventDashboardComponent
   },

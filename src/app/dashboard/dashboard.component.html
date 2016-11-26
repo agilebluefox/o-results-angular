@@ -5,7 +5,8 @@
   <div class="component-container">
     <md-nav-list class="events">
       <md-list-item *ngFor="let event of events">
-        <span md-line (click)="goToDetails(event)">{{ event.date | date:"yyyy" }} {{ event.name }}</span>
+        <span md-line (click)="goToDetails(event._id)">{{ event.date | date:"yyyy" }} {{ event.name }}</span>
+        <button class="list-button" md-button color="primary" (click)="editEvent(event)">Edit</button>
         <button class="list-button" md-button color="primary" (click)="deleteEvent(event)">Remove</button>
       </md-list-item>
     </md-nav-list>

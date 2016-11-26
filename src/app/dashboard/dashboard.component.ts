@@ -29,19 +29,22 @@ export class DashboardComponent implements OnInit {
   // Get the events
   getEvents(): void {
     // Resolves a promise from the EventService
-    this.eventService.getEvents().then(events => { console.log(events); this.events = events });
+    let populate = false;
+    let active = true;
+    this.eventService.getEvents(populate, active).then(events => { console.log(events); this.events = events });
   }
 
-  goToDetails(event: Event): void {
-    let link = ['/event-dashboard', event._id];
+  goToDetails(id: string): void {
+    let link = ['/event-dashboard', id];
     this.router.navigate(link);
     // this.eventService.getEvent(id).then(event => console.log(event));
   }
 
   // Add an event
   addNewEvent(): void {
+    let link = ['/event-add'];
     // Navigate to the add form component
-    this.router.navigate(['/event-add']);
+    this.router.navigate(link);
   }
 
   deleteEvent(event: Event): void {
@@ -53,6 +56,12 @@ export class DashboardComponent implements OnInit {
         },
         error => console.log(error)
       );
+  }
+
+  editEvent(event: Event): void {
+    // Navigate to the add component
+    let link = ['/event-add', event._id];
+    this.router.navigate(link);
   }
 
 }
