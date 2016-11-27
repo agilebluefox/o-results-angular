@@ -7,21 +7,21 @@
         </button>
       </div>
       <md-nav-list>
-        <md-list-item routerLinkActive="active-link">
+        <md-list-item routerLinkActive="active-link" routerLink="dashboard" (click)="start.close()">
           <md-icon>home</md-icon>
-          <a routerLink="dashboard"  class="nav-menu-link" (click)="start.close()">Home</a>
+          <a  class="nav-menu-link" >Home</a>
         </md-list-item>
-        <md-list-item routerLinkActive="active-link">
+        <md-list-item routerLinkActive="active-link" routerLink="class-list" (click)="start.close()">
           <md-icon>school</md-icon>
-          <a routerLink="class-list"  class="nav-menu-link" (click)="start.close()">Classes</a>
+          <a  class="nav-menu-link" >Classes</a>
         </md-list-item>
-        <md-list-item routerLinkActive="active-link">
+        <md-list-item routerLinkActive="active-link" routerLink="course-list" (click)="start.close()">
           <md-icon>explore</md-icon>
-          <a routerLink="course-list"  class="nav-menu-link" (click)="start.close()">Courses</a>
+          <a  class="nav-menu-link">Courses</a>
         </md-list-item>
-        <md-list-item routerLinkActive="active-link">
+        <md-list-item routerLinkActive="active-link" routerLink="student-list" (click)="start.close()">
           <md-icon>group</md-icon>
-          <a routerLink="student-list"  class="nav-menu-link" (click)="start.close()">Students</a>
+          <a  class="nav-menu-link" >Students</a>
         </md-list-item>
       </md-nav-list>
     </md-sidenav>
