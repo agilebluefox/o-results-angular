@@ -1,0 +1,9 @@
+<h2>Students in Event</h2>
+<div class="list-container">
+  <md-nav-list class="students">
+    <md-list-item *ngFor="let student of studentsInEvent">
+      <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
+      <button class="list-button" md-button color="primary" (click)="removeFromEvent(student)">Remove</button>
+    </md-list-item>
+  </md-nav-list>
+</div>

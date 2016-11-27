@@ -24,6 +24,7 @@ import { MenuComponent } from './menu/menu.component';
 import { StudentListComponent } from './students/student-list/student-list.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { ClassListComponent } from './classes/class-list/class-list.component';
+import { EventStudentsComponent } from './events/event-students/event-students.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ClassListComponent } from './classes/class-list/class-list.component';
     MenuComponent,
     StudentListComponent,
     CourseListComponent,
-    ClassListComponent
+    ClassListComponent,
+    EventStudentsComponent
   ],
   imports: [
     MaterialModule.forRoot(),
