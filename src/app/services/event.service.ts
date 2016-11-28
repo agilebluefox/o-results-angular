@@ -13,6 +13,9 @@ export class EventService {
   // Public property to hold events array
   events: Event[] = [];
 
+  // Property to hold the currently selected event
+  event: Event;
+
   // The url will be a JSON file for now
   // private eventsUrl = 'app/shared/mock-events.json';
   private eventsUrl = 'http://localhost:3000/events';
@@ -23,38 +26,42 @@ export class EventService {
     'Accept': 'application/json'
   });
 
-  // Handle error if the http request fails
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
-
   constructor(private http: Http) { }
 
-  // Get the active events and return a promise
-  getEvents(populate?: boolean, active?: boolean): Promise<Event[]> {
-    // if (this.events.length) {
-    //   return Promise.resolve(this.events);
-    // } else {
-      return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`, { headers: this.headers })
-        .toPromise()
-        .then(response => response.json() as Event[])
-        .catch(this.handleError);
-    }
-  // }
+  // Get the active events and return an Observable
+  getEvents(populate?: boolean, active?: boolean): Observable<Event> {
+    this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()))
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.events = data.events;
+        },
+        error => console.error(error),
+        () => Observable.from(this.events)
+      );
+      return Observable.from(this.events);
+  }
 
   // Method to get an event by id that contains unpopulated array fields
-  getEvent(id: string): Promise<Event> {
+  getEvent(id: string): Observable<Response> {
     let populate = false;
     let active = true;
-    return this.getEvents(populate, active).then(events => events.find(event => event._id === id));
+    return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+      .map((response: Response) => response.json())
+      .filter((event) => event._id === id)
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 
   // Method to get an event by id with the MongoId fields populated
-  getPopulatedEvent(id: string): Promise<Event> {
+  getPopulatedEvent(id: string): Observable<Response> {
     let populate = true;
     let active = true;
-    return this.getEvents(populate, active).then(events => events.find(event => event._id === id));
+   return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+      .map((response: Response) => response.json())
+      .filter((event) => event._id === id)
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 
   addEvent(event: Event): Observable<Response> {
@@ -66,7 +73,7 @@ export class EventService {
   }
 
   deleteEvent(id: string): Observable<Response> {
-    const body = JSON.stringify({id: id});
+    const body = JSON.stringify({ id: id });
     return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));

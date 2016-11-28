@@ -28,10 +28,17 @@ export class DashboardComponent implements OnInit {
 
   // Get the events
   getEvents(): void {
-    // Resolves a promise from the EventService
     let populate = false;
     let active = true;
-    this.eventService.getEvents(populate, active).then(events => { console.log(events); this.events = events });
+    this.eventService.getEvents(populate, active)
+      .subscribe(
+        // Vincent - why the type errors?
+        (data: any) => {
+          console.log(data);
+          this.events = data.events;
+        },
+        error => console.error(error)
+      )
   }
 
   goToDetails(id: string): void {
