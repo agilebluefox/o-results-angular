@@ -32,10 +32,9 @@ export class DashboardComponent implements OnInit {
     let active = true;
     this.eventService.getEvents(populate, active)
       .subscribe(
-        // Vincent - why the type errors?
-        (data: any) => {
-          console.log(data);
-          this.events = data.events;
+        (res) => {
+          console.log(res);
+          this.events = res.events;
         },
         error => console.error(error)
       )

@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Event } from '../events/shared/event.model';
 
@@ -29,19 +29,10 @@ export class EventService {
   constructor(private http: Http) { }
 
   // Get the active events and return an Observable
-  getEvents(populate?: boolean, active?: boolean): Observable<Event> {
-    this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()))
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-          this.events = data.events;
-        },
-        error => console.error(error),
-        () => Observable.from(this.events)
-      );
-      return Observable.from(this.events);
+  getEvents(populate?: boolean, active?: boolean): Observable<any> {
+    return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+      .map((res: Response) => res.json())
+      .catch((error: Response) => Observable.throw(error.json()));
   }
 
   // Method to get an event by id that contains unpopulated array fields
