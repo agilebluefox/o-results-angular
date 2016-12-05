@@ -35,22 +35,18 @@ export class EventAddComponent implements OnInit {
       let id: string = params['id'];
       if (id) {
         // Get event from service
-        this.eventService.getEvent(id)
-        .subscribe(
-        (event) => this.event = event.json(),
-        error => console.log(error)
-        );
+        this.event = this.eventService.getEvent(id);
         this.placeholders = {
           name: this.event.name,
           location: this.event.location,
           date: this.event.date
         };
         console.log(this.event);
-        this.eventAddForm.setValue({
-          name: this.event.name,
-          location: this.event.location,
-          date: this.event.date
-        });
+        // this.eventAddForm.setValue({
+        //   name: this.event.name,
+        //   location: this.event.location,
+        //   date: this.event.date
+        // });
       }
     });
     this.eventAddForm = new FormGroup({

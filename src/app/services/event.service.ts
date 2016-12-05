@@ -29,29 +29,53 @@ export class EventService {
   constructor(private http: Http) { }
 
   // Get the active events and return an Observable
-  getEvents(populate?: boolean, active?: boolean): Observable<any> {
-    return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+  getEvents(callback, populate?: boolean, active?: boolean): void {
+    if (this.events.length) {
+      console.log('Already exists');
+      callback(this.events);
+    } else {
+      this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+        .map((res: Response) => res.json())
+        .catch((error: Response) => Observable.throw(error.json()))
+        .subscribe(
+        res => {
+          console.log(res);
+          this.events = res.events;
+          callback(this.events);
+        },
+        err => console.error(err)
+        );
+    }
+  }
+
+  // Load the events property
+  loadEvents(populate?: boolean, active?: boolean): void {
+    this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
       .map((res: Response) => res.json())
-      .catch((error: Response) => Observable.throw(error.json()));
+      .catch((err: Response) => Observable.throw(err.json()))
+      .subscribe(
+      res => {
+        console.log(res);
+        this.events = res.events;
+      },
+      err => console.error(err),
+      () => console.log('Done')
+      );
   }
 
   // Method to get an event by id that contains unpopulated array fields
-  getEvent(id: string): Observable<Response> {
+  getEvent(id: string): Event {
     let populate = false;
     let active = true;
-    return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
-      .map((response: Response) => response.json())
-      .filter((event) => event._id === id)
-      .catch((error: Response) => Observable.throw(error.json()));
+    return this.events.find((event) => event._id === id);
   }
 
   // Method to get an event by id with the MongoId fields populated
-  getPopulatedEvent(id: string): Observable<Response> {
+  getPopulatedEvent(id: string): Observable<any> {
     let populate = true;
     let active = true;
-   return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+    return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
       .map((response: Response) => response.json())
-      .filter((event) => event._id === id)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 

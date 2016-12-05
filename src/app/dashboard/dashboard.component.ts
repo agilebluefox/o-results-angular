@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Event } from '../events/shared/event.model';
@@ -13,7 +13,7 @@ import { EventService } from '../services/event.service';
 export class DashboardComponent implements OnInit {
 
   // Public property to expose events array
-  events: Event[];
+  @Input() events: Event[];
 
   // Inject the services
   constructor(
@@ -23,21 +23,14 @@ export class DashboardComponent implements OnInit {
 
   // Call getEvents to add the list when the page loads
   ngOnInit(): void {
-    this.getEvents();
+      this.getEvents();
   }
 
   // Get the events
   getEvents(): void {
     let populate = false;
     let active = true;
-    this.eventService.getEvents(populate, active)
-      .subscribe(
-        (res) => {
-          console.log(res);
-          this.events = res.events;
-        },
-        error => console.error(error)
-      )
+    this.eventService.getEvents((events) => { this.events = events }, populate, active);
   }
 
   goToDetails(id: string): void {
@@ -56,11 +49,11 @@ export class DashboardComponent implements OnInit {
   deleteEvent(event: Event): void {
     this.eventService.deleteEvent(event._id)
       .subscribe(
-        data => { 
-          console.log(data);
-          this.events.splice(this.events.indexOf(event),1);
-        },
-        error => console.log(error)
+      data => {
+        console.log(data);
+        this.events.splice(this.events.indexOf(event), 1);
+      },
+      error => console.log(error)
       );
   }
 

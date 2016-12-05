@@ -31,14 +31,7 @@ export class EventDashboardComponent implements OnInit {
       // Route params are always strings
       let id: string = params['id'];
       // Get event from service
-      this.eventService.getEvent(id)
-        .subscribe(
-        (event) => {
-          this.event = event.json();
-          console.log(event);
-          },
-        error => console.log(error)
-        );
+      this.event = this.eventService.getEvent(id);
     });
   }
 
