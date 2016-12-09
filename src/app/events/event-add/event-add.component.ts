@@ -8,7 +8,7 @@ import { Event } from '../shared/event.model';
 import { EventService } from '../../services/event.service';
 
 @Component({
-  selector: 'event-add',
+  selector: 'app-event-add',
   templateUrl: './event-add.component.html',
   styleUrls: ['./event-add.component.scss']
 })

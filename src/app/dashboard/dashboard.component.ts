@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Event } from '../events/shared/event.model';
 import { EventService } from '../services/event.service';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -13,7 +13,7 @@ import { EventService } from '../services/event.service';
 export class DashboardComponent implements OnInit {
 
   // Public property to expose events array
-  @Input() events: Event[];
+  events: Event[];
 
   // Inject the services
   constructor(
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   getEvents(): void {
     let populate = false;
     let active = true;
-    this.eventService.getEvents((events) => { this.events = events }, populate, active);
+    this.eventService.getEvents((events) => { this.events = events; }, populate, active);
   }
 
   goToDetails(id: string): void {

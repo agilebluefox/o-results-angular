@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventDashboardComponent } from './events/event-dashboard/event-dashboard.component';
+import { EventStudentsComponent } from './events/event-students/event-students.component';
 import { ClassAddComponent } from './classes/class-add/class-add.component';
 import { CourseAddComponent } from './courses/course-add/course-add.component';
 import { ControlAddComponent } from './controls/control-add/control-add.component';
@@ -54,8 +55,8 @@ const routes: Routes = [
     component: CourseListComponent
   },
   {
-    path: 'student-list',
-    component: StudentListComponent
+    path: 'event-students',
+    component: EventStudentsComponent
   }
 
 ];

@@ -44,6 +44,12 @@ export class StudentService {
     }
   }
 
+  getStudentById(id: string): Observable<any> {
+    return this.http.get(`${this.studentsUrl}/${id}`)
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
   addStudent(student: Student): Observable<Response> {
     const body = JSON.stringify(student);
     console.log(body);

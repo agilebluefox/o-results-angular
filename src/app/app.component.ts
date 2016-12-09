@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let populate = false;
     let active = true;
-    this.eventService.getEvents((events) => { this.events = events }, populate, active);
+    this.eventService.getEvents((events) => { this.events = events; }, populate, active);
   }
 
 }

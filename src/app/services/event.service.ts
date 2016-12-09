@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Event } from '../events/shared/event.model';
 
@@ -14,7 +14,7 @@ export class EventService {
   events: Event[] = [];
 
   // Property to hold the currently selected event
-  event: Event;
+  selectedEvent: Event;
 
   // The url will be a JSON file for now
   // private eventsUrl = 'app/shared/mock-events.json';
@@ -49,25 +49,29 @@ export class EventService {
   }
 
   // Load the events property
-  loadEvents(populate?: boolean, active?: boolean): void {
-    this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
-      .map((res: Response) => res.json())
-      .catch((err: Response) => Observable.throw(err.json()))
-      .subscribe(
-      res => {
-        console.log(res);
-        this.events = res.events;
-      },
-      err => console.error(err),
-      () => console.log('Done')
-      );
-  }
+  // loadEvents(populate?: boolean, active?: boolean): void {
+  //   this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
+  //     .map((res: Response) => res.json())
+  //     .catch((err: Response) => Observable.throw(err.json()))
+  //     .subscribe(
+  //     res => {
+  //       console.log(res);
+  //       this.events = res.events;
+  //     },
+  //     err => console.error(err),
+  //     () => console.log('Done')
+  //     );
+  // }
 
   // Method to get an event by id that contains unpopulated array fields
   getEvent(id: string): Event {
-    let populate = false;
-    let active = true;
-    return this.events.find((event) => event._id === id);
+    this.selectedEvent = this.events.find((event) => event._id === id);
+    return this.selectedEvent;
+  }
+
+// Return the currently selected event
+  getSelectedEvent(): Event {
+    return this.selectedEvent;
   }
 
   // Method to get an event by id with the MongoId fields populated
@@ -95,7 +99,9 @@ export class EventService {
   }
 
   updateEvent(event: Event): Observable<Response> {
-    const body = JSON.stringify(event);
+    let eventsToUpdate = [];
+    eventsToUpdate.push(event);
+    const body = JSON.stringify(eventsToUpdate);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));

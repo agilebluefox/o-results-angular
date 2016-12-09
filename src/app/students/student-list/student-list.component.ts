@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Student } from '../shared/student.model';
@@ -13,8 +13,8 @@ export class StudentListComponent implements OnInit {
 
   students: Student[] = [];
   student: Student;
-  selectedStudent: Student;
-  studentsInEvent: Student[] = [];
+  @Output() selectedStudent = new EventEmitter<Student>();
+  @Input() studentsInEvent: Student[] = [];
 
   constructor(
     private studentService: StudentService,
@@ -41,13 +41,14 @@ export class StudentListComponent implements OnInit {
   }
 
   addToEvent(student: Student): void {
+    this.selectedStudent.emit(student);
     this.studentsInEvent.push(student);
-    this.students.splice(this.students.indexOf(student),1);
+    this.students.splice(this.students.indexOf(student), 1);
     console.log(this.studentsInEvent);
   }
 
   removeFromEvent(student: Student): void {
-    this.studentsInEvent.splice(this.studentsInEvent.indexOf(student),1);
+    this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
     this.students.push(student);
   }
 }

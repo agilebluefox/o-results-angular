@@ -6,7 +6,15 @@
     <div class="search">
     </div>
     <div *ngIf="studentsInEvent.length" class="student-list">
-      <app-event-students></app-event-students>
+      <h2>Students in Event</h2>
+      <div class="list-container">
+        <md-nav-list class="students">
+          <md-list-item *ngFor="let student of studentsInEvent">
+            <a md-line>{{ student.firstname }} {{ student.lastname }}</a>
+            <button class="list-button" md-button color="primary" (click)="removeFromEvent(student)">Remove</button>
+          </md-list-item>
+        </md-nav-list>
+      </div>
     </div>
     <div *ngIf="students.length" class="student-list">
       <h2>List of Students</h2>
@@ -20,8 +28,8 @@
       </div>
     </div>
   </div>
-    <div class="button">
-      <button md-fab color="primary" (click)="addNewStudent()">
+  <div class="button">
+    <button md-fab color="primary" (click)="addNewStudent()">
       <md-icon class="md-24">add</md-icon>
       </button>
-    </div>
+  </div>

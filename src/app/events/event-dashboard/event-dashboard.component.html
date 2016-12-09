@@ -4,9 +4,9 @@
   </h1>
   <div class="component-container">
     <div class="details">
-      <div *ngIf="event">
-        <h2 class="">{{event.name}}</h2>
-        <p class="detail-date">{{event.date | date:'longDate'}}</p>
+      <div *ngIf="currentEvent">
+        <h2 class="">{{currentEvent.name}}</h2>
+        <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
       </div>
     </div>
     <div class="stack">

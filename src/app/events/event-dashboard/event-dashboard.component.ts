@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -10,14 +10,14 @@ import { Course } from '../../courses/shared/course.model';
 import { Cls } from '../../classes/shared/cls.model';
 
 @Component({
-  selector: 'event-dashboard',
+  selector: 'app-event-dashboard',
   templateUrl: './event-dashboard.component.html',
   styleUrls: ['./event-dashboard.component.scss']
 })
 export class EventDashboardComponent implements OnInit {
 
   events: Event[] = [];
-  @Output() event: Event;
+  currentEvent: Event;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class EventDashboardComponent implements OnInit {
       // Route params are always strings
       let id: string = params['id'];
       // Get event from service
-      this.event = this.eventService.getEvent(id);
+      this.currentEvent = this.eventService.getEvent(id);
     });
   }
 
@@ -50,7 +50,7 @@ export class EventDashboardComponent implements OnInit {
   }
 
   goToStudents() {
-    let link = ['/student-list'];
+    let link = ['/event-students'];
     this.router.navigate(link);
   }
 
