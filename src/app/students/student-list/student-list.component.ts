@@ -13,7 +13,8 @@ export class StudentListComponent implements OnInit {
 
   students: Student[] = [];
   student: Student;
-  @Output() selectedStudent = new EventEmitter<Student>();
+  @Output() addSelectedStudent = new EventEmitter<Student>();
+  @Output() removeSelectedStudent = new EventEmitter<Student>();
   @Input() studentsInEvent: Student[] = [];
 
   constructor(
@@ -41,13 +42,14 @@ export class StudentListComponent implements OnInit {
   }
 
   addToEvent(student: Student): void {
-    this.selectedStudent.emit(student);
-    this.studentsInEvent.push(student);
+    this.addSelectedStudent.emit(student);
+    // this.studentsInEvent.push(student);
     this.students.splice(this.students.indexOf(student), 1);
     console.log(this.studentsInEvent);
   }
 
   removeFromEvent(student: Student): void {
+    this.removeSelectedStudent.emit(student);
     this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
     this.students.push(student);
   }

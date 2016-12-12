@@ -1,8 +1,9 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Event } from '../shared/event.model';
 import { Student } from '../../students/shared/student.model';
 import { EventService } from '../../services/event.service';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-event-students',
@@ -13,20 +14,28 @@ export class EventStudentsComponent implements OnInit {
 
   // Property for the current event
   currentEvent: Event;
-  @Output() studentsInEvent: Student[];
+  studentsInEvent: Student[] = [];
 
-  constructor(private eventService: EventService) { }
+  constructor(
+    private eventService: EventService,
+    private studentService: StudentService
+    ) { }
 
   ngOnInit() {
     this.currentEvent = this.eventService.getSelectedEvent();
-    this.studentsInEvent = this.currentEvent.students;
+    this.currentEvent.students
+      .map((id) => this.studentService.getStudentById(id)
+        .subscribe(
+          student => this.studentsInEvent.push(student)
+        ));
     console.log(this.studentsInEvent);
     console.log(this.currentEvent);
   }
 
-  onSelected(student) {
+  onAddSelected(student) {
     // Add the student to the current event
     this.currentEvent.students.push(student._id);
+    this.studentsInEvent.push(student);
     console.log(this.currentEvent);
     this.eventService.updateEvent(this.currentEvent)
       .subscribe(

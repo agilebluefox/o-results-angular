@@ -47,6 +47,7 @@ export class StudentService {
   getStudentById(id: string): Observable<any> {
     return this.http.get(`${this.studentsUrl}/${id}`)
       .map((response: Response) => response.json())
+      .map((response: any) => response.student)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
