@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Event } from '../events/shared/event.model';
 import { EventService } from '../services/event.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,14 +24,15 @@ export class DashboardComponent implements OnInit {
 
   // Call getEvents to add the list when the page loads
   ngOnInit(): void {
-      this.getEvents();
+     this.getEvents()
+        .subscribe(
+          data => this.events = data
+        );
   }
 
   // Get the events
-  getEvents(): void {
-    let populate = false;
-    let active = true;
-    this.eventService.getEvents((events) => { this.events = events; }, populate, active);
+  getEvents(): Observable<any> {
+    return this.eventService.getEvents();
   }
 
   goToDetails(id: string): void {
