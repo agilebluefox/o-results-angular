@@ -9,6 +9,6 @@ export class Event {
   date: string;
   classes?: Cls[];
   courses?: Course[];
-  students?: Student[];
+  students?: string[];
   active?: boolean;
 }
