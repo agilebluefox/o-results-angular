@@ -42,5 +42,10 @@ div.details {
 
 /* button at the end of a list item */
 .list-button {
-    margin-left: 1.5em;
+    margin-left: 1em;
+    color: darkred;
+}
+
+a.list-button:hover{
+  color: red;
 }
