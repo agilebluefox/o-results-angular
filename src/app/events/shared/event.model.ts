@@ -7,8 +7,8 @@ export class Event {
   name: string;
   location: string;
   date: string;
-  classes?: Cls[];
-  courses?: Course[];
-  students?: string[];
+  classes?: string[] | Cls[];
+  courses?: string[] | Course[];
+  students?: string[] | Student[];
   active?: boolean;
 }
