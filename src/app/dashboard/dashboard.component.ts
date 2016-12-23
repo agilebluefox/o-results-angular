@@ -26,7 +26,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
      this.getEvents()
         .subscribe(
-          data => this.events = data
+          (data) => {this.events = data;
+          console.log(data); }
         );
   }
 
@@ -35,7 +36,9 @@ export class DashboardComponent implements OnInit {
     return this.eventService.getEvents();
   }
 
-  goToDetails(id: string): void {
+  // Store the mongo id of the event selected by the user
+  selectEvent(id: string): void {
+    this.eventService.setSelectedEventId(id);
     let link = ['/event-dashboard', id];
     this.router.navigate(link);
     // this.eventService.getEvent(id).then(event => console.log(event));
@@ -59,9 +62,9 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  editEvent(event: Event): void {
+  editEvent(id: string): void {
     // Navigate to the add component
-    let link = ['/event-add', event._id];
+    let link = ['/event-add', id];
     this.router.navigate(link);
   }
 

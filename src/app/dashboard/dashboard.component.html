@@ -5,9 +5,9 @@
   <div class="component-container">
     <md-nav-list class="events">
       <md-list-item *ngFor="let event of events">
-        <a id="name" md-line (click)="goToDetails(event._id)">{{ event.date | date:"yyyy" }} {{ event.name }}</a>
-        <a class="list-button" (click)="editEvent(event)">Edit</a>
-        <a class="list-button" (click)="deleteEvent(event)">Remove</a>
+        <a id="name" md-line (click)="selectEvent(event._id)">{{ event.date | date:"yyyy" }} {{ event.name }}</a>
+        <a class="list-button" (click)="editEvent(event._id)">Edit</a>
+        <a class="list-button" (click)="deleteEvent(event._id)">Remove</a>
       </md-list-item>
     </md-nav-list>
   </div>

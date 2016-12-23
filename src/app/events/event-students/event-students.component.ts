@@ -23,18 +23,18 @@ export class EventStudentsComponent implements OnInit {
 
   ngOnInit() {
     this.currentEvent = this.eventService.getSelectedEvent();
-    this.currentEvent.students
-      .map((id) => this.studentService.getStudentById(id)
-        .subscribe(
-          student => this.studentsInEvent.push(student)
-        ));
+    // this.currentEvent.students
+    //   .map((id) => this.studentService.getStudentById(id)
+    //     .subscribe(
+    //       student => this.studentsInEvent.push(student)
+    //     ));
     console.log(this.studentsInEvent);
     console.log(this.currentEvent);
   }
 
   onAddSelected(student) {
     // Add the student to the current event
-    this.currentEvent.students.push(student._id);
+    // this.currentEvent.students.push(student._id);
     this.studentsInEvent.push(student);
     console.log(this.currentEvent);
     this.eventService.updateEvent(this.currentEvent)

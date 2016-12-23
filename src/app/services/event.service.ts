@@ -10,10 +10,10 @@ import { Event } from '../events/shared/event.model';
 export class EventService {
 
   // Public property to hold events array
-  events: Event[] = [];
+  private events: Event[] = [];
 
   // Property to hold the currently selected event
-  selectedEvent: Event;
+  private selectedEventId: string;
 
   // The url will be a JSON file for now
   // private eventsUrl = 'app/shared/mock-events.json';
@@ -35,13 +35,7 @@ export class EventService {
 
   // Method to get an event by id that contains unpopulated array fields
   getEvent(id: string): Event {
-    this.selectedEvent = this.events.find((event) => event._id === id);
-    return this.selectedEvent;
-  }
-
-  // Return the currently selected event
-  getSelectedEvent(): Event {
-    return this.selectedEvent;
+    return this.events.find((event) => event._id === id);
   }
 
   // Method to get an event by id with the MongoId fields populated
@@ -51,6 +45,15 @@ export class EventService {
     return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  // Method to set the selected event when clicked on in the dashboard component
+  setSelectedEventId(id: string): void {
+    this.selectedEventId = id;
+  }
+
+  getSelectedEvent(): Event {
+    return;
   }
 
   addEvent(event: Event): Observable<Response> {
