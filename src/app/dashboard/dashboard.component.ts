@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   // Public property to expose events array
-  events: Event[];
+  events: Observable<Event[]>;
 
   // Inject the services
   constructor(
@@ -24,15 +24,11 @@ export class DashboardComponent implements OnInit {
 
   // Call getEvents to add the list when the page loads
   ngOnInit(): void {
-     this.getEvents()
-        .subscribe(
-          (data) => {this.events = data;
-          console.log(data); }
-        );
+     this.events = this.getEvents();
   }
 
   // Get the events
-  getEvents(): Observable<any> {
+  getEvents(): Observable<Event[]> {
     return this.eventService.getEvents();
   }
 
@@ -51,16 +47,16 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  deleteEvent(event: Event): void {
-    this.eventService.deleteEvent(event._id)
-      .subscribe(
-      data => {
-        console.log(data);
-        this.events.splice(this.events.indexOf(event), 1);
-      },
-      error => console.log(error)
-      );
-  }
+  // deleteEvent(event: Event): void {
+  //   this.eventService.deleteEvent(event._id)
+  //     .subscribe(
+  //     data => {
+  //       console.log(data);
+  //       this.events.splice(this.events.indexOf(event), 1);
+  //     },
+  //     error => console.log(error)
+  //     );
+  // }
 
   editEvent(id: string): void {
     // Navigate to the add component

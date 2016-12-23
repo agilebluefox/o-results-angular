@@ -4,7 +4,7 @@
   </h1>
   <div class="component-container">
     <md-nav-list class="events">
-      <md-list-item *ngFor="let event of events">
+      <md-list-item *ngFor="let event of events | async | slice:0:4">
         <a id="name" md-line (click)="selectEvent(event._id)">{{ event.date | date:"yyyy" }} {{ event.name }}</a>
         <a class="list-button" (click)="editEvent(event._id)">Edit</a>
         <a class="list-button" (click)="deleteEvent(event._id)">Remove</a>
