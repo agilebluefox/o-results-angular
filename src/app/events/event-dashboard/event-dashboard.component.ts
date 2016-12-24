@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Event } from '../../events/shared/event.model';
+import { Event } from '../../models/event.model';
 import { EventService } from '../../services/event.service';
 
-import { Student } from '../../students/shared/student.model';
-import { Course } from '../../courses/shared/course.model';
-import { Cls } from '../../classes/shared/cls.model';
+// import { Student } from '../../models/student.model';
 
 @Component({
   selector: 'app-event-dashboard',
@@ -31,22 +29,12 @@ export class EventDashboardComponent implements OnInit {
       // Route params are always strings
       let id: string = params['id'];
       // Get event from service
-      this.currentEvent = this.eventService.getEvent(id);
+      this.currentEvent = this.eventService.getEventById(id);
     });
   }
 
   goBack(link) {
     this.location.back();
-  }
-
-  goToClasses() {
-    let link = ['/class-list'];
-    this.router.navigate(link);
-  }
-
-  goToCourses() {
-    let link = ['/course-list'];
-    this.router.navigate(link);
   }
 
   goToStudents() {
