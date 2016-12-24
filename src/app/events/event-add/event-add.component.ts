@@ -29,6 +29,20 @@ export class EventAddComponent implements OnInit {
     private eventService: EventService
   ) { }
 
+  formatDate(date: Date): string {
+    let year: number = date.getFullYear();
+
+    let month: string | number = date.getMonth();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    let day: string | number = date.getDate();
+    if (day < 10) {
+      day = '0' + day;
+    }
+    return `${year}-${month}-${day}`;
+  }
+
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
@@ -39,7 +53,7 @@ export class EventAddComponent implements OnInit {
         this.placeholders = {
           name: this.event.name,
           location: this.event.location,
-          date: this.event.date
+          date: this.formatDate(new Date(this.event.date))
         };
         console.log(this.event);
       }
