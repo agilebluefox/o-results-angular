@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
-import { Student } from '../students/shared/student.model';
+import { Student } from '../models/student.model';
 
 @Injectable()
 export class StudentService {
