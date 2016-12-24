@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Student } from '../shared/student.model';
+import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
 
 @Component({

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Event } from '../shared/event.model';
+import { Event } from '../../models/event.model';
 import { EventService } from '../../services/event.service';
 
 @Component({
@@ -35,18 +35,13 @@ export class EventAddComponent implements OnInit {
       let id: string = params['id'];
       if (id) {
         // Get event from service
-        this.event = this.eventService.getEvent(id);
+        this.event = this.eventService.getEventById(id);
         this.placeholders = {
           name: this.event.name,
           location: this.event.location,
           date: this.event.date
         };
         console.log(this.event);
-        // this.eventAddForm.setValue({
-        //   name: this.event.name,
-        //   location: this.event.location,
-        //   date: this.event.date
-        // });
       }
     });
     this.eventAddForm = new FormGroup({

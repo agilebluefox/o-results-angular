@@ -4,7 +4,7 @@ import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 
-import { Event } from '../events/shared/event.model';
+import { Event } from '../models/event.model';
 
 @Injectable()
 export class EventService {
@@ -34,7 +34,7 @@ export class EventService {
   }
 
   // Method to get an event by id that contains unpopulated array fields
-  getEvent(id: string): Event {
+  getEventById(id: string): Event {
     return this.events.find((event) => event._id === id);
   }
 

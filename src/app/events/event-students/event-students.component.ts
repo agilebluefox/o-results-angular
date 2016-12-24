@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Event } from '../shared/event.model';
-import { Student } from '../../students/shared/student.model';
+import { Event } from '../../models/event.model';
+import { Student } from '../../models/student.model';
 import { EventService } from '../../services/event.service';
 import { StudentService } from '../../services/student.service';
 

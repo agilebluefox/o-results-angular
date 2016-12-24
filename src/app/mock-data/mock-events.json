@@ -1,0 +1,49 @@
+[{
+  "_id": "57fc2a432e75cf056c899035",
+  "location": "Lake Raleigh",
+  "name": "Lake Raleigh Score Event",
+  "date": "2016-02-09T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899036",
+  "location": "Lake Johnson",
+  "name": "Lake Johnson Event",
+  "date": "2016-02-16T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899037",
+  "location": "Schenck Forest",
+  "name": "Schenck Forest Event",
+  "date": "2016-02-20T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899038",
+  "location": "Umstead Park",
+  "name": "Umstead Park Event",
+  "date": "2016-02-27T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899039",
+  "location": "Lake Raleigh",
+  "name": "Lake Raleigh Score Event",
+  "date": "2015-11-02T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c89903a",
+  "location": "Lake Johnson",
+  "name": "Lake Johnson Event",
+  "date": "2015-11-07T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c89903b",
+  "location": "Schenck Forest",
+  "name": "Schenck Forest Event",
+  "date": "2015-11-14T00:00:00.000Z",
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c89903c",
+  "location": "Umstead Park",
+  "name": "Umstead Park Event",
+  "date": "2016-12-02T00:00:00.000Z",
+  "active": true
+}]
