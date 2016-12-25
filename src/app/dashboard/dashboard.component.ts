@@ -46,14 +46,12 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  deleteEvent(event: Event): void {
-    let id = event._id;
+  deleteEvent(id: string): void {
     this.eventService.deleteEvent(id);
   }
 
-  editEvent(event: Event): void {
+  editEvent(id: string): void {
     // Navigate to the add component
-    let id = event._id;
     let link = ['/event-add', id];
     this.router.navigate(link);
   }
