@@ -39,8 +39,9 @@ export class EventDashboardComponent implements OnInit {
     });
   }
 
-  goBack(link) {
-    this.location.back();
+  goBack() {
+    let link = ['/dashboard'];
+    this.router.navigate(link);
   }
 
   goToStudents() {
@@ -48,8 +49,4 @@ export class EventDashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  // goToResults() {
-  //   let link = ['/event-results'];
-  //   this.router.navigate(link);
-  // }
 }

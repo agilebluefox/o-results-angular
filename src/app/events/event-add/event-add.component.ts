@@ -13,14 +13,14 @@ import { EventService } from '../../services/event.service';
 })
 export class EventAddComponent implements OnInit {
 
-  event: Event = null;
+   event: Event = null;
 
-  placeholders: any = {
+   placeholders: any = {
     name: null,
     location: null,
     date: null
   };
-  eventAddForm: FormGroup;
+   eventAddForm: FormGroup;
 
   constructor(
     private router: Router,
@@ -29,6 +29,9 @@ export class EventAddComponent implements OnInit {
     private eventService: EventService
   ) { }
 
+  // If the user selected an event to edit, insert the values for 
+  // the expected properties in the form fields.
+  // Otherwise, present the user with a blank form.
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
@@ -48,8 +51,7 @@ export class EventAddComponent implements OnInit {
             };
             this.renderForm(this.placeholders);
           },
-          error => console.log(error),
-          () => console.log('done')
+          error => console.log(error)
           );
       }
       this.renderForm(this.placeholders);
@@ -64,9 +66,8 @@ export class EventAddComponent implements OnInit {
     });
   }
 
-  // If the user selected an event to edit, insert the values for 
-  // the expected properties in the form fields.
-  // Otherwise, present the user with a blank form.
+  // If the event already exists use the update method
+  // Otherwise, use the add method
   onSubmit(): void {
     console.log(this.eventAddForm.value);
     if (!this.event) {
@@ -74,16 +75,17 @@ export class EventAddComponent implements OnInit {
         .subscribe(
         (result) => {
           this.event = result;
-          this.router.navigate([`/event-dashboard/${this.event._id}`]);
         },
-        error => console.log(error)
+        error => console.log(error),
+        () => {
+          this.router.navigate([`/event-dashboard/${this.event._id}`]);
+        }
         );
     } else {
       Object.assign(this.event, this.eventAddForm.value);
       this.eventService.updateEvent(this.event)
         .subscribe(
         (data) => {
-          console.log(data);
           this.router.navigate([`/event-dashboard/${this.event._id}`]);
         },
         error => console.log(error)
