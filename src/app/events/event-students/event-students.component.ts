@@ -22,7 +22,7 @@ export class EventStudentsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.currentEvent = this.eventService.getSelectedEvent();
+    // this.currentEvent = this.eventService.getSelectedEvent();
     // this.currentEvent.students
     //   .map((id) => this.studentService.getStudentById(id)
     //     .subscribe(

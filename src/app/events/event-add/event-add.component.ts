@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Event } from '../../models/event.model';
@@ -14,7 +13,8 @@ import { EventService } from '../../services/event.service';
 })
 export class EventAddComponent implements OnInit {
 
-  event: Event;
+  event: Event = null;
+
   placeholders: any = {
     name: null,
     location: null,
@@ -29,64 +29,70 @@ export class EventAddComponent implements OnInit {
     private eventService: EventService
   ) { }
 
-  formatDate(date: Date): string {
-    let year: number = date.getFullYear();
-
-    let month: string | number = date.getMonth();
-    if (month < 10) {
-      month = '0' + month;
-    }
-    let day: string | number = date.getDate();
-    if (day < 10) {
-      day = '0' + day;
-    }
-    return `${year}-${month}-${day}`;
-  }
-
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
       let id: string = params['id'];
       if (id) {
         // Get event from service
-        this.event = this.eventService.getEventById(id);
-        this.placeholders = {
-          name: this.event.name,
-          location: this.event.location,
-          date: this.formatDate(new Date(this.event.date))
-        };
-        console.log(this.event);
+        this.eventService.getEventById(id)
+          .subscribe(
+          (result) => {
+            this.event = result;
+            console.log(this.event);
+            // Load the event property values in the form fields
+            this.placeholders = {
+              name: this.event.name,
+              location: this.event.location,
+              date: this.event.date
+            };
+            this.renderForm(this.placeholders);
+          },
+          error => console.log(error),
+          () => console.log('done')
+          );
       }
-    });
-    this.eventAddForm = new FormGroup({
-      name: new FormControl(this.placeholders.name, Validators.required),
-      location: new FormControl(this.placeholders.location, Validators.required),
-      date: new FormControl(this.placeholders.date, Validators.required)
+      this.renderForm(this.placeholders);
     });
   }
 
+  renderForm(placeholders): void {
+    this.eventAddForm = new FormGroup({
+      name: new FormControl(placeholders.name, Validators.required),
+      location: new FormControl(placeholders.location, Validators.required),
+      date: new FormControl(placeholders.date, Validators.required)
+    });
+  }
+
+  // If the user selected an event to edit, insert the values for 
+  // the expected properties in the form fields.
+  // Otherwise, present the user with a blank form.
   onSubmit(): void {
     console.log(this.eventAddForm.value);
     if (!this.event) {
       this.eventService.addEvent(this.eventAddForm.value)
         .subscribe(
-        data => console.log(data),
+        (result) => {
+          this.event = result;
+          this.router.navigate([`/event-dashboard/${this.event._id}`]);
+        },
         error => console.log(error)
         );
     } else {
       Object.assign(this.event, this.eventAddForm.value);
       this.eventService.updateEvent(this.event)
         .subscribe(
-        data => console.log(data),
+        (data) => {
+          console.log(data);
+          this.router.navigate([`/event-dashboard/${this.event._id}`]);
+        },
         error => console.log(error)
         );
     }
     this.eventAddForm.reset();
-    this.router.navigate(['/dashboard']);
   }
 
   goBack(link) {
     this.location.back();
   }
-
 }
