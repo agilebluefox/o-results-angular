@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 
@@ -28,6 +29,7 @@ import { EventStudentsComponent } from './events/event-students/event-students.c
   ],
   imports: [
     MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
