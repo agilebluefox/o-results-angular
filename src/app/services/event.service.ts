@@ -34,14 +34,20 @@ export class EventService {
 
   getEvents(): Observable<Event[]> {
     return this.http.get(this.eventsUrl)
-      .map((res: Response) => this.events = res.json().data)
+      .map((res: Response) => {
+        this.events = res.json().data;
+        return res.json().data;
+      })
       .catch(this.handleError);
   }
 
   // Method to get an event by id that contains unpopulated array fields
   getEventById(id: string): Observable<Event> {
     return this.http.get(`${this.eventsUrl}/${id}`)
-      .map((res: Response) => this.selectedEvent = res.json().data)
+      .map((res: Response) => {
+        this.selectedEvent = res.json().data;
+        return res.json().data;
+      })
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
@@ -52,27 +58,25 @@ export class EventService {
   addEvent(event: Event): Observable<Event> {
     const body = JSON.stringify(event);
 
-    return this.http.post(this.eventsUrl, body, { headers: this.headers })
+    let observable = this.http.post(this.eventsUrl, body, { headers: this.headers })
       .map((res: Response) => {
         this.selectedEvent = res.json().data;
-        this.events.push(this.selectedEvent);
-      } )
+        console.log(res.json().message);
+        return res.json().data;
+      })
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
+
+    return observable;
   }
 
-  deleteEvent(id: string): void {
+  deleteEvent(id: string): Observable<APIResponse> {
     const body = JSON.stringify({ id: id });
-    let response: Observable<APIResponse> = this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
-      .map((res: Response) => res.json())
+    return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
+      .map((res: Response) => {
+        this.events.splice(this.events.indexOf(res.json().data), 1);
+        return res.json();
+      })
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
-
-   response.subscribe(
-      (result: APIResponse) => {
-        this.events.splice(this.events.indexOf(result.data), 1);
-      },
-      err => console.log(err),
-      () => console.log('done')
-    );
   }
 
   updateEvent(event: Event): Observable<Response> {
