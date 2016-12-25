@@ -33,11 +33,10 @@ export class DashboardComponent implements OnInit {
   }
 
   // Store the mongo id of the event selected by the user
-  selectEvent(id: string): void {
-    this.eventService.setSelectedEventId(id);
-    let link = ['/event-dashboard', id];
+  selectEvent(event: Event): void {
+    this.eventService.setSelectedEvent(event);
+    let link = ['/event-dashboard', event._id];
     this.router.navigate(link);
-    // this.eventService.getEvent(id).then(event => console.log(event));
   }
 
   // Add an event
@@ -47,19 +46,14 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  // deleteEvent(event: Event): void {
-  //   this.eventService.deleteEvent(event._id)
-  //     .subscribe(
-  //     data => {
-  //       console.log(data);
-  //       this.events.splice(this.events.indexOf(event), 1);
-  //     },
-  //     error => console.log(error)
-  //     );
-  // }
+  deleteEvent(event: Event): void {
+    let id = event._id;
+    this.eventService.deleteEvent(id);
+  }
 
-  editEvent(id: string): void {
+  editEvent(event: Event): void {
     // Navigate to the add component
+    let id = event._id;
     let link = ['/event-add', id];
     this.router.navigate(link);
   }

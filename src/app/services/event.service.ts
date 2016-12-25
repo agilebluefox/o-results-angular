@@ -6,6 +6,11 @@ import { Observable } from 'rxjs';
 
 import { Event } from '../models/event.model';
 
+interface APIResponse {
+  message: string;
+  data?: any;
+}
+
 @Injectable()
 export class EventService {
 
@@ -13,7 +18,7 @@ export class EventService {
   private events: Event[] = [];
 
   // Property to hold the currently selected event
-  private selectedEventId: string;
+  private selectedEvent: Event;
 
   // The url will be a JSON file for now
   // private eventsUrl = 'app/shared/mock-events.json';
@@ -29,46 +34,45 @@ export class EventService {
 
   getEvents(): Observable<Event[]> {
     return this.http.get(this.eventsUrl)
-      .map((res: Response) => this.events = res.json().events)
+      .map((res: Response) => this.events = res.json().data)
       .catch(this.handleError);
   }
 
   // Method to get an event by id that contains unpopulated array fields
-  getEventById(id: string): Event {
-    return this.events.find((event) => event._id === id);
+  getEventById(id: string): Observable<Event> {
+    return this.http.get(`${this.eventsUrl}/${id}`)
+      .map((res: Response) => this.selectedEvent = res.json().data)
+      .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
-  // Method to get an event by id with the MongoId fields populated
-  getPopulatedEvent(id: string): Observable<any> {
-    let populate = true;
-    let active = true;
-    return this.http.get(`${this.eventsUrl}/populate/${populate}/active/${active}`)
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
+  setSelectedEvent(event: Event) {
+    this.selectedEvent = event;
   }
 
-  // Method to set the selected event when clicked on in the dashboard component
-  setSelectedEventId(id: string): void {
-    this.selectedEventId = id;
-  }
-
-  getSelectedEvent(): Event {
-    return;
-  }
-
-  addEvent(event: Event): Observable<Response> {
+  addEvent(event: Event): Observable<Event> {
     const body = JSON.stringify(event);
-    console.log(body);
+
     return this.http.post(this.eventsUrl, body, { headers: this.headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
+      .map((res: Response) => {
+        this.selectedEvent = res.json().data;
+        this.events.push(this.selectedEvent);
+      } )
+      .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
-  deleteEvent(id: string): Observable<Response> {
+  deleteEvent(id: string): void {
     const body = JSON.stringify({ id: id });
-    return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
+    let response: Observable<APIResponse> = this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
+      .map((res: Response) => res.json())
+      .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
+
+   response.subscribe(
+      (result: APIResponse) => {
+        this.events.splice(this.events.indexOf(result.data), 1);
+      },
+      err => console.log(err),
+      () => console.log('done')
+    );
   }
 
   updateEvent(event: Event): Observable<Response> {
