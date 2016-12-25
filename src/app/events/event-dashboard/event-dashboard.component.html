@@ -9,9 +9,14 @@
         <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
       </div>
     </div>
-    <div class="stack">
-      <md-card class="event-card" (click)="goToStudents()">
-        <h2 class="component">Students</h2>
-      </md-card>
-    </div>
+    <md-tab-group>
+      <md-tab label="Students">
+        <h1>Students</h1>
+        <p>...</p>
+      </md-tab>
+      <md-tab label="Run Event">
+        <h1>Run Event</h1>
+        <p>...</p>
+      </md-tab>
+    </md-tab-group>
   </div>
