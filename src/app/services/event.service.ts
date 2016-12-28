@@ -55,6 +55,10 @@ export class EventService {
     this.selectedEvent = event;
   }
 
+  getSelectedEvent() {
+    return this.selectedEvent;
+  }
+
   addEvent(event: Event): Observable<Event> {
     const body = JSON.stringify(event);
 
