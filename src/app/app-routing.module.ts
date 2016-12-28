@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EventAddComponent } from './events/event-add/event-add.component';
 import { EventDashboardComponent } from './events/event-dashboard/event-dashboard.component';
 import { EventStudentsComponent } from './events/event-students/event-students.component';
+import { StudentAddComponent } from './students/student-add/student-add.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'event-students',
     component: EventStudentsComponent
+  },
+  {
+    path: 'student-add',
+    component: StudentAddComponent
   }
 
 ];
