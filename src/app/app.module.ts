@@ -18,6 +18,7 @@ import { StudentService } from './services/student.service';
 import { StudentListComponent } from './students/student-list/student-list.component';
 import { EventStudentsComponent } from './events/event-students/event-students.component';
 import { StudentAddComponent } from './students/student-add/student-add.component';
+import { EventManagerComponent } from './events/event-manager/event-manager.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { StudentAddComponent } from './students/student-add/student-add.componen
     EventDashboardComponent,
     StudentListComponent,
     EventStudentsComponent,
-    StudentAddComponent
+    StudentAddComponent,
+    EventManagerComponent
   ],
   imports: [
     MaterialModule.forRoot(),
