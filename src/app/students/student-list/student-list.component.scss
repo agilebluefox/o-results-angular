@@ -1,14 +1,8 @@
-.student-list {
-    margin-bottom: 2em;
+md-nav-list.students {
+    max-width: 70%;
 }
 
-/* button at the end of a list item */
-.list-button {
-    margin-left: 1.5em;
+span.student-id-item {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
-
-div.button {
-  text-align: right;
-  margin: 1.5rem 10%;
-}
-

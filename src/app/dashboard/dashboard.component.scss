@@ -1,26 +1,8 @@
 /* Dashboard */
 
-div.events {
-  display: flex;
-  flex-flow: row wrap;
-  line-height: 36dp;
-  padding-left: 16dp;
-  padding-right: 16dp;
-  padding-top: 8dp;
-}
-
-div.main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-div.list-container {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+.events {
+  max-width: 70%;
+  margin: auto;
 }
 
 div.button {
@@ -38,14 +20,4 @@ div.details {
   font-size: .8rem;
   color: red;
   margin: 1.5rem auto;
-}
-
-/* button at the end of a list item */
-.list-button {
-    margin-left: 1em;
-    color: darkred;
-}
-
-a.list-button:hover{
-  color: red;
 }

@@ -1,19 +1,17 @@
-<div class="main-container">
-  <h1 class="section">
-    List of Events
-  </h1>
-  <div class="component-container">
-    <md-nav-list class="events">
-      <md-list-item *ngFor="let event of events | async">
-        <a id="name" md-line (click)="selectEvent(event)">{{ event.date | date:"yyyy" }} {{ event.name }}</a>
-        <a class="list-button" (click)="editEvent(event._id)">Edit</a>
-        <a class="list-button" (click)="deleteEvent(event._id)">Remove</a>
-      </md-list-item>
-    </md-nav-list>
-  </div>
-  <div class="button">
-    <button md-fab color="primary" (click)="addNewEvent()">
+<h1 class="section">
+  List of Events
+</h1>
+<div class="fx-list-centered">
+  <md-nav-list class="events">
+    <md-list-item *ngFor="let event of events | async">
+      <a id="name" md-line (click)="selectEvent(event)">{{ event.date | date:"yyyy" }} {{ event.name }}</a>
+      <a md-button color="primary" (click)="editEvent(event._id)">Edit</a>
+      <a md-button color="primary" (click)="deleteEvent(event._id)">Remove</a>
+    </md-list-item>
+  </md-nav-list>
+</div>
+<div class="button">
+  <button md-fab color="primary" (click)="addNewEvent()">
       <md-icon class="md-24">add</md-icon>
-      </button>
-  </div>
+  </button>
 </div>

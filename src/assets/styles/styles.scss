@@ -34,6 +34,7 @@ h4 {
   font-family: $heading-font;
 }
 
+
 /* General Component Styles */
 
 h1 {
@@ -51,9 +52,13 @@ h2 {
   margin: 1.5rem auto 1.5rem auto;
 }
 
+.component-content {
+  padding: 1rem 0;
+}
+
 .section {
   color: md-color($oresults-app-primary);
-  margin: 2rem auto 0 auto;
+  margin: 2rem auto 1rem auto;
   text-align: center;
 }
 
@@ -71,6 +76,30 @@ li {
 button.submit {
   margin: 1.2rem 0;
 }
+
+div.button {
+  text-align: right;
+  margin: 1.5rem 1rem;
+}
+
+md-button {
+  width: 100%;
+  display: block;
+  margin-left: 1em;
+  color: darkred;
+}
+
+md-button a:hover {
+  color: red;
+}
+
+.app-action {
+  display: inline-block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
 
 /* Styles to help with layout */
 
@@ -97,59 +126,86 @@ button.submit {
 }
 
 .missing-data {
-    font-size: .8rem;
-    text-align: center;
+  font-size: .8rem;
+  text-align: center;
 }
 
-div.container {
+div.app-container {
   width: 100%;
   height: 100%;
-  margin: 0 auto 1em auto;
+  margin: 0;
 }
 
-div.component-container {
-  font-size: 1rem;
-  line-height: 2rem;
-  margin: .5rem auto;
-}
-
-div.main-container {
+div.fx-component-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 768px;
+  max-width: 768px;
   margin: 0 auto;
 }
 
-div.list-container {
-  margin-left: auto;
-  margin-right: auto;
+// div.component-container {
+//   font-size: 1rem;
+//   line-height: 2rem;
+//   margin: .5rem auto;
+// }
+// div.main-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   width: 768px;
+//   margin: 0 auto;
+// }
+div.fx-item-centered {
+  margin: auto;
+  align-self: center;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
-div.button {
-  text-align: right;
-  margin: 1.5rem 10%;
+div.md-tab-label-container {
+  margin-top: 1rem;
 }
 
-div.details {
-  margin: 1rem 0 0 0;
+div.md-tab-label {
+  width: 360px;
 }
 
-.more-items {
-  text-align: center;
-  display: block;
-  font-size: .8rem;
-  color: red;
-  margin: 1.5rem auto;
+
+/* Table Styles adopted from Bootstrap */
+
+table {
+  border-collapse: collapse;
+  background-color: transparent;
 }
 
-/* button at the end of a list item */
-.list-button {
-    margin-left: 1.5em;
+th {
+  text-align: left;
 }
 
-/* Add background color to active link on side nav */
-md-list-item.active-link div.md-list-item {
-  color: #cccccc;
-  background-color: #666666;
+.table {
+  border-collapse: collapse !important;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.table td,
+.table th {
+  background-color: #fff;
+  padding: 0.75rem;
+  vertical-align: center;
+  border-top: 1px solid #eceeef;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.thead-default th {
+  color: md-color($oresults-app-primary);
+  background-color: #eceeef;
 }
