@@ -1,15 +1,4 @@
-md-sidenav {
-  width: 200px;
-}
 
-md-sidenav-layout {
-  height: 100%;
-}
-
-md-button {
-  width: 100%;
-  display: block;
-}
 
 .nav-header {
   display: flex;
@@ -30,13 +19,4 @@ md-toolbar md-toolbar-row {
   height: 64px;
   flex-direction: row;
   align-items: center;
-}
-
-.nav-menu-link {
-  padding-left: 16px;
-}
-
-md-list-item.active-link div.md-list-item {
-  color: #cccccc;
-  background-color: #666666;
 }

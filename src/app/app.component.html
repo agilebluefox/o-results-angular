@@ -1,30 +1,10 @@
-<div class="container">
-  <md-sidenav-layout>
-    <md-sidenav #start>
-      <div class="nav-header">
-        <button md-icon-button (click)="start.close()">
-          <md-icon>menu</md-icon>
-        </button>
-      </div>
-      <md-nav-list>
-        <md-list-item routerLinkActive="active-link" routerLink="dashboard" (click)="start.close()">
-          <md-icon>home</md-icon>
-          <a  class="nav-menu-link" >Home</a>
-        </md-list-item>
-        <md-list-item routerLinkActive="active-link" routerLink="student-list" (click)="start.close()">
-          <md-icon>group</md-icon>
-          <a  class="nav-menu-link" >Students</a>
-        </md-list-item>
-      </md-nav-list>
-    </md-sidenav>
-    <md-toolbar color="primary">
-      <button md-icon-button (click)="start.open()">
-        <md-icon>menu</md-icon>
-      </button>
-      <h1>
-        {{title}}
-      </h1>
-    </md-toolbar>
+<div class="app-container">
+  <md-toolbar color="primary">
+    <h1>
+      {{title}}
+    </h1>
+  </md-toolbar>
+  <div class="fx-component-container">
     <router-outlet></router-outlet>
-  </md-sidenav-layout>
+  </div>
 </div>
