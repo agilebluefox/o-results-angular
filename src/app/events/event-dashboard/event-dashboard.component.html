@@ -1,22 +1,20 @@
-<div class="main-container">
-  <h1 class="section">
-    Event Dashboard
-  </h1>
-  <div class="component-container">
-    <div class="details">
-      <div *ngIf="currentEvent">
-        <h2 class="">{{currentEvent.name}}</h2>
-        <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
-      </div>
-    </div>
-    <md-tab-group>
-      <md-tab label="Add Students" class="two-tabs">
-        <h1>Students</h1>
-        <app-event-students></app-event-students>
-      </md-tab>
-      <md-tab label="Run Event">
-        <h1>Run Event</h1>
-        <p>...</p>
-      </md-tab>
-    </md-tab-group>
+<h1 class="section">
+  Event Dashboard
+</h1>
+<div class="details">
+  <div *ngIf="currentEvent">
+    <h2 class="">{{currentEvent.name}}</h2>
+    <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
   </div>
+</div>
+<md-tab-group>
+  <md-tab label="Add Students" class="two-tabs">
+    <h2 class="component">Student Management</h2>
+    <div>
+        <app-student-list></app-student-list>
+      </div>
+  </md-tab>
+  <md-tab label="Run Event" class="two-tabs">
+    <h2 class="component">Event Management</h2>
+  </md-tab>
+</md-tab-group>
