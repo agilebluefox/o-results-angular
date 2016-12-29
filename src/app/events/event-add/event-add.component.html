@@ -1,15 +1,17 @@
 <h1 class="section">Add an Event</h1>
 <h3>Event Information</h3>
 <div class="fx-component-container">
-  <form [formGroup]="eventAddForm" (ngSubmit)="onSubmit()">
-    <md-input class="full-width form-control" placeholder="Event Name - ex. Spring Umstead Park" formControlName="name"></md-input>
-    <md-input class="full-width form-control" placeholder="Event Location - ex. Umstead Park" formControlName="location"></md-input>
-    <md-input class="full-width form-control" placeholder="Event Date - ex. YYYY-MM-DD" formControlName="date"></md-input>
-    <table class="full-width">
-      <tr>
-        <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack('dashboard')">Cancel</button></td>
-        <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit" [disabled]="!eventAddForm.valid" >Save</button></td>
-      </tr>
-    </table>
-  </form>
+  <div class="fx-content-container">
+    <form [formGroup]="eventAddForm" (ngSubmit)="onSubmit()">
+      <md-input class="full-width form-control" placeholder="Event Name - ex. Spring Umstead Park" formControlName="name"></md-input>
+      <md-input class="full-width form-control" placeholder="Event Location - ex. Umstead Park" formControlName="location"></md-input>
+      <md-input class="full-width form-control" placeholder="Event Date - ex. YYYY-MM-DD" formControlName="date"></md-input>
+      <table class="full-width">
+        <tr>
+          <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack('dashboard')">Cancel</button></td>
+          <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit" [disabled]="!eventAddForm.valid">Save</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
 </div>
