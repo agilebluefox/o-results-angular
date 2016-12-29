@@ -11,7 +11,7 @@ import { Student } from '../models/student.model';
 export class StudentService {
 
   // Public property to hold students array
-  students: Student[] = [];
+  private students: Student[] = [];
 
   // Provide a url to the student data in the fake web api
   // private studentsUrl = 'app/shared/mock-students.json';
@@ -46,16 +46,25 @@ export class StudentService {
 
   getStudentById(id: string): Observable<any> {
     return this.http.get(`${this.studentsUrl}/${id}`)
-      .map((response: Response) => response.json())
+      .map((response: Response) => response.json().data)
       .map((response: any) => response.student)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
-  addStudent(student: Student): Observable<Response> {
+  addStudent(student: Student): Observable<Student> {
     const body = JSON.stringify(student);
     console.log(body);
     return this.http.post(this.studentsUrl, body, { headers: this.headers })
-      .map((response: Response) => response.json())
+      .map((response: Response) => response.json().data)
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+   updateStudent(student: Student): Observable<Student[]> {
+    let studentsToUpdate = [];
+    studentsToUpdate.push(student);
+    const body = JSON.stringify(studentsToUpdate);
+    return this.http.put(this.studentsUrl, body, { headers: this.headers })
+      .map((response: Response) => response.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 

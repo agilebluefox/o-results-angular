@@ -42,15 +42,23 @@ export class StudentListComponent implements OnInit {
   }
 
   addToEvent(student: Student): void {
-    this.addSelectedStudent.emit(student);
-    // this.studentsInEvent.push(student);
-    this.students.splice(this.students.indexOf(student), 1);
-    console.log(this.studentsInEvent);
+    // this.addSelectedStudent.emit(student);
+    // // this.studentsInEvent.push(student);
+    // this.students.splice(this.students.indexOf(student), 1);
+    // console.log(this.studentsInEvent);
   }
 
-  removeFromEvent(student: Student): void {
-    this.removeSelectedStudent.emit(student);
-    this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
-    this.students.push(student);
+  // removeFromEvent(student: Student): void {
+  //   this.removeSelectedStudent.emit(student);
+  //   this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
+  //   this.students.push(student);
+  // }
+
+  editStudent(student: Student) {
+
+  }
+
+  registerStudentInEvent(student: Student) {
+
   }
 }

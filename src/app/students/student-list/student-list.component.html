@@ -6,15 +6,17 @@
       <th>Last Name</th>
       <th>Unity Id</th>
       <th>Status</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of students; let i = index;">
-      <th scope="row">{{i+1}}</th>
+      <th scope="row">{{i + 1}}</th>
       <td>{{ student.firstname }}</td>
       <td>{{ student.lastname }}</td>
       <td>{{ student.unityid }}</td>
-      <td><md-button-toggle (change)="addToEvent(student)">Add</md-button-toggle></td>
+      <td><md-button-toggle (change)="registerStudentInEvent(student)">Register</md-button-toggle></td>
+      <td><md-button-toggle (change)="editStudent(student)">Edit</md-button-toggle></td>
     </tr>
   </tbody>
 </table>
