@@ -23,8 +23,7 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studentService.getStudents()
-      .then(students => this.students = students);
+    this.getStudents();
   }
 
   getStudents(): void {
@@ -55,10 +54,17 @@ export class StudentListComponent implements OnInit {
   // }
 
   editStudent(student: Student) {
-
+    // Navigate to the add component
+    let link = ['/student-add', student._id];
+    this.router.navigate(link);
   }
 
   registerStudentInEvent(student: Student) {
 
   }
+
+   deleteStudent(student: Student): void {
+    this.studentService.deleteStudent(student._id);
+  }
+
 }

@@ -10,6 +10,7 @@
       <table class="full-width">
         <tr>
           <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack()">Cancel</button></td>
+          <td class="btn-center"><button md-raised-button type="button" color="danger" class="submit" (click)="deleteStudent()" [disabled]="!studentAddForm.valid">Delete Student</button></td>
           <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit" [disabled]="!studentAddForm.valid">Save</button></td>
         </tr>
       </table>

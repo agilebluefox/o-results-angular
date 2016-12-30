@@ -39,15 +39,14 @@ export class StudentService {
     } else {
       return this.http.get(this.studentsUrl)
         .toPromise()
-        .then(response => response.json() as Student[])
+        .then(res => res.json() as Student[])
         .catch(this.handleError);
     }
   }
 
-  getStudentById(id: string): Observable<any> {
+  getStudentById(id: string): Observable<Student> {
     return this.http.get(`${this.studentsUrl}/${id}`)
-      .map((response: Response) => response.json().data)
-      .map((response: any) => response.student)
+      .map((res: Response) => res.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
@@ -55,16 +54,23 @@ export class StudentService {
     const body = JSON.stringify(student);
     console.log(body);
     return this.http.post(this.studentsUrl, body, { headers: this.headers })
-      .map((response: Response) => response.json().data)
+      .map((res: Response) => res.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
-   updateStudent(student: Student): Observable<Student[]> {
+  updateStudent(student: Student): Observable<Student[]> {
     let studentsToUpdate = [];
     studentsToUpdate.push(student);
     const body = JSON.stringify(studentsToUpdate);
     return this.http.put(this.studentsUrl, body, { headers: this.headers })
-      .map((response: Response) => response.json().data)
+      .map((res: Response) => res.json().data)
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  deleteStudent(id: string) {
+    const body = JSON.stringify({ id: id });
+    return this.http.delete(this.studentsUrl, { headers: this.headers, body: body })
+      .map((res: Response) => res.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
   }
 

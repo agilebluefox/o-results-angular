@@ -62,19 +62,19 @@ export class StudentAddComponent implements OnInit {
 
   renderForm(placeholders): void {
     this.studentAddForm = new FormGroup({
-      firstname: new FormControl('', [
+      firstname: new FormControl(placeholders.firstname, [
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9 ]{1,50}$')
       ]),
-      lastname: new FormControl('', [
+      lastname: new FormControl(placeholders.lastname, [
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9 ]{1,50}$')
       ]),
-      unityid: new FormControl('', [
+      unityid: new FormControl(placeholders.unityid, [
         Validators.required,
         Validators.pattern('^[a-z][a-z0-9]{1,7}$')
       ]),
-      email: new FormControl('', [
+      email: new FormControl(placeholders.email, [
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]{1,50}@[a-z0-9.-]{1,25}\.[a-z]{2,6}$')
       ]),
@@ -112,6 +112,20 @@ export class StudentAddComponent implements OnInit {
 
   getCurrentEvent() {
     return this.eventService.getSelectedEvent();
+  }
+
+  deleteStudent() {
+    if (this.student) {
+      let id: string = this.student._id;
+      let subscription = this.studentService.deleteStudent(id)
+        .subscribe(
+          (result) => {
+            let student = result;
+            console.log(student);
+          }
+        );
+    }
+      this.goBack();
   }
 
   goBack() {
