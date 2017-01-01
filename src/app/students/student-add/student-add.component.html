@@ -1,16 +1,19 @@
 <h1 class="section">Add a Student</h1>
 <h3>Student Information</h3>
 <div class="fx-component-container">
-  <form [formGroup]="studentAddForm" (ngSubmit)="onSubmit()">
-    <md-input class="form-control" placeholder="Unity Id" formControlName="unityId"></md-input>
-    <md-input class="form-control" placeholder="Email Address" formControlName="email"></md-input>
-    <md-input class="form-control" placeholder="First Name" formControlName="firstName"></md-input>
-    <md-input class="form-control" placeholder="Last Name" formControlName="lastName"></md-input>
-    <table class="full-width">
-      <tr>
-        <td class="btn-left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack()">Cancel</button></td>
-        <td class="btn-right"><button md-raised-button type="submit" color="primary" class="submit" [disabled]="!studentAddForm.valid" >Save</button></td>
-      </tr>
-    </table>
-  </form>
+  <div class="fx-content-container">
+    <form [formGroup]="studentAddForm" (ngSubmit)="onSubmit()">
+      <md-input class="full-width form-control" placeholder="Unity Id" formControlName="unityid"></md-input>
+      <md-input class="full-width form-control" placeholder="Email Address" formControlName="email"></md-input>
+      <md-input class="full-width form-control" placeholder="First Name" formControlName="firstname"></md-input>
+      <md-input class="full-width form-control" placeholder="Last Name" formControlName="lastname"></md-input>
+      <table class="full-width">
+        <tr>
+          <td class="left"><button md-raised-button type="button" color="warn" class="submit" (click)="goBack()">Cancel</button></td>
+          <td class="center"><button md-raised-button type="button" color="danger" class="submit" (click)="deleteStudent()" [disabled]="!studentAddForm.valid">Delete Student</button></td>
+          <td class="right"><button md-raised-button type="submit" color="primary" class="submit" [disabled]="!studentAddForm.valid">Save</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
 </div>
