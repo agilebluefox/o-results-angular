@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Event } from '../models/event.model';
 import { EventService } from '../services/event.service';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-dashboard',
@@ -46,14 +46,23 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  deleteEvent(id: string): void {
-    this.eventService.deleteEvent(id);
-  }
+   editEvent(event: Event): void {
+      // Navigate to the add component
+      let id = event._id;
+      let link = ['/event-add', id];
+      this.router.navigate(link);
+    }
 
-  editEvent(id: string): void {
-    // Navigate to the add component
-    let link = ['/event-add', id];
-    this.router.navigate(link);
+  deleteEvent(id: string) {
+    let deletedEvent = this.eventService.deleteEvent(id);
+    deletedEvent.subscribe(
+      (result) => {
+        console.log(result);
+        this.events = this.getEvents();
+      },
+      error => console.log(error)
+    );
+
   }
 
 }

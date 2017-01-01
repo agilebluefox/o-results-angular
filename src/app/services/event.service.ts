@@ -88,7 +88,7 @@ export class EventService {
     eventsToUpdate.push(event);
     const body = JSON.stringify(eventsToUpdate);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
-      .map((response: Response) => response.json())
+      .map((res: Response) => res.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
