@@ -5,20 +5,21 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Unity Id</th>
-      <th>Status</th>
+      <th class="center">Registered</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students; let i = index;">
-      <th scope="row">{{i+1}}</th>
-      <td>{{ student.firstname }}</td>
-      <td>{{ student.lastname }}</td>
-      <td>{{ student.unityid }}</td>
-      <td><md-button-toggle (change)="addToEvent(student)">Add</md-button-toggle></td>
+    <tr *ngFor="let student of students | async; let i = index;">
+      <th scope="row">{{i + 1}}</th>
+      <td (click)="editStudent(student)">{{ student.firstname }}</td>
+      <td (click)="editStudent(student)">{{ student.lastname }}</td>
+      <td (click)="editStudent(student)">{{ student.unityid }}</td>
+      <td class="center">
+        <md-checkbox></md-checkbox>
+      </td>
     </tr>
   </tbody>
 </table>
-
 <div class="button">
   <button md-fab color="primary" (click)="addNewStudent()">
     <md-icon class="md-24">add</md-icon>
