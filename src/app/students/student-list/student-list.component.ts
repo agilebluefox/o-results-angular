@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Observable } from 'rxjs/Rx';
+
 import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
 
@@ -10,12 +12,12 @@ import { StudentService } from '../../services/student.service';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent implements OnInit {
-
-  students: Student[] = [];
+  statusOptions: Array<string> = ['registered', 'unregistered'];
+  students: Observable<Student[]>;
   student: Student;
-  @Output() addSelectedStudent = new EventEmitter<Student>();
-  @Output() removeSelectedStudent = new EventEmitter<Student>();
-  @Input() studentsInEvent: Student[] = [];
+  // @Output() addSelectedStudent = new EventEmitter<Student>();
+  // @Output() removeSelectedStudent = new EventEmitter<Student>();
+  // @Input() studentsInEvent: Student[] = [];
 
   constructor(
     private studentService: StudentService,
@@ -23,13 +25,12 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.studentService.getStudents()
-      .then(students => this.students = students);
+    this.students = this.getStudents();
+    console.log(this.students);
   }
 
-  getStudents(): void {
-    this.studentService.getStudents()
-      .then(students => this.students = students);
+  getStudents(): Observable<Student[]> {
+    return this.studentService.getStudents();
   }
 
   goToDetails(student: Student): void {
@@ -42,15 +43,26 @@ export class StudentListComponent implements OnInit {
   }
 
   addToEvent(student: Student): void {
-    this.addSelectedStudent.emit(student);
-    // this.studentsInEvent.push(student);
-    this.students.splice(this.students.indexOf(student), 1);
-    console.log(this.studentsInEvent);
+    // this.addSelectedStudent.emit(student);
+    // // this.studentsInEvent.push(student);
+    // this.students.splice(this.students.indexOf(student), 1);
+    // console.log(this.studentsInEvent);
   }
 
-  removeFromEvent(student: Student): void {
-    this.removeSelectedStudent.emit(student);
-    this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
-    this.students.push(student);
+  // removeFromEvent(student: Student): void {
+  //   this.removeSelectedStudent.emit(student);
+  //   this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
+  //   this.students.push(student);
+  // }
+
+  editStudent(student: Student) {
+    // Navigate to the add component
+    let link = ['/student-add', student._id];
+    this.router.navigate(link);
   }
+
+  registerStudentInEvent(student: Student) {
+
+  }
+
 }
