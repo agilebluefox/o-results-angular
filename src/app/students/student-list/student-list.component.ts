@@ -65,4 +65,8 @@ export class StudentListComponent implements OnInit {
 
   }
 
+   deleteStudent(student: Student): void {
+    this.studentService.deleteStudent(student._id);
+  }
+  
 }

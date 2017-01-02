@@ -10,8 +10,8 @@ import { Student } from '../models/student.model';
 @Injectable()
 export class StudentService {
 
-  // property to hold students array
-  private students: Student[];
+  // Public property to hold students array
+  private students: Student[] = [];
 
   // Provide a url to the student data in the fake web api
   // private studentsUrl = 'app/shared/mock-students.json';
