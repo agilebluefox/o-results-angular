@@ -17,9 +17,10 @@ export class StudentAddComponent implements OnInit {
   private students: Student[];
   private currentEvent: Event;
   private student: Student;
+  email: string = null;
   private placeholders = {
     unityid: null,
-    email: null,
+    email: this.email,
     firstname: null,
     lastname: null
   };
@@ -30,6 +31,12 @@ export class StudentAddComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { }
+
+  updateEmail(username: string) {
+    this.email = `${username}@ncsu.edu`;
+    this.placeholders.email = this.email;
+    console.log(this.email);
+  }
 
   ngOnInit() {
     // Store the current event
