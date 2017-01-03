@@ -15,7 +15,7 @@
       <td (click)="editStudent(student)">{{ student.lastname }}</td>
       <td (click)="editStudent(student)">{{ student.unityid }}</td>
       <td class="center">
-        <md-checkbox></md-checkbox>
+        <md-checkbox (change)="setStudentStatus($event, student)"></md-checkbox>
       </td>
     </tr>
   </tbody>

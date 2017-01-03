@@ -83,13 +83,37 @@ export class EventService {
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
+  // Modify the properties on an event
   updateEvent(event: Event): Observable<Response> {
-    let eventsToUpdate = [];
+    let eventsToUpdate: Event[] = [];
     eventsToUpdate.push(event);
+    console.log(eventsToUpdate);
     const body = JSON.stringify(eventsToUpdate);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
-      .map((res: Response) => res.json())
+      .map((res: Response) => res.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  // Add a student to the event
+  addStudentToEvent(studentId: string): void {
+    let students = this.selectedEvent.students.concat(studentId);
+    this.selectedEvent.students = students;
+    console.log(this.selectedEvent);
+    let result = this.updateEvent(this.selectedEvent);
+    result.subscribe(
+      (data) => console.log(data)
+    );
+  }
+
+  // Remove a student from the event
+  removeStudentFromEvent(studentId: string): void {
+    let index = this.selectedEvent.students.indexOf(studentId);
+    if (index) {
+      this.selectedEvent.students.splice(index, 1);
+      this.updateEvent(this.selectedEvent);
+    } else {
+      return;
+    }
   }
 
   // Method to handle errors from the Server

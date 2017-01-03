@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-student-list',
@@ -21,6 +22,7 @@ export class StudentListComponent implements OnInit {
 
   constructor(
     private studentService: StudentService,
+    private eventService: EventService,
     private router: Router
   ) { }
 
@@ -65,8 +67,21 @@ export class StudentListComponent implements OnInit {
 
   }
 
-   deleteStudent(student: Student): void {
+  deleteStudent(student: Student): void {
     this.studentService.deleteStudent(student._id);
   }
-  
+
+  setStudentStatus(e, student: Student) {
+    console.log(e);
+    let event = this.eventService.getSelectedEvent();
+    if (e.checked) {
+      console.log(`Add ${student._id} to the student array on the ${event.name} event`);
+      this.eventService.addStudentToEvent(student._id);
+      console.log(event);
+    } else {
+      console.log(`Remove ${student._id} from the student array on the ${event.name} event`);
+      this.eventService.removeStudentFromEvent(student._id);
+    }
+  }
+
 }
