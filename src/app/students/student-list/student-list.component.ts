@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
+import { Event } from '../../models/event.model';
 import { EventService } from '../../services/event.service';
 
 @Component({
@@ -14,11 +15,10 @@ import { EventService } from '../../services/event.service';
 })
 export class StudentListComponent implements OnInit {
   statusOptions: Array<string> = ['registered', 'unregistered'];
-  students: Observable<Student[]>;
   student: Student;
-  // @Output() addSelectedStudent = new EventEmitter<Student>();
-  // @Output() removeSelectedStudent = new EventEmitter<Student>();
-  // @Input() studentsInEvent: Student[] = [];
+  event: Event;
+  students: Student[] = [];
+  checked: boolean = false;
 
   constructor(
     private studentService: StudentService,
@@ -27,35 +27,27 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.students = this.getStudents();
-    console.log(this.students);
+    this.getRegisteredStudents();
   }
 
-  getStudents(): Observable<Student[]> {
-    return this.studentService.getStudents();
+  getRegisteredStudents(): void {
+    this.event = this.eventService.getSelectedEvent();
+    let studentIds: string[] = this.event.students;
+    studentIds.forEach((id) => {
+      let currentStudent = this.studentService.getStudentById(id)
+        .subscribe(
+          (s) => {
+            this.students.push(s);
+            this.checked = true;
+          }
+        );
+    });
   }
 
   goToDetails(student: Student): void {
     let link = ['/student-details', student._id];
     this.router.navigate(link);
   }
-
-  addNewStudent(): void {
-    this.router.navigate(['/student-add']);
-  }
-
-  addToEvent(student: Student): void {
-    // this.addSelectedStudent.emit(student);
-    // // this.studentsInEvent.push(student);
-    // this.students.splice(this.students.indexOf(student), 1);
-    // console.log(this.studentsInEvent);
-  }
-
-  // removeFromEvent(student: Student): void {
-  //   this.removeSelectedStudent.emit(student);
-  //   this.studentsInEvent.splice(this.studentsInEvent.indexOf(student), 1);
-  //   this.students.push(student);
-  // }
 
   editStudent(student: Student) {
     // Navigate to the add component
@@ -74,13 +66,21 @@ export class StudentListComponent implements OnInit {
   setStudentStatus(e, student: Student) {
     console.log(e);
     let event = this.eventService.getSelectedEvent();
+    let response: Observable<Event> | void;
     if (e.checked) {
       console.log(`Add ${student._id} to the student array on the ${event.name} event`);
       this.eventService.addStudentToEvent(student._id);
       console.log(event);
     } else {
       console.log(`Remove ${student._id} from the student array on the ${event.name} event`);
-      this.eventService.removeStudentFromEvent(student._id);
+      response = this.eventService.removeStudentFromEvent(student._id);
+      if (response) {
+        response.subscribe(
+          (result) => {
+            console.log(result);
+          }
+        );
+      }
     }
   }
 

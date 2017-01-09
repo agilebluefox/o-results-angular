@@ -1,6 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+
+import { Observable } from 'rxjs/Rx';
 
 import { EventService } from '../../services/event.service';
 import { StudentService } from '../../services/student.service';
@@ -14,13 +16,12 @@ import { Student } from '../../models/student.model';
 })
 export class StudentAddComponent implements OnInit {
   public studentAddForm: FormGroup;
-  private students: Student[];
+  students: string[];
   private currentEvent: Event;
   private student: Student;
-  email: string = null;
-  private placeholders = {
+  public placeholders = {
     unityid: null,
-    email: this.email,
+    email: null,
     firstname: null,
     lastname: null
   };
@@ -32,15 +33,49 @@ export class StudentAddComponent implements OnInit {
     private router: Router
   ) { }
 
-  updateEmail(username: string) {
-    this.email = `${username}@ncsu.edu`;
-    this.placeholders.email = this.email;
-    console.log(this.email);
+  checkStudent(username: string) {
+    const input = Observable.from(username);
+    input
+      .map(value => value)
+      .distinctUntilChanged()
+      .debounceTime(1000)
+      .subscribe(
+      (x) => { console.log('Next: ' + x); },
+      (err) => { console.log('Error: ' + err); },
+      () => {
+        console.log('Completed');
+        let response = this.studentService.getStudentById(username);
+        console.log(response);
+        response.subscribe(
+          (result) => {
+            // If the student already exists
+            if (result) {
+              this.student = result;
+              console.log(result);
+              this.placeholders.unityid = username;
+              this.placeholders.email = result.email;
+              this.placeholders.firstname = result.firstname;
+              this.placeholders.lastname = result.lastname;
+              console.log(this.placeholders);
+            } else {
+              // If the student is not in the db, fill the email field
+              this.placeholders.email = `${username}@ncsu.edu`;
+            }
+          },
+          (err) => {
+            console.log(err);
+          },
+          () => {
+            console.log('completed');
+          }
+        );
+      });
   }
 
   ngOnInit() {
     // Store the current event
     this.currentEvent = this.getCurrentEvent();
+    this.students = this.currentEvent.students;
     // check for route parameters - edit or add student?
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
@@ -92,7 +127,6 @@ export class StudentAddComponent implements OnInit {
   // If the student already exists use the update method
   // Otherwise, use the add method
   onSubmit(): void {
-    console.log(`This happens only once - ${this.studentAddForm.value}`);
     if (!this.student) {
       this.studentService.addStudent(this.studentAddForm.value)
         .subscribe(
@@ -110,9 +144,15 @@ export class StudentAddComponent implements OnInit {
       this.studentService.updateStudent(this.student)
         .subscribe(
         (data) => {
+          // add the student to the event
+          console.log(this.student._id);
+          this.eventService.addStudentToEvent(this.student._id);
           this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
         },
-        error => console.log(error)
+        error => console.log(error),
+        () => {
+          this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
+        }
         );
     }
     this.studentAddForm.reset();

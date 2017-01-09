@@ -84,7 +84,7 @@ export class EventService {
   }
 
   // Modify the properties on an event
-  updateEvent(event: Event): Observable<Response> {
+  updateEvent(event: Event): Observable<Event> {
     let eventsToUpdate: Event[] = [];
     eventsToUpdate.push(event);
     console.log(eventsToUpdate);
@@ -96,6 +96,10 @@ export class EventService {
 
   // Add a student to the event
   addStudentToEvent(studentId: string): void {
+    let index = this.selectedEvent.students.indexOf(studentId);
+    if (index < 0) {
+      return;
+    }
     let students = this.selectedEvent.students.concat(studentId);
     this.selectedEvent.students = students;
     console.log(this.selectedEvent);
@@ -106,13 +110,17 @@ export class EventService {
   }
 
   // Remove a student from the event
-  removeStudentFromEvent(studentId: string): void {
+  removeStudentFromEvent(studentId: string): Observable<Event> | void {
     let index = this.selectedEvent.students.indexOf(studentId);
-    if (index) {
-      this.selectedEvent.students.splice(index, 1);
-      this.updateEvent(this.selectedEvent);
-    } else {
+    console.log(this.selectedEvent.students);
+    console.log(index);
+    if (index < 0) {
+      console.log(`The student with id ${studentId} does not exist in the event`);
       return;
+    } else {
+      console.log(index);
+      this.selectedEvent.students.splice(index, 1);
+      return this.updateEvent(this.selectedEvent);
     }
   }
 

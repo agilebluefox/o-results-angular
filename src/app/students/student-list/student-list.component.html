@@ -9,13 +9,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students | async; let i = index;">
+    <tr *ngFor="let student of students; let i = index;">
       <th scope="row">{{i + 1}}</th>
       <td (click)="editStudent(student)">{{ student.firstname }}</td>
       <td (click)="editStudent(student)">{{ student.lastname }}</td>
       <td (click)="editStudent(student)">{{ student.unityid }}</td>
       <td class="center">
-        <md-checkbox (change)="setStudentStatus($event, student)"></md-checkbox>
+        <md-checkbox [checked]="checked" (change)="setStudentStatus($event, student)"></md-checkbox>
       </td>
     </tr>
   </tbody>
