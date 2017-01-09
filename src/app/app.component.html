@@ -1,15 +1,10 @@
-<div class="app-container">
-  <md-toolbar color="primary">
-    <h1>
-      {{title}}
-    </h1>
-  </md-toolbar>
-  <div class="fx-component-container">
-    <router-outlet></router-outlet>
+<div id="app-container">
+  <div id="header">
+    <md-toolbar color="primary">
+      <h1>
+        {{title}}
+      </h1>
+    </md-toolbar>
   </div>
-  <div class="button">
-  <button md-fab color="primary" (click)="addNewStudent()">
-    <md-icon class="md-24">add</md-icon>
-  </button>
-</div>
+  <router-outlet></router-outlet>
 </div>

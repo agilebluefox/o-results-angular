@@ -1,20 +1,31 @@
-<h1 class="section">
-  Event Dashboard
-</h1>
-<div class="details">
-  <div *ngIf="currentEvent">
-    <h2 class="">{{currentEvent.name}}</h2>
-    <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
+<div class="fx-component-container">
+  <h1 class="section">
+    Event Dashboard
+  </h1>
+  <div class="details">
+    <div *ngIf="currentEvent">
+      <h2 class="">{{currentEvent.name}}</h2>
+      <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
+    </div>
   </div>
+  <div id="button-container">
+  <button md-fab color="primary" (click)="addNewStudent()">
+        <md-icon class="md-24">add</md-icon>
+      </button>
 </div>
-<md-tab-group>
-  <md-tab label="Add Students" class="two-tabs">
-    <h2 class="component">Student Management</h2>
-    <div>
+  <md-tab-group>
+    <md-tab label="Add Students" class="two-tabs">
+      <h2 class="component">Student Management</h2>
+      <div id="fx-content-container">
         <app-student-list></app-student-list>
       </div>
-  </md-tab>
-  <md-tab label="Run Event" class="two-tabs">
-    <h2 class="component">Event Management</h2>
-  </md-tab>
-</md-tab-group>
+    </md-tab>
+    <md-tab label="Run Event" class="two-tabs">
+      <h2 class="component">Event Management</h2>
+      <div>
+        <app-event-manager></app-event-manager>
+      </div>
+    </md-tab>
+  </md-tab-group>
+</div>
+

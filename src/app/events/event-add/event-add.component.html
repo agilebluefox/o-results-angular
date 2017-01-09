@@ -2,7 +2,7 @@
 <h3>Event Information</h3>
 <div class="fx-component-container">
   <div class="fx-content-container">
-    <form [formGroup]="eventAddForm" (ngSubmit)="onSubmit()">
+    <form id="add-event" [formGroup]="eventAddForm" (ngSubmit)="onSubmit()">
       <md-input class="full-width form-control" placeholder="Event Name - ex. Spring Umstead Park" formControlName="name"></md-input>
       <md-input class="full-width form-control" placeholder="Event Location - ex. Umstead Park" formControlName="location"></md-input>
       <md-input class="full-width form-control" placeholder="Event Date - ex. YYYY-MM-DD" formControlName="date"></md-input>
