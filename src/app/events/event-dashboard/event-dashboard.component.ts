@@ -49,4 +49,8 @@ export class EventDashboardComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  addNewStudent(): void {
+    this.router.navigate(['/student-add']);
+  }
+
 }
