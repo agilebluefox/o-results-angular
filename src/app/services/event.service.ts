@@ -97,12 +97,12 @@ export class EventService {
   // Add a student to the event
   addStudentToEvent(studentId: string): void {
     let index = this.selectedEvent.students.indexOf(studentId);
-    if (index < 0) {
+    if (index !== -1) {
       return;
     }
     let students = this.selectedEvent.students.concat(studentId);
     this.selectedEvent.students = students;
-    console.log(this.selectedEvent);
+    console.log(this.selectedEvent.students);
     let result = this.updateEvent(this.selectedEvent);
     result.subscribe(
       (data) => console.log(data)
@@ -110,7 +110,7 @@ export class EventService {
   }
 
   // Remove a student from the event
-  removeStudentFromEvent(studentId: string): Observable<Event> | void {
+  removeStudentFromEvent(studentId: string): Observable<any> | void {
     let index = this.selectedEvent.students.indexOf(studentId);
     console.log(this.selectedEvent.students);
     console.log(index);
