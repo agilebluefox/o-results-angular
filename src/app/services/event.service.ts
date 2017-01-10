@@ -18,7 +18,7 @@ export class EventService {
   private events: Event[] = [];
 
   // Property to hold the currently selected event
-  private selectedEvent: Event;
+  selectedEvent: Event;
 
   // The url will be a JSON file for now
   // private eventsUrl = 'app/shared/mock-events.json';
@@ -32,14 +32,9 @@ export class EventService {
 
   constructor(private http: Http) { }
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get(this.eventsUrl)
-      .map((res: Response) => {
-        this.events = res.json().data;
-        return res.json().data;
-      })
-      .catch(this.handleError);
-  }
+  /**
+   * Methods for API calls to the server
+   */
 
   // Method to get an event by id that contains unpopulated array fields
   getEventById(id: string): Observable<Event> {
@@ -51,13 +46,33 @@ export class EventService {
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
-  setSelectedEvent(event: Event) {
-    this.selectedEvent = event;
+  getEvents(): Observable<Event[]> {
+    return this.http.get(this.eventsUrl)
+      .map((res: Response) => {
+        this.events = res.json().data;
+        return res.json().data;
+      })
+      .catch(this.handleError);
   }
 
   getSelectedEvent() {
     return this.selectedEvent;
   }
+
+  // Method to handle errors from the Server
+  // TODO: Provide the frontend with a reasonable message for the user
+  handleError(error: any) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server Error');
+  }
+
+  setSelectedEvent(event: Event) {
+    this.selectedEvent = event;
+  }
+
+  /**
+   * Methods to manage events
+   */
 
   addEvent(event: Event): Observable<Event> {
     const body = JSON.stringify(event);
@@ -94,41 +109,43 @@ export class EventService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  /**
+   * Methods to manage the student property on the selected event
+   */
+
   // Add a student to the event
   addStudentToEvent(studentId: string): void {
+    console.log(`The student id to add to the event is: ${studentId}`);
+    console.log(`Before the student is added: ${this.selectedEvent.students}`);
     let index = this.selectedEvent.students.indexOf(studentId);
     if (index !== -1) {
       return;
     }
-    let students = this.selectedEvent.students.concat(studentId);
-    this.selectedEvent.students = students;
-    console.log(this.selectedEvent.students);
+    this.selectedEvent.students.push(studentId);
+    console.log(`After the student is added: ${this.selectedEvent.students}`);
     let result = this.updateEvent(this.selectedEvent);
     result.subscribe(
-      (data) => console.log(data)
+      (data: any) => {
+        console.log(`After the event is updated:`, data.success[0]);
+        this.selectedEvent = data.success[0];
+      }
     );
   }
 
   // Remove a student from the event
   removeStudentFromEvent(studentId: string): Observable<any> | void {
+    console.log(`The student list before the removal is: ${this.selectedEvent.students}`);
     let index = this.selectedEvent.students.indexOf(studentId);
-    console.log(this.selectedEvent.students);
-    console.log(index);
-    if (index < 0) {
-      console.log(`The student with id ${studentId} does not exist in the event`);
+    console.log(`Before removing the student the event is:`, this.selectedEvent);
+    console.log(`The index of the student id is: ${index}`);
+    if (index === -1) {
+      console.log(`The student id ${studentId} does not exist in the event`);
       return;
     } else {
-      console.log(index);
+      console.log(`The index of the student id is: ${index}`);
       this.selectedEvent.students.splice(index, 1);
       return this.updateEvent(this.selectedEvent);
     }
-  }
-
-  // Method to handle errors from the Server
-  // TODO: Provide the frontend with a reasonable message for the user
-  handleError(error: any) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server Error');
   }
 
 }

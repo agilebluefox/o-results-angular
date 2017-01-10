@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Rx';
@@ -16,8 +16,8 @@ import { EventService } from '../../services/event.service';
 export class StudentListComponent implements OnInit {
   statusOptions: Array<string> = ['registered', 'unregistered'];
   student: Student;
-  event: Event;
-  students: Student[] = [];
+  selectedEvent: Event;
+  students: Student[];
   checked: boolean = false;
 
   constructor(
@@ -31,15 +31,17 @@ export class StudentListComponent implements OnInit {
   }
 
   getRegisteredStudents(): void {
-    this.event = this.eventService.getSelectedEvent();
-    let studentIds: string[] = this.event.students;
+    this.students = [];
+    this.selectedEvent = this.eventService.getSelectedEvent();
+    let studentIds: string[] = this.selectedEvent.students;
+    // Store the populated student objects in an array to pass to the template
     studentIds.forEach((id) => {
       let currentStudent = this.studentService.getStudentById(id)
         .subscribe(
-          (s) => {
-            this.students.push(s);
-            this.checked = true;
-          }
+        (s) => {
+          this.students.push(s);
+          this.checked = true;
+        }
         );
     });
   }
@@ -63,11 +65,11 @@ export class StudentListComponent implements OnInit {
     this.studentService.deleteStudent(student._id);
   }
 
-  setStudentStatus(e, student: Student) {
-    console.log(e);
+  setStudentStatus(checkboxValue, student: Student) {
+    console.log(checkboxValue);
     let event = this.eventService.getSelectedEvent();
     let response: Observable<Event> | void;
-    if (e.checked) {
+    if (checkboxValue.checked) {
       console.log(`Add ${student._id} to the student array on the ${event.name} event`);
       this.eventService.addStudentToEvent(student._id);
       console.log(event);
@@ -78,6 +80,8 @@ export class StudentListComponent implements OnInit {
         response.subscribe(
           (result) => {
             console.log(result);
+            this.getRegisteredStudents();
+            console.log(this.students);
           }
         );
       }
