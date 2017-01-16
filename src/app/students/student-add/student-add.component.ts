@@ -132,12 +132,7 @@ export class StudentAddComponent implements OnInit {
         .subscribe(
         (result) => {
           this.student = result;
-          this.currentEvent.students.push(this.student._id);
-          console.log(this.currentEvent);
-          let res = this.eventService.updateEvent(this.currentEvent);
-          res.subscribe(
-            r => console.log(r)
-          );
+          this.eventService.addStudentToEvent(this.student._id);
         },
         error => console.log(error),
         () => {

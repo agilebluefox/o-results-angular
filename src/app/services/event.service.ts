@@ -99,7 +99,7 @@ export class EventService {
   }
 
   // Modify the properties on an event
-  updateEvent(event: Event): Observable<Event> {
+  updateEvent(event: Event): Observable<any> {
     let eventsToUpdate: Event[] = [];
     eventsToUpdate.push(event);
     console.log(eventsToUpdate);
