@@ -59,9 +59,7 @@ export class StudentService {
   }
 
   updateStudent(student: Student): Observable<Student[]> {
-    let studentsToUpdate = [];
-    studentsToUpdate.push(student);
-    const body = JSON.stringify(studentsToUpdate);
+    const body = JSON.stringify(student);
     return this.http.put(this.studentsUrl, body, { headers: this.headers })
       .map((res: Response) => res.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
