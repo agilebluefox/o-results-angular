@@ -16,7 +16,7 @@ import { Student } from '../../models/student.model';
 })
 export class StudentAddComponent implements OnInit {
   public studentAddForm: FormGroup;
-  students: string[];
+  students: Student[];
   private currentEvent: Event;
   private student: Student;
   public placeholders = {
@@ -132,7 +132,7 @@ export class StudentAddComponent implements OnInit {
         .subscribe(
         (result) => {
           this.student = result;
-          this.eventService.addStudentToEvent(this.student._id);
+          this.eventService.addStudentToEvent(this.student);
         },
         error => console.log(error),
         () => {
@@ -146,7 +146,7 @@ export class StudentAddComponent implements OnInit {
         (data) => {
           // add the student to the event
           console.log(this.student._id);
-          this.eventService.addStudentToEvent(this.student._id);
+          this.eventService.addStudentToEvent(this.student);
           this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
         },
         error => console.log(error),

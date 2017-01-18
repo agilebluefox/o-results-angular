@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 
 import { Event } from '../models/event.model';
+import { Student } from '../models/student.model';
 
 interface APIResponse {
   message: string;
@@ -99,11 +100,8 @@ export class EventService {
   }
 
   // Modify the properties on an event
-  updateEvent(event: Event): Observable<any> {
-    let eventsToUpdate: Event[] = [];
-    eventsToUpdate.push(event);
-    console.log(eventsToUpdate);
-    const body = JSON.stringify(eventsToUpdate);
+  updateEvent(event: Event): Observable<Event> {
+    const body = JSON.stringify(event);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
       .map((res: Response) => res.json().data)
       .catch((error: Response) => Observable.throw(error.json()));
@@ -114,14 +112,16 @@ export class EventService {
    */
 
   // Add a student to the event
-  addStudentToEvent(studentId: string): void {
-    console.log(`The student id to add to the event is: ${studentId}`);
+  addStudentToEvent(student: Student): void {
+    console.log(`The student id to add to the event is: ${student._id}`);
     console.log(`Before the student is added: ${this.selectedEvent.students}`);
-    let index = this.selectedEvent.students.indexOf(studentId);
+    let index = this.selectedEvent.students.findIndex((s) => {
+      return s._id === student._id;
+    });
     if (index !== -1) {
       return;
     }
-    this.selectedEvent.students.push(studentId);
+    this.selectedEvent.students.push(student);
     console.log(`After the student is added: ${this.selectedEvent.students}`);
     let result = this.updateEvent(this.selectedEvent);
     result.subscribe(
@@ -133,13 +133,12 @@ export class EventService {
   }
 
   // Remove a student from the event
-  removeStudentFromEvent(studentId: string): Observable<any> | void {
+  removeStudentFromEvent(student: Student): Observable<Event> | void {
     console.log(`The student list before the removal is: ${this.selectedEvent.students}`);
-    let index = this.selectedEvent.students.indexOf(studentId);
-    console.log(`Before removing the student the event is:`, this.selectedEvent);
-    console.log(`The index of the student id is: ${index}`);
-    if (index === -1) {
-      console.log(`The student id ${studentId} does not exist in the event`);
+     let index = this.selectedEvent.students.findIndex((s) => {
+      return s._id === student._id;
+    });
+    if (index !== -1) {
       return;
     } else {
       console.log(`The index of the student id is: ${index}`);
