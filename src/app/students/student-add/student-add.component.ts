@@ -51,6 +51,7 @@ export class StudentAddComponent implements OnInit {
             // If the student already exists
             if (result) {
               this.student = result;
+              this.eventService.addStudentToEvent(this.student);
               console.log(result);
               this.placeholders.unityid = username;
               this.placeholders.email = result.email;

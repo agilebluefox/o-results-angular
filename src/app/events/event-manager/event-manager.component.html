@@ -1,24 +1,32 @@
-<table class="table">
-  <thead class="thead-default">
-    <tr>
-      <th>Name</th>
-      <th>Card Number</th>
-      <th>Status</th>
-      <th>Course</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <td>
-        <md-input-container>
-          <input md-input type="text" size="10" maxlength="7">
-        </md-input-container>
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+<form [formGroup]="entry">
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Card Number</th>
+        <th>Status</th>
+        <th>Course</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="studentsInEvent">
+      <tr *ngFor="let student of studentsInEvent; let i = index;">
+        <td scope="row">{{i + 1}}</td>
+        <td>{{ student.firstname }} {{ student.lastname }}</td>
+        <td>
+          <md-input-container>
+            <input md-input type="text" size="4" maxlength="4" formControlName="cardNo">
+            <span md-prefix>204</span>
+          </md-input-container>
+        </td>
+        <td>Registered</td>
+        <td>
+          <md-input-container>
+            <input md-input type="text" size="2" maxlength="2" formControlName="course">
+          </md-input-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div></div>
+</form>

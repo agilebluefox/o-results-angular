@@ -37,7 +37,7 @@ export class EventService {
    * Methods for API calls to the server
    */
 
-  // Method to get an event by id that contains unpopulated array fields
+  // Method to get an event by id that contains populated array fields
   getEventById(id: string): Observable<Event> {
     return this.http.get(`${this.eventsUrl}/${id}`)
       .map((res: Response) => {
@@ -115,30 +115,31 @@ export class EventService {
   addStudentToEvent(student: Student): void {
     console.log(`The student id to add to the event is: ${student._id}`);
     console.log(`Before the student is added: ${this.selectedEvent.students}`);
-    let index = this.selectedEvent.students.findIndex((s) => {
-      return s._id === student._id;
+    let index = this.selectedEvent.students.findIndex((studentToAdd) => {
+      return studentToAdd._id === student._id;
     });
     if (index !== -1) {
       return;
     }
     this.selectedEvent.students.push(student);
     console.log(`After the student is added: ${this.selectedEvent.students}`);
-    let result = this.updateEvent(this.selectedEvent);
-    result.subscribe(
-      (data: any) => {
-        console.log(`After the event is updated:`, data.success[0]);
-        this.selectedEvent = data.success[0];
+    let res = this.updateEvent(this.selectedEvent);
+    res.subscribe(
+      (result: any) => {
+        console.log(`After the event is updated:`, result);
+        this.selectedEvent = result;
       }
     );
   }
 
   // Remove a student from the event
   removeStudentFromEvent(student: Student): Observable<Event> | void {
-    console.log(`The student list before the removal is: ${this.selectedEvent.students}`);
-     let index = this.selectedEvent.students.findIndex((s) => {
-      return s._id === student._id;
+    console.log(`The student list before the removal is: `, this.selectedEvent.students);
+    let index = this.selectedEvent.students.findIndex((studentToRemove) => {
+      return studentToRemove._id === student._id;
     });
-    if (index !== -1) {
+    console.log(`The index of the student id is: ${index}`);
+    if (index === -1) {
       return;
     } else {
       console.log(`The index of the student id is: ${index}`);
