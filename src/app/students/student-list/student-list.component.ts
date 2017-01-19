@@ -17,8 +17,8 @@ export class StudentListComponent implements OnInit {
   statusOptions: Array<string> = ['registered', 'unregistered'];
   student: Student;
   selectedEvent: Event;
-  students: Student[];
-  checked: boolean = false;
+  students: Student[] = [];
+  checked: boolean = true;
 
   constructor(
     private studentService: StudentService,
@@ -27,23 +27,13 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getRegisteredStudents();
+    this.students = this.getRegisteredStudents();
   }
 
-  getRegisteredStudents(): void {
-    this.students = [];
+  // Retrieve the currently selected event and grab the student property
+  getRegisteredStudents(): Student[] {
     this.selectedEvent = this.eventService.getSelectedEvent();
-    let studentIds: string[] = this.selectedEvent.students;
-    // Store the populated student objects in an array to pass to the template
-    studentIds.forEach((id) => {
-      let currentStudent = this.studentService.getStudentById(id)
-        .subscribe(
-        (s) => {
-          this.students.push(s);
-          this.checked = true;
-        }
-        );
-    });
+     return this.selectedEvent.students;
   }
 
   goToDetails(student: Student): void {
@@ -70,12 +60,12 @@ export class StudentListComponent implements OnInit {
     let event = this.eventService.getSelectedEvent();
     let response: Observable<Event> | void;
     if (checkboxValue.checked) {
-      console.log(`Add ${student._id} to the student array on the ${event.name} event`);
-      this.eventService.addStudentToEvent(student._id);
+      console.log(`Add ${student.unityid} to the student array on the ${event.name} event`);
+      this.eventService.addStudentToEvent(student);
       console.log(event);
     } else {
-      console.log(`Remove ${student._id} from the student array on the ${event.name} event`);
-      response = this.eventService.removeStudentFromEvent(student._id);
+      console.log(`Remove ${student.unityid} from the student array on the ${event.name} event`);
+      response = this.eventService.removeStudentFromEvent(student);
       if (response) {
         response.subscribe(
           (result) => {
