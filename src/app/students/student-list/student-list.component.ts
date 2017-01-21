@@ -65,16 +65,9 @@ export class StudentListComponent implements OnInit {
       console.log(event);
     } else {
       console.log(`Remove ${student.unityid} from the student array on the ${event.name} event`);
-      response = this.eventService.removeStudentFromEvent(student);
-      if (response) {
-        response.subscribe(
-          (result) => {
-            console.log(result);
-            this.getRegisteredStudents();
-            console.log(this.students);
-          }
-        );
-      }
+      this.eventService.removeStudentFromEvent(student);
+      // Update the list of students on the page
+      this.students = this.getRegisteredStudents();
     }
   }
 

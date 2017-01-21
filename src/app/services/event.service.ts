@@ -114,7 +114,7 @@ export class EventService {
   // Add a student to the event
   addStudentToEvent(student: Student): void {
     console.log(`The student id to add to the event is: ${student._id}`);
-    console.log(`Before the student is added: ${this.selectedEvent.students}`);
+    console.log(`Before the student is added: `, this.selectedEvent.students);
     let index = this.selectedEvent.students.findIndex((studentToAdd) => {
       return studentToAdd._id === student._id;
     });
@@ -122,7 +122,7 @@ export class EventService {
       return;
     }
     this.selectedEvent.students.push(student);
-    console.log(`After the student is added: ${this.selectedEvent.students}`);
+    console.log(`After the student is added: `, this.selectedEvent.students);
     let res = this.updateEvent(this.selectedEvent);
     res.subscribe(
       (result: any) => {
@@ -133,19 +133,22 @@ export class EventService {
   }
 
   // Remove a student from the event
-  removeStudentFromEvent(student: Student): Observable<Event> | void {
+  removeStudentFromEvent(student: Student): void {
     console.log(`The student list before the removal is: `, this.selectedEvent.students);
     let index = this.selectedEvent.students.findIndex((studentToRemove) => {
       return studentToRemove._id === student._id;
     });
     console.log(`The index of the student id is: ${index}`);
-    if (index === -1) {
-      return;
-    } else {
-      console.log(`The index of the student id is: ${index}`);
-      this.selectedEvent.students.splice(index, 1);
-      return this.updateEvent(this.selectedEvent);
-    }
-  }
+    if (index === -1) { return; }
+    console.log(`The index of the student id is: ${index}`);
+    this.selectedEvent.students.splice(index, 1);
+    let res = this.updateEvent(this.selectedEvent);
+    res.subscribe(
+      (result: any) => {
+        console.log(`After the event is updated:`, result);
+        this.selectedEvent = result;
+      }
+    );
+}
 
 }

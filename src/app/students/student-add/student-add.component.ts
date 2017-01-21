@@ -133,12 +133,12 @@ export class StudentAddComponent implements OnInit {
         .subscribe(
         (result) => {
           this.student = result;
+          console.log(this.student);
           this.eventService.addStudentToEvent(this.student);
+          this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
         },
         error => console.log(error),
-        () => {
-          this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
-        }
+        () => {}
         );
     } else {
       Object.assign(this.student, this.studentAddForm.value);
@@ -146,14 +146,12 @@ export class StudentAddComponent implements OnInit {
         .subscribe(
         (data) => {
           // add the student to the event
-          console.log(this.student._id);
+          console.log(this.student);
           this.eventService.addStudentToEvent(this.student);
           this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
         },
         error => console.log(error),
-        () => {
-          this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
-        }
+        () => {}
         );
     }
     this.studentAddForm.reset();
