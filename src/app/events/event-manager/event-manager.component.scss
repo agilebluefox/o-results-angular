@@ -1,0 +1,56 @@
+// Import your custom input theme file so you can call the custom-input-theme function
+@import '../../../assets/styles/oresults-app-theme.scss';
+
+/* Table Styles adopted from Bootstrap */
+
+table {
+  border-collapse: collapse;
+  background-color: transparent;
+  table-layout: fixed;
+}
+
+th {
+  text-align: left;
+}
+
+.table {
+  border-collapse: collapse !important;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.table th {
+  background-color: #fff;
+  padding: 0.75rem 1rem;
+  vertical-align: center;
+  border-top: 1px solid #eceeef;
+  text-align: center;
+}
+
+.table td {
+  background-color: #fff;
+  padding: 0 1rem;
+  vertical-align: center;
+}
+
+.table td.manager-status {
+  background-color: #fff;
+  padding: 0 1rem;
+  width: 150px;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.thead-default th {
+  color: md-color($oresults-app-primary);
+  background-color: #eceeef;
+}
+
+.card-prefix {
+    color: md-color($oresults-app-primary);
+}

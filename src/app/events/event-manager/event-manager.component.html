@@ -11,16 +11,16 @@
     </thead>
     <tbody *ngIf="studentsInEvent">
       <tr *ngFor="let student of studentsInEvent; let i = index;">
-        <td scope="row">{{i + 1}}</td>
-        <td>{{ student.firstname }} {{ student.lastname }}</td>
-        <td>
+        <td class="manager-number" scope="row">{{i + 1}}</td>
+        <td class="manager-name">{{ student.firstname }} {{ student.lastname }}</td>
+        <td class="manager-card"> 
           <md-input-container>
             <input md-input type="text" size="4" maxlength="4" formControlName="cardNo">
-            <span md-prefix>204</span>
+            <span class="card-prefix" md-prefix>204</span>
           </md-input-container>
         </td>
-        <td>Registered</td>
-        <td>
+        <td class="manager-status"><app-status></app-status></td>
+        <td class="manager-course">
           <md-input-container>
             <input md-input type="text" size="2" maxlength="2" formControlName="course">
           </md-input-container>
@@ -28,5 +28,4 @@
       </tr>
     </tbody>
   </table>
-  <div></div>
 </form>

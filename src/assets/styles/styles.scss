@@ -200,39 +200,3 @@ div.md-tab-label-container {
 }
 
 
-/* Table Styles adopted from Bootstrap */
-
-table {
-  border-collapse: collapse;
-  background-color: transparent;
-}
-
-th {
-  text-align: left;
-}
-
-.table {
-  border-collapse: collapse !important;
-  max-width: 100%;
-  margin-bottom: 1rem;
-}
-
-.table td,
-.table th {
-  background-color: #fff;
-  padding: 0.75rem;
-  vertical-align: center;
-  border-top: 1px solid #eceeef;
-}
-
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #eceeef;
-  font-size: 1rem;
-  font-style: italic;
-}
-
-.thead-default th {
-  color: md-color($oresults-app-primary);
-  background-color: #eceeef;
-}
