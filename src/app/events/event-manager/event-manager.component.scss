@@ -10,7 +10,7 @@ table {
 }
 
 th {
-  text-align: left;
+  text-align: center;
 }
 
 .table {
@@ -24,7 +24,6 @@ th {
   padding: 0.75rem 1rem;
   vertical-align: center;
   border-top: 1px solid #eceeef;
-  text-align: center;
 }
 
 .table td {
@@ -36,7 +35,7 @@ th {
 .table td.manager-status {
   background-color: #fff;
   padding: 0 1rem;
-  width: 150px;
+  width: 120px;
 }
 
 .table thead th {

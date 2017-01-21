@@ -13,7 +13,8 @@ export class StatusComponent {
   currentBackgroundClass: string = this.currentStatus.toLowerCase();
   statusNumber: number = 0;
 
-  updateStatus() {
+  updateStatus(e) {
+    e.preventDefault();
     this.statusNumber += 1;
     if (this.statusNumber > 3) {
       this.statusNumber = 0;
