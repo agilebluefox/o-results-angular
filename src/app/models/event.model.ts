@@ -1,4 +1,4 @@
-import { Student } from '../models/student.model';
+import { Student } from './student.model';
 
 export class Event {
   _id?: string;
