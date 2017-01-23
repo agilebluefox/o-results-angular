@@ -1,6 +1,6 @@
 export interface Entry {
+    eventId: string;
     studentId: string;
-    studentName: string;
     cardNo: string;
     status: string;
     course: string;
