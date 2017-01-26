@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
 import { Student } from '../../models/student.model';
+import { Entry } from '../../models/entry.model';
 import { StudentService } from '../../services/student.service';
 import { Event } from '../../models/event.model';
 import { EventService } from '../../services/event.service';
@@ -14,10 +15,8 @@ import { EventService } from '../../services/event.service';
   styleUrls: ['./student-list.component.scss']
 })
 export class StudentListComponent implements OnInit {
-  statusOptions: Array<string> = ['registered', 'unregistered'];
-  student: Student;
   selectedEvent: Event;
-  students: Student[] = [];
+  entries: Entry[] = [];
   checked: boolean = true;
 
   constructor(
@@ -27,13 +26,14 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.students = this.getRegisteredStudents();
+    this.entries = this.getEntries();
+    console.log(`The entries property is: `, this.entries);
   }
 
   // Retrieve the currently selected event and grab the student property
-  getRegisteredStudents(): Student[] {
+  getEntries(): Entry[] {
     this.selectedEvent = this.eventService.getSelectedEvent();
-     return this.selectedEvent.students;
+    return this.selectedEvent.results;
   }
 
   goToDetails(student: Student): void {
@@ -45,10 +45,6 @@ export class StudentListComponent implements OnInit {
     // Navigate to the add component
     let link = ['/student-add', student._id];
     this.router.navigate(link);
-  }
-
-  registerStudentInEvent(student: Student) {
-
   }
 
   deleteStudent(student: Student): void {
@@ -67,7 +63,7 @@ export class StudentListComponent implements OnInit {
       console.log(`Remove ${student.unityid} from the student array on the ${event.name} event`);
       this.eventService.removeStudentFromEvent(student);
       // Update the list of students on the page
-      this.students = this.getRegisteredStudents();
+      this.entries = this.getEntries();
     }
   }
 

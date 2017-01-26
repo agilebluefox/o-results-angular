@@ -14,6 +14,7 @@ import { EventDashboardComponent } from './events/event-dashboard/event-dashboar
 
 import { EventService } from './services/event.service';
 import { StudentService } from './services/student.service';
+import { ResultService } from './services/result.service';
 
 import { StudentListComponent } from './students/student-list/student-list.component';
 import { EventStudentsComponent } from './events/event-students/event-students.component';
@@ -44,7 +45,8 @@ import { StatusComponent } from './events/event-manager/status/status.component'
   ],
   providers: [
     EventService,
-    StudentService
+    StudentService,
+    ResultService
   ],
   bootstrap: [AppComponent]
 })

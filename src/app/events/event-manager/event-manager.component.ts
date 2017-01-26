@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventService } from '../../services/event.service';
 
 import { Student } from '../../models/student.model';
+import { Entry } from '../../models/entry.model';
 
 @Component({
   selector: 'app-event-manager',
@@ -12,8 +13,8 @@ import { Student } from '../../models/student.model';
 })
 export class EventManagerComponent implements OnInit {
 
-  entry: FormGroup;
-  studentsInEvent: Student[] = [];
+  record: FormGroup;
+  results: Entry[] = [];
 
   constructor(
     public fb: FormBuilder,
@@ -22,10 +23,10 @@ export class EventManagerComponent implements OnInit {
 
   ngOnInit() {
     // Get the students already registered for the event
-    this.studentsInEvent = this.eventService.getSelectedEvent().students;
+    this.results = this.eventService.getSelectedEvent().results;
 
     // Use form builder to setup the form elements
-    this.entry = this.fb.group({
+    this.record = this.fb.group({
       studentId: '',
       studentName: '',
       cardNo: '',

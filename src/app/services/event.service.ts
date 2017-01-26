@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { Event } from '../models/event.model';
 import { Student } from '../models/student.model';
+import { Entry } from '../models/entry.model';
 
 interface APIResponse {
   message: string;
@@ -114,41 +115,59 @@ export class EventService {
   // Add a student to the event
   addStudentToEvent(student: Student): void {
     console.log(`The student id to add to the event is: ${student._id}`);
-    console.log(`Before the student is added: `, this.selectedEvent.students);
-    let index = this.selectedEvent.students.findIndex((studentToAdd) => {
-      return studentToAdd._id === student._id;
+    console.log(`Before the student is added: `, this.selectedEvent.results);
+    let index = this.selectedEvent.results.findIndex((entry) => {
+      return entry.student._id === student._id;
     });
+    console.log(`The index of the student in the result property of the event is: ${index}`);
+    // Check if the student is already registered in the event
     if (index !== -1) {
       return;
     }
-    this.selectedEvent.students.push(student);
-    console.log(`After the student is added: `, this.selectedEvent.students);
+    // Add the student to the event stored in the event service
+    // then update the event in the database
+    let entry = new Entry(student);
+    this.selectedEvent.results.push(entry);
     let res = this.updateEvent(this.selectedEvent);
     res.subscribe(
       (result: any) => {
+        console.log(`After the student is added: `, this.selectedEvent.results);
         console.log(`After the event is updated:`, result);
-        this.selectedEvent = result;
+        this.getEventById(this.getSelectedEvent()._id)
+          .subscribe(
+          (e) => {
+            this.selectedEvent = e;
+            console.log(this.selectedEvent);
+          }
+          );
       }
     );
   }
 
   // Remove a student from the event
   removeStudentFromEvent(student: Student): void {
-    console.log(`The student list before the removal is: `, this.selectedEvent.students);
-    let index = this.selectedEvent.students.findIndex((studentToRemove) => {
-      return studentToRemove._id === student._id;
+    console.log(`The event results before the removal is: `, this.selectedEvent.results);
+    let index = this.selectedEvent.results.findIndex((entry) => {
+      return entry.student._id === student._id;
     });
+    // Check to confirm the student is registered in the event
     console.log(`The index of the student id is: ${index}`);
     if (index === -1) { return; }
     console.log(`The index of the student id is: ${index}`);
-    this.selectedEvent.students.splice(index, 1);
+    this.selectedEvent.results.splice(index, 1);
     let res = this.updateEvent(this.selectedEvent);
     res.subscribe(
       (result: any) => {
         console.log(`After the event is updated:`, result);
-        this.selectedEvent = result;
+        this.getEventById(this.getSelectedEvent()._id)
+          .subscribe(
+          (e) => {
+            this.selectedEvent = e;
+            console.log(this.selectedEvent);
+          }
+          );
       }
     );
-}
+  }
 
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="entry">
+<form [formGroup]="record">
   <table class="table">
     <thead class="thead-default">
       <tr>
@@ -9,10 +9,10 @@
         <th>Course</th>
       </tr>
     </thead>
-    <tbody *ngIf="studentsInEvent">
-      <tr *ngFor="let student of studentsInEvent; let i = index;">
+    <tbody *ngIf="results">
+      <tr *ngFor="let result of results; let i = index;">
         <td class="manager-number" scope="row">{{i + 1}}</td>
-        <td class="manager-name">{{ student.firstname }} {{ student.lastname }}</td>
+        <td class="manager-name">{{ result.student.firstname }} {{ result.student.lastname }}</td>
         <td class="manager-card"> 
           <md-input-container>
             <input md-input type="text" size="4" maxlength="4" formControlName="cardNo">

@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Rx';
 
 import { EventService } from '../../services/event.service';
 import { StudentService } from '../../services/student.service';
+import { ResultService } from '../../services/result.service';
+
 import { Event } from '../../models/event.model';
 import { Student } from '../../models/student.model';
 
@@ -16,7 +18,6 @@ import { Student } from '../../models/student.model';
 })
 export class StudentAddComponent implements OnInit {
   public studentAddForm: FormGroup;
-  students: Student[];
   private currentEvent: Event;
   private student: Student;
   public placeholders = {
@@ -29,6 +30,7 @@ export class StudentAddComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private studentService: StudentService,
+    private resultService: ResultService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -50,9 +52,9 @@ export class StudentAddComponent implements OnInit {
           (result) => {
             // If the student already exists
             if (result) {
+              console.log(`The student already exists in the student collection: `, result);
               this.student = result;
               this.eventService.addStudentToEvent(this.student);
-              console.log(result);
               this.placeholders.unityid = username;
               this.placeholders.email = result.email;
               this.placeholders.firstname = result.firstname;
@@ -76,7 +78,6 @@ export class StudentAddComponent implements OnInit {
   ngOnInit() {
     // Store the current event
     this.currentEvent = this.getCurrentEvent();
-    this.students = this.currentEvent.students;
     // check for route parameters - edit or add student?
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
