@@ -1,0 +1,19 @@
+.result-row {
+  display: table-row;
+  &-manager-number {
+    display: table-cell;
+  }
+  &-manager-name {
+    display: table-cell;
+  }
+  &-manager-card {
+    display: table-cell;
+  }
+  &-manager-status {
+    display: table-cell;
+  }
+  &-manager-course {
+    display: table-cell;
+  }
+}
+

@@ -51,5 +51,34 @@ th {
 }
 
 .card-prefix {
-    color: md-color($oresults-app-primary);
+  color: md-color($oresults-app-primary);
+}
+
+// event manager styles
+.completed {
+  background-color: green;
+}
+
+.registered {
+  background-color: grey;
+}
+
+.on-course {
+  background-color: darkred;
+}
+
+.checked-in {
+  background-color: darkblue;
+}
+
+.status {
+  color: white;
+  padding: 0.5rem;
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+}
+
+.result-list {
+  display: table;
 }

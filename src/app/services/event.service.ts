@@ -133,13 +133,14 @@ export class EventService {
       (result: any) => {
         console.log(`After the student is added: `, this.selectedEvent.results);
         console.log(`After the event is updated:`, result);
-        this.getEventById(this.getSelectedEvent()._id)
-          .subscribe(
-          (e) => {
-            this.selectedEvent = e;
-            console.log(this.selectedEvent);
-          }
-          );
+        this.selectedEvent = result;
+        // this.getEventById(this.getSelectedEvent()._id)
+        //   .subscribe(
+        //   (e) => {
+        //     this.selectedEvent = e;
+        //     console.log(this.selectedEvent);
+        //   }
+        //   );
       }
     );
   }
@@ -159,13 +160,14 @@ export class EventService {
     res.subscribe(
       (result: any) => {
         console.log(`After the event is updated:`, result);
-        this.getEventById(this.getSelectedEvent()._id)
-          .subscribe(
-          (e) => {
-            this.selectedEvent = e;
-            console.log(this.selectedEvent);
-          }
-          );
+        this.selectedEvent = result;
+        // this.getEventById(this.getSelectedEvent()._id)
+        //   .subscribe(
+        //   (e) => {
+        //     this.selectedEvent = e;
+        //     console.log(this.selectedEvent);
+        //   }
+        //   );
       }
     );
   }

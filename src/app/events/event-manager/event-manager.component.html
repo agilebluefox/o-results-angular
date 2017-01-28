@@ -1,4 +1,3 @@
-<form [formGroup]="record">
   <table class="table">
     <thead class="thead-default">
       <tr>
@@ -9,23 +8,7 @@
         <th>Course</th>
       </tr>
     </thead>
-    <tbody *ngIf="results">
-      <tr *ngFor="let result of results; let i = index;">
-        <td class="manager-number" scope="row">{{i + 1}}</td>
-        <td class="manager-name">{{ result.student.firstname }} {{ result.student.lastname }}</td>
-        <td class="manager-card"> 
-          <md-input-container>
-            <input md-input type="text" size="4" maxlength="4" formControlName="cardNo">
-            <span class="card-prefix" md-prefix>204</span>
-          </md-input-container>
-        </td>
-        <td class="manager-status"><app-status></app-status></td>
-        <td class="manager-course">
-          <md-input-container>
-            <input md-input type="text" size="2" maxlength="2" formControlName="course">
-          </md-input-container>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</form>
+      </table>
+    <div class="result-list" *ngIf="results">
+      <app-result *ngFor="let result of results; let i = index;" [result]="result" [count]="i"></app-result>
+    </div>

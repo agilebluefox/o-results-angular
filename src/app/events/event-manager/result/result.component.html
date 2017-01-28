@@ -1,0 +1,20 @@
+<form [formGroup]="record">
+  <div class="result-row">
+    <div class="result-row-manager-number" scope="row">{{ count }}</div>
+    <div class="result-row-manager-name">{{ result.student.firstname }} {{ result.student.lastname }}</div>
+    <div class="result-row-manager-card">
+      <md-input-container>
+        <input md-input type="text" size="4" maxlength="4" formControlName="card">
+        <span class="card-prefix" md-prefix>204</span>
+      </md-input-container>
+    </div>
+    <div class="result-row-manager-status">
+      <span (click)="updateStatus()" class="{{ currentBackgroundClass }} status">{{currentStatus}}</span>
+    </div>
+    <div class="result-row-manager-course">
+      <md-input-container>
+        <input md-input type="text" size="2" maxlength="2" formControlName="course">
+      </md-input-container>
+    </div>
+  </div>
+</form>
