@@ -27,7 +27,13 @@ th {
   margin-bottom: 1rem;
 }
 
-.table td,
+.table td {
+  background-color: #fff;
+  padding: 1rem 0.75rem;
+  vertical-align: center;
+  border-top: 1px solid #eceeef;
+}
+
 .table th {
   background-color: #fff;
   padding: 0.75rem;

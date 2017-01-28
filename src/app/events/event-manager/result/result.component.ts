@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Entry } from '../../../models/entry.model';
 
@@ -19,20 +18,10 @@ export class ResultComponent implements OnInit {
   currentBackgroundClass: string = this.currentStatus.toLowerCase();
   // Counter to determine the index number of the status in the array
   statusNumber: number = 0;
-  // The form group to represent the form
-  record: FormGroup;
 
-  constructor(
-    public fb: FormBuilder
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    // Use form builder to setup the form elements
-    this.record = this.fb.group({
-      card: '',
-      course: ''
-    });
-
   }
 
   // Method to update the status when clicked

@@ -1,19 +1,41 @@
-.result-row {
-  display: table-row;
-  &-manager-number {
+// Import your custom input theme file so you can call the custom-input-theme function
+@import '../../../../assets/styles/oresults-app-theme.scss';
+.result-table {
+  &-cell {
+    border-top: 1px solid #eee;
     display: table-cell;
-  }
-  &-manager-name {
-    display: table-cell;
-  }
-  &-manager-card {
-    display: table-cell;
-  }
-  &-manager-status {
-    display: table-cell;
-  }
-  &-manager-course {
-    display: table-cell;
+    padding: 0 0.75rem;
+    border-collapse: collapse !important;
   }
 }
 
+.status {
+  color: #fff;
+  width: 120px;
+  padding: 0.5rem;
+}
+
+// Card prefix number
+
+.card-prefix {
+  color: md-color($oresults-app-primary);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+// event status styles
+.completed {
+  background-color: green;
+}
+
+.registered {
+  background-color: grey;
+}
+
+.on-course {
+  background-color: darkred;
+}
+
+.checked-in {
+  background-color: darkblue;
+}

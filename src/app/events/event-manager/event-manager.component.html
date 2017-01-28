@@ -1,14 +1,14 @@
-  <table class="table">
-    <thead class="thead-default">
-      <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Card Number</th>
-        <th>Status</th>
-        <th>Course</th>
-      </tr>
-    </thead>
-      </table>
-    <div class="result-list" *ngIf="results">
-      <app-result *ngFor="let result of results; let i = index;" [result]="result" [count]="i"></app-result>
+<div class="result-table">
+  <div class="result-table-heading">
+    <div class="result-table-row">
+      <div class="result-table-head">#</div>
+      <div class="result-table-head">Name</div>
+      <div class="result-table-head">Card</div>
+      <div class="result-table-head">Course</div>
+      <div class="result-table-head status">Status</div>
     </div>
+  </div>
+  <div class="result-table-body">
+    <app-result *ngFor="let result of results; let i = index;" [result]="result" [count]="i + 1" class="result-table-row"></app-result>
+  </div>
+</div>
