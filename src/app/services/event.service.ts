@@ -151,9 +151,9 @@ export class EventService {
     this.selectedEvent.results.splice(index, 1);
     let res = this.updateEvent(this.selectedEvent);
     res.subscribe(
-      (result: any) => {
-        console.log(`After the event is updated:`, result);
-        this.selectedEvent = result;
+      (event: Event) => {
+        console.log(`After the event is updated:`, event);
+        this.selectedEvent = event;
       }
     );
   }
@@ -163,6 +163,13 @@ export class EventService {
       return entry._id === result._id;
     });
     this.selectedEvent.results.splice(index, 1, result);
+    let res = this.updateEvent(this.selectedEvent);
+    res.subscribe(
+      (event: Event) => {
+        console.log(`After the event is updated:`, event);
+        this.selectedEvent = event;
+      }
+    );
   }
 
 }
