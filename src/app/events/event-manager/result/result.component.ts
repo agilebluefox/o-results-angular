@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
+import { EventService } from '../../../services/event.service';
 import { Entry } from '../../../models/entry.model';
 
 @Component({
@@ -7,7 +8,7 @@ import { Entry } from '../../../models/entry.model';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit {
+export class ResultComponent {
   @Input() result: Entry;
   @Input() count: number | string;
   // List of status types
@@ -19,10 +20,7 @@ export class ResultComponent implements OnInit {
   // Counter to determine the index number of the status in the array
   statusNumber: number = 0;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private eventService: EventService) { }
 
   // Method to update the status when clicked
   updateStatus() {
@@ -31,9 +29,22 @@ export class ResultComponent implements OnInit {
     this.currentStatus = this.statuses[this.statusNumber];
     // Update the status property of the result for the student
     this.result.status = this.currentStatus;
+    console.log(`The current result is: `, this.result);
+    this.eventService.updateResultOnEvent(event);
 
     // Change the CSS class when the status changes
     this.currentBackgroundClass = this.currentStatus.toLowerCase();
+  }
+
+  updateCard(event) {
+    let cardPrefix = '204';
+    this.result.cardNo = cardPrefix + event.target.value;
+    this.eventService.updateResultOnEvent(event);
+  }
+
+  updateCourse(event) {
+    this.result.course = event.target.value;
+    this.eventService.updateResultOnEvent(event);
   }
 
 }

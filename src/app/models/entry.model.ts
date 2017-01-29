@@ -1,6 +1,7 @@
 import { Student } from './student.model';
 
 export class Entry {
+    _id?: string;
     student: Student;
     cardNo: string;
     status: string;

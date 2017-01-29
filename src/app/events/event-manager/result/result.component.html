@@ -3,13 +3,13 @@
 <div class="result-table-cell name">{{ result.student.firstname }} {{ result.student.lastname }}</div>
 <div class="result-table-cell card">
   <md-input-container>
-    <input md-input type="text" size="4" maxlength="4">
+    <input md-input type="text" size="4" maxlength="4" (keyup)="updateCard($event)">
     <span class="card-prefix" md-prefix>204</span>
   </md-input-container>
 </div>
 <div class="result-table-cell course">
   <md-input-container>
-    <input md-input type="text" size="2" maxlength="2">
+    <input md-input type="text" size="2" maxlength="2" (keyup)="updateCourse($event)">
   </md-input-container>
 </div>
 <div class="result-table-cell status">

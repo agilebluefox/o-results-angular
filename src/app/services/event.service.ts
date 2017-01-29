@@ -134,13 +134,6 @@ export class EventService {
         console.log(`After the student is added: `, this.selectedEvent.results);
         console.log(`After the event is updated:`, result);
         this.selectedEvent = result;
-        // this.getEventById(this.getSelectedEvent()._id)
-        //   .subscribe(
-        //   (e) => {
-        //     this.selectedEvent = e;
-        //     console.log(this.selectedEvent);
-        //   }
-        //   );
       }
     );
   }
@@ -161,15 +154,15 @@ export class EventService {
       (result: any) => {
         console.log(`After the event is updated:`, result);
         this.selectedEvent = result;
-        // this.getEventById(this.getSelectedEvent()._id)
-        //   .subscribe(
-        //   (e) => {
-        //     this.selectedEvent = e;
-        //     console.log(this.selectedEvent);
-        //   }
-        //   );
       }
     );
+  }
+
+  updateResultOnEvent(result) {
+    let index = this.selectedEvent.results.findIndex((entry) => {
+      return entry._id === result._id;
+    });
+    this.selectedEvent.results.splice(index, 1, result);
   }
 
 }
