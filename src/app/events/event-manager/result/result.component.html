@@ -3,15 +3,15 @@
 <div class="result-table-cell name">{{ result.student.firstname }} {{ result.student.lastname }}</div>
 <div class="result-table-cell card">
   <md-input-container>
-    <input md-input type="text" size="7" maxlength="7" (change)="updateCard($event)" value="{{ result.cardNo || '' }}">
+    <input md-input type="text" size="7" maxlength="7" (change)="updateCard($event)" [value]="result.cardNo || ''">
     <span *ngIf="!result.cardNo" class="card-prefix" md-prefix>204</span>
   </md-input-container>
 </div>
 <div class="result-table-cell course">
   <md-input-container>
-    <input md-input type="text" size="2" maxlength="2" (change)="updateCourse($event)" value="{{ result.course || '' }}">
+    <input md-input type="text" size="2" maxlength="2" (change)="updateCourse($event)" [value]="result.course || ''">
   </md-input-container>
 </div>
 <div class="result-table-cell status">
-  <span (click)="updateStatus(result.status)" class="{{ result.status | lowercase }} status">{{ result.status || 'Registered' }}</span>
+  <span (click)="updateStatus(result.status)" class="{{ statuses[result.status] | lowercase }} status">{{ statuses[result.status] }}</span>
 </div>
