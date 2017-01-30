@@ -4,13 +4,13 @@ export class Entry {
     _id?: string;
     student: Student;
     cardNo: string;
-    status: string;
+    status: number;
     course: string;
 
     constructor (student) {
         this.student = student;
         this.cardNo = '';
-        this.status = 'Registered';
+        this.status = 0;
         this.course = '';
     }
 }
