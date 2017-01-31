@@ -8,11 +8,6 @@ import { Event } from '../models/event.model';
 import { Student } from '../models/student.model';
 import { Entry } from '../models/entry.model';
 
-interface APIResponse {
-  message: string;
-  data?: any;
-}
-
 @Injectable()
 export class EventService {
 
@@ -90,7 +85,7 @@ export class EventService {
     return observable;
   }
 
-  deleteEvent(id: string): Observable<APIResponse> {
+  deleteEvent(id: string): Observable<Response> {
     const body = JSON.stringify({ id: id });
     return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
       .map((res: Response) => {
@@ -133,7 +128,7 @@ export class EventService {
       (result: any) => {
         console.log(`After the student is added: `, this.selectedEvent.results);
         console.log(`After the event is updated:`, result);
-        this.selectedEvent = result;
+        Object.assign(this.selectedEvent, event);
       }
     );
   }
@@ -153,7 +148,7 @@ export class EventService {
     res.subscribe(
       (event: Event) => {
         console.log(`After the event is updated:`, event);
-        this.selectedEvent = event;
+        Object.assign(this.selectedEvent, event);
       }
     );
   }
@@ -167,7 +162,7 @@ export class EventService {
     res.subscribe(
       (event: Event) => {
         console.log(`After the event is updated:`, event);
-        this.selectedEvent = event;
+        Object.assign(this.selectedEvent, event);
       }
     );
   }

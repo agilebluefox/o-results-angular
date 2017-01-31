@@ -17,11 +17,17 @@ export class ResultComponent {
 
   constructor(private eventService: EventService) { }
 
+  // Get the current status based on the index of the array
+  getStatus(number): string {
+    return this.statuses[number];
+  }
+
   // Method to update the status when clicked
-  updateStatus(status) {
-    let index = ( this.statuses.indexOf(status) + 1 ) % 4;
-    this.result.status = this.statuses[index];
-    console.log(`The current result is: `, this.result);
+  updateStatus(statusNumber: number) {
+    console.log(`The status number is: `, statusNumber);
+    console.log(`The current result status index is: `, this.result.status);
+    this.result.status = (statusNumber + 1) % 4;
+    console.log(`The current result status index is: `, this.result.status);
     this.eventService.updateResultOnEvent(this.result);
   }
 
