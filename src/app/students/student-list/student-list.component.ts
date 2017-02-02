@@ -26,6 +26,10 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.eventService.getSelectedEvent()
+      .subscribe((e: Event) => {
+        this.selectedEvent = e;
+      });
    // this.entries = this.getEntries();
    // console.log(`The entries property is: `, this.entries);
   }

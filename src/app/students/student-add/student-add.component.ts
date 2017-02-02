@@ -136,7 +136,7 @@ export class StudentAddComponent implements OnInit {
           this.student = result;
           console.log(this.student);
           this.eventService.addStudentToEvent(this.student);
-          this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
+          this.router.navigate([`/event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`]);
         },
         error => console.log(error),
         () => {}
@@ -149,7 +149,7 @@ export class StudentAddComponent implements OnInit {
           // add the student to the event
           console.log(data);
           this.eventService.addStudentToEvent(this.student);
-          this.router.navigate([`/event-dashboard/${this.currentEvent._id}`]);
+          this.router.navigate([`/event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`]);
         },
         error => console.log(error),
         () => {}
@@ -184,7 +184,7 @@ export class StudentAddComponent implements OnInit {
 
   goBack() {
     //this.currentEvent = this.eventService.getSelectedEvent();
-    let link = `./event-dashboard/${this.currentEvent._id}`;
+    let link = `./event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`;
     this.router.navigate([link]);
   }
 
