@@ -4,7 +4,7 @@
   </h1>
   <div id="fx-content-container">
     <md-nav-list class="events">
-      <md-list-item *ngFor="let event of events | async" class="event-item">
+      <md-list-item *ngFor="let event of this.eventService.getEvents() | async" class="event-item">
         <a id="name" md-line (click)="selectEvent(event)">{{ event.date | date:"yyyy" }} {{ event.name }}</a>
         <a md-button color="primary" (click)="editEvent(event)">Edit</a>
         <a md-button color="primary" (click)="deleteEvent(event._id)">Remove</a>
