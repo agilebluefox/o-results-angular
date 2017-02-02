@@ -3,9 +3,9 @@
     Event Dashboard
   </h1>
   <div class="details">
-    <div *ngIf="currentEvent">
-      <h2 class="">{{currentEvent.name}}</h2>
-      <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
+    <div *ngIf="eventService.getSelectedEvent()">
+      <h2 class="">{{eventService.getSelectedEvent().name}}</h2>
+      <p class="detail-date">{{eventService.getSelectedEvent().date | date:'longDate'}}</p>
     </div>
   </div>
   <div id="button-container">
@@ -22,7 +22,7 @@
     </md-tab>
     <md-tab label="Run Event" class="two-tabs">
       <h2 class="component">Event Management</h2>
-      <div id="fx-content-container">
+      <div id="fx-content-container2">
         <app-event-manager></app-event-manager>
       </div>
     </md-tab>
