@@ -26,15 +26,15 @@ export class StudentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.entries = this.getEntries();
-    console.log(`The entries property is: `, this.entries);
+   // this.entries = this.getEntries();
+   // console.log(`The entries property is: `, this.entries);
   }
 
   // Retrieve the currently selected event and grab the student property
-  getEntries(): Entry[] {
-    this.selectedEvent = this.eventService.getSelectedEvent();
-    return this.selectedEvent.results;
-  }
+  // getEntries(): Entry[] {
+  //   //this.selectedEvent = this.eventService.getSelectedEvent();
+  //   //return this.eventService.getSelectedEvent().getValue().results;
+  // }
 
   goToDetails(student: Student): void {
     let link = ['/student-details', student._id];
@@ -56,14 +56,14 @@ export class StudentListComponent implements OnInit {
     let event = this.eventService.getSelectedEvent();
     let response: Observable<Event> | void;
     if (checkboxValue.checked) {
-      console.log(`Add ${student.unityid} to the student array on the ${event.name} event`);
+
       this.eventService.addStudentToEvent(student);
       console.log(event);
     } else {
-      console.log(`Remove ${student.unityid} from the student array on the ${event.name} event`);
+
       this.eventService.removeStudentFromEvent(student);
       // Update the list of students on the page
-      this.entries = this.getEntries();
+     // this.entries = this.getEntries();
     }
   }
 
