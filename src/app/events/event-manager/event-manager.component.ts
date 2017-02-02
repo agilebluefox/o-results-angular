@@ -18,8 +18,8 @@ export class EventManagerComponent implements OnInit {
 
   ngOnInit() {
     // Get the students already registered for the event
-    this.results = this.eventService.getSelectedEvent().results;
-    console.log(`The results on the event manager is: `, this.results);
+    //this.results = this.eventService.getSelectedEvent().results;
+    console.log(`The results on the event manager is: `, this.eventService.getSelectedEvent());
   }
 
 }

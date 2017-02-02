@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   // Call getEvents to add the list when the page loads
   ngOnInit(): void {
      this.events = this.getEvents();
+     console.log(this.events);
   }
 
   // Get the events
