@@ -25,19 +25,10 @@ export class EventDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.currentEvent = this.eventService.getSelectedEvent();
-    // this.route.params.forEach((params: Params) => {
-    //   // Route params are always strings
-    //   let id: string = params['id'];
-    //   // Get event from service
-    //   this.eventService.getEventById(id)
-    //     .subscribe(
-    //       (result) => {
-    //         this.currentEvent = result;
-    //       },
-    //       error => console.log(error)
-    //     );
-    // });
+    this.eventService.getSelectedEvent()
+      .subscribe((event:Event)=>{
+        this.currentEvent = event;
+      });
   }
 
   goBack() {
