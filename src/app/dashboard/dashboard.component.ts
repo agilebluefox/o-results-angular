@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
 
   // Add an event
   addNewEvent(): void {
+    this.eventService.setSelectedEvent(null);
     let link = ['/event-add'];
     // Navigate to the add form component
     this.router.navigate(link);
@@ -49,8 +50,9 @@ export class DashboardComponent implements OnInit {
 
    editEvent(event: Event): void {
       // Navigate to the add component
-      let id = event._id;
-      let link = ['/event-add', id];
+     console.log('edit existing event: ', event);
+      this.eventService.setSelectedEvent(event);
+      let link = ['/event-add'];
       this.router.navigate(link);
     }
 

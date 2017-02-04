@@ -13,7 +13,7 @@ import { EventService } from '../../services/event.service';
 })
 export class EventAddComponent implements OnInit {
 
-   event: Event = null;
+  isUpdate:Boolean = false;
 
    placeholders: any = {
     name: null,
@@ -29,33 +29,30 @@ export class EventAddComponent implements OnInit {
     private eventService: EventService
   ) { }
 
-  // If the user selected an event to edit, insert the values for 
+  // If the user selected an event to edit, insert the values for
   // the expected properties in the form fields.
   // Otherwise, present the user with a blank form.
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      // Route params are always strings
-      let id: string = params['id'];
-      if (id) {
         // Get event from service
-        this.eventService.getEventById(id)
+        this.eventService.getSelectedEvent()
           .subscribe(
-          (result) => {
-            this.event = result;
-            console.log(this.event);
-            // Load the event property values in the form fields
-            this.placeholders = {
-              name: this.event.name,
-              location: this.event.location,
-              date: this.event.date
-            };
-            this.renderForm(this.placeholders);
+          (event:Event) => {
+            console.log(event);
+            if(event) {
+              this.isUpdate = true;
+              // Load the event property values in the form fields
+              this.placeholders = {
+                name: event.name,
+                location: event.location,
+                date: event.date
+              };
+              this.renderForm(this.placeholders);
+            }else {
+              this.renderForm(this.placeholders);
+            }
           },
           error => console.log(error)
-          );
-      }
-      this.renderForm(this.placeholders);
-    });
+          ).unsubscribe();
   }
 
   renderForm(placeholders): void {
@@ -70,26 +67,26 @@ export class EventAddComponent implements OnInit {
   // Otherwise, use the add method
   onSubmit(): void {
     console.log(this.eventAddForm.value);
-    if (!this.event) {
+    if (!this.isUpdate) {
       this.eventService.addEvent(this.eventAddForm.value)
         .subscribe(
         (result) => {
-          this.event = result;
+          this.router.navigate([`/event-dashboard`]);
         },
         error => console.log(error),
-        () => {
-          this.router.navigate([`/event-dashboard/${this.event._id}`]);
-        }
         );
     } else {
-      Object.assign(this.event, this.eventAddForm.value);
-      this.eventService.updateEvent(this.event)
-        .subscribe(
-        (data) => {
-          this.router.navigate([`/event-dashboard/${this.event._id}`]);
-        },
-        error => console.log(error)
-        );
+      this.eventService.getSelectedEvent()
+        .subscribe((event:Event)=>{
+          Object.assign(event, this.eventAddForm.value);
+          this.eventService.updateEvent(event)
+            .subscribe(
+              (data) => {
+                this.router.navigate([`/event-dashboard`]);
+              },
+              error => console.log(error)
+            );
+      }).unsubscribe();
     }
     this.eventAddForm.reset();
   }

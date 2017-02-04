@@ -103,9 +103,12 @@ export class EventService {
 
   // Modify the properties on an event
   updateEvent(event: Event): Observable<Event> {
+    console.log('The event about to be updated: ', event);
     const body = JSON.stringify(event);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
-      .map((res: Response) => res.json().data)
+      .map((res: Response) => {
+        this.selectedEvent.next(res.json().data);
+      })
       .catch((error: Response) => Observable.throw(error.json()));
   }
 

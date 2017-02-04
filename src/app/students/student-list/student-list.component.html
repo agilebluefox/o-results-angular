@@ -8,8 +8,8 @@
       <th class="center">Registered</th>
     </tr>
   </thead>
-  <tbody *ngIf="entries" >
-    <tr *ngFor="let entry of eventService.getSelectedEvent().entries; let i = index;">
+  <tbody>
+    <tr *ngFor="let entry of selectedEvent.results; let i = index;">
       <th scope="row">{{i + 1}}</th>
       <td (click)="editStudent(entry.student)">{{ entry.student.firstname }}</td>
       <td (click)="editStudent(entry.student)">{{ entry.student.lastname }}</td>

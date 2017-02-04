@@ -3,9 +3,9 @@
     Event Dashboard
   </h1>
   <div class="details">
-    <div *ngIf="eventService.getSelectedEvent()">
-      <h2 class="">{{eventService.getSelectedEvent().name}}</h2>
-      <p class="detail-date">{{eventService.getSelectedEvent().date | date:'longDate'}}</p>
+    <div *ngIf="currentEvent">
+      <h2 class="">{{currentEvent.name}}</h2>
+      <p class="detail-date">{{currentEvent.date | date:'longDate'}}</p>
     </div>
   </div>
   <div id="button-container">
