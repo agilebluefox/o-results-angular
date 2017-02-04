@@ -77,7 +77,7 @@ export class StudentAddComponent implements OnInit {
 
   ngOnInit() {
     // Store the current event
-    //this.currentEvent = this.getCurrentEvent();
+    // this.currentEvent = this.getCurrentEvent();
     // check for route parameters - edit or add student?
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
@@ -183,7 +183,7 @@ export class StudentAddComponent implements OnInit {
   }
 
   goBack() {
-    //this.currentEvent = this.eventService.getSelectedEvent();
+    // this.currentEvent = this.eventService.getSelectedEvent();
     let link = `./event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`;
     this.router.navigate([link]);
   }

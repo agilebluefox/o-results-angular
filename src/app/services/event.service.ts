@@ -45,10 +45,10 @@ export class EventService {
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
-  loadEvents(){
+  loadEvents() {
     this.http.get(this.eventsUrl)
       .subscribe((res: Response) => {
-        let events = (<Object[]>res.json().data).map((ev:Event)=>ev);
+        let events = (<Object[]>res.json().data).map((ev: Event) => ev);
         this.events.next(events);
       },
       err => this.handleError);
@@ -103,9 +103,12 @@ export class EventService {
 
   // Modify the properties on an event
   updateEvent(event: Event): Observable<Event> {
+    console.log(`The event about to be updated is: `, event);
     const body = JSON.stringify(event);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
-      .map((res: Response) => res.json().data)
+      .map((res: Response) => {
+        this.selectedEvent.next(res.json().data);
+      })
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
@@ -115,7 +118,7 @@ export class EventService {
 
   // Add a student to the event
   addStudentToEvent(student: Student): void {
-    let event = this.selectedEvent.getValue()
+    let event = this.selectedEvent.getValue();
     console.log(`The selected event:`);
     console.log(event);
     let index = event.results.findIndex((entry) => {
@@ -151,9 +154,9 @@ export class EventService {
     event.results.splice(index, 1);
     let res = this.updateEvent(event);
     res.subscribe(
-      (event: Event) => {
-        console.log(`After the event is updated:`, event);
-        this.selectedEvent.next(event);
+      (e: Event) => {
+        console.log(`After the event is updated:`, e);
+        this.selectedEvent.next(e);
       }
     );
   }
@@ -166,9 +169,9 @@ export class EventService {
     event.results.splice(index, 1, result);
     let res = this.updateEvent(event);
     res.subscribe(
-      (event: Event) => {
-        console.log(`After the event is updated:`, event);
-        this.selectedEvent.next(event);
+      (e: Event) => {
+        console.log(`After the event is updated:`, e);
+        this.selectedEvent.next(e);
       }
     );
   }

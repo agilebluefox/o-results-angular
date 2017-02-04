@@ -36,21 +36,22 @@ export class DashboardComponent implements OnInit {
   // Store the mongo id of the event selected by the user
   selectEvent(event: Event): void {
     this.eventService.setSelectedEvent(event);
-    let link = ['/event-dashboard', event._id];
+    let link = ['/event-dashboard'];
     this.router.navigate(link);
   }
 
   // Add an event
   addNewEvent(): void {
+    this.eventService.setSelectedEvent(null);
     let link = ['/event-add'];
     // Navigate to the add form component
     this.router.navigate(link);
   }
 
    editEvent(event: Event): void {
+         this.eventService.setSelectedEvent(event);
       // Navigate to the add component
-      let id = event._id;
-      let link = ['/event-add', id];
+      let link = ['/event-add'];
       this.router.navigate(link);
     }
 
