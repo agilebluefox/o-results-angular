@@ -76,7 +76,6 @@ export class StudentAddComponent implements OnInit {
 
   ngOnInit() {
     // Store the current event
-    // this.currentEvent = this.getCurrentEvent();
     // check for route parameters - edit or add student?
     this.route.params.forEach((params: Params) => {
       // Route params are always strings

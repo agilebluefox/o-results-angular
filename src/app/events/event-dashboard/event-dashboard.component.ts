@@ -6,8 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { Event } from '../../models/event.model';
 import { EventService } from '../../services/event.service';
 
-// import { Student } from '../../models/student.model';
-
 @Component({
   selector: 'app-event-dashboard',
   templateUrl: './event-dashboard.component.html',

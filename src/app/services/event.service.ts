@@ -134,12 +134,6 @@ export class EventService {
     let entry = new Entry(student);
     event.results.push(entry);
     this.updateEvent(event);
-    // let res = this.updateEvent(event);
-    // res.subscribe(
-    //   (e: Event) => {
-    //     this.selectedEvent.next(e);
-    //   }
-    // );
   }
 
   // Remove a student from the event
@@ -154,13 +148,7 @@ export class EventService {
     if (index === -1) { return; }
     console.log(`The index of the student id is: ${index}`);
     event.results.splice(index, 1);
-    let res = this.updateEvent(event);
-    res.subscribe(
-      (e: Event) => {
-        console.log(`After the event is updated:`, e);
-        this.selectedEvent.next(e);
-      }
-    );
+    this.updateEvent(event);
   }
 
   updateResultOnEvent(result) {
@@ -169,13 +157,7 @@ export class EventService {
       return entry._id === result._id;
     });
     event.results.splice(index, 1, result);
-    let res = this.updateEvent(event);
-    res.subscribe(
-      (e: Event) => {
-        console.log(`After the event is updated:`, e);
-        this.selectedEvent.next(e);
-      }
-    );
+    this.updateEvent(event);
   }
 
 }
