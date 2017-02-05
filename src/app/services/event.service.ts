@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 import 'rxjs/add/operator/map';
-import {Observable, BehaviorSubject} from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Event } from '../models/event.model';
 import { Student } from '../models/student.model';
@@ -83,6 +83,7 @@ export class EventService {
     let observable = this.http.post(this.eventsUrl, body, { headers: this.headers })
       .map((res: Response) => {
         this.selectedEvent.next(res.json().data);
+        this.loadEvents();
         console.log(res.json().message);
         return this.getSelectedEvent();
       })
@@ -95,8 +96,9 @@ export class EventService {
     const body = JSON.stringify({ id: id });
     return this.http.delete(this.eventsUrl, { headers: this.headers, body: body })
       .map((res: Response) => {
-      let events = this.events.getValue();
+        let events = this.events.getValue();
         this.events.next(events.splice(events.indexOf(res.json().data), 1));
+        this.loadEvents();
       })
       .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }

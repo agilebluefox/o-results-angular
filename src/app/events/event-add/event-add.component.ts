@@ -14,7 +14,7 @@ import { EventService } from '../../services/event.service';
 export class EventAddComponent implements OnInit {
 
   event: Event = null;
-  private isUpdate = false;
+  private isUpdate: Boolean = false;
 
   placeholders: any = {
     name: null,
@@ -49,7 +49,6 @@ export class EventAddComponent implements OnInit {
           };
           this.renderForm(this.placeholders);
         } else {
-
           this.renderForm(this.placeholders);
         }
       },
@@ -69,21 +68,14 @@ export class EventAddComponent implements OnInit {
   // Otherwise, use the add method
   onSubmit(): void {
     console.log(this.eventAddForm.value);
-    if (!this.isUpdate) {
-      this.eventService.addEvent(this.eventAddForm.value)
-        .subscribe(
-        (result) => {
-          this.router.navigate([`/event-dashboard/`]);
-        },
-        error => console.log(error),
-      ).unsubscribe();
-    } else {
+    console.log(`The event already exists: ${this.isUpdate}`);
+    if (this.isUpdate) {
       this.eventService.getSelectedEvent()
         .subscribe(
-        (event: Event) => {
+        (event$: Event) => {
           Object.assign(event, this.eventAddForm.value);
-          console.log(`The event assigned to the object to update is: `, event);
-          this.eventService.updateEvent(event)
+          console.log(`The event assigned to the object to update is: `, event$);
+          this.eventService.updateEvent(event$)
             .subscribe(
             () => {
               this.router.navigate([`/event-dashboard/`]);
@@ -91,8 +83,17 @@ export class EventAddComponent implements OnInit {
             error => console.log(error)
             );
         }).unsubscribe();
+    } else {
+      this.eventService.addEvent(this.eventAddForm.value)
+        .subscribe(
+        (event$: Event) => {
+          console.log(`The event was added: `, event$);
+          this.router.navigate([`/event-dashboard/`]);
+        },
+        error => console.log(error),
+      );
     }
-    this.eventAddForm.reset();
+    // this.eventAddForm.reset();
   }
 
   goBack(link) {
