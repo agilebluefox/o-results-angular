@@ -82,10 +82,11 @@ export class EventAddComponent implements OnInit {
         .subscribe(
         (event: Event) => {
           Object.assign(event, this.eventAddForm.value);
+          console.log(`The event assigned to the object to update is: `, event);
           this.eventService.updateEvent(event)
             .subscribe(
-            (data) => {
-              this.router.navigate([`/event-dashboard/${this.event._id}`]);
+            () => {
+              this.router.navigate([`/event-dashboard/`]);
             },
             error => console.log(error)
             );
