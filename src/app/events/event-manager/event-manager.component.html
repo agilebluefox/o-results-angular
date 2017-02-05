@@ -9,6 +9,6 @@
     </div>
   </div>
   <div class="result-table-body" *ngIf="results">
-    <app-result *ngFor="let result of eventService.getSelectedEvent().results; let i = index;" [result]="result" [count]="i + 1" class="result-table-row"></app-result>
+    <app-result *ngFor="let result of results; let i = index;" [result]="result" [count]="i + 1" class="result-table-row"></app-result>
   </div>
 </div>

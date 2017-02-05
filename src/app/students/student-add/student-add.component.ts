@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Rx';
 
 import { EventService } from '../../services/event.service';
 import { StudentService } from '../../services/student.service';
-import { ResultService } from '../../services/result.service';
 
 import { Event } from '../../models/event.model';
 import { Student } from '../../models/student.model';
@@ -18,7 +17,6 @@ import { Student } from '../../models/student.model';
 })
 export class StudentAddComponent implements OnInit {
   public studentAddForm: FormGroup;
-  private currentEvent: Event;
   private student: Student;
   public placeholders = {
     unityid: null,
@@ -30,7 +28,6 @@ export class StudentAddComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private studentService: StudentService,
-    private resultService: ResultService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -45,20 +42,16 @@ export class StudentAddComponent implements OnInit {
       (x) => { console.log('Next: ' + x); },
       (err) => { console.log('Error: ' + err); },
       () => {
-        console.log('Completed');
         let response = this.studentService.getStudentById(username);
         console.log(response);
         response.subscribe(
-          (result) => {
+          (student$) => {
             // If the student already exists
-            if (result) {
-              console.log(`The student already exists in the student collection: `, result);
-              this.student = result;
+            if (student$) {
+              console.log(`The student already exists in the student collection: `, student$);
+              this.student = student$;
               this.eventService.addStudentToEvent(this.student);
-              this.placeholders.unityid = username;
-              this.placeholders.email = result.email;
-              this.placeholders.firstname = result.firstname;
-              this.placeholders.lastname = result.lastname;
+              this.placeholders = this.updatePlaceholders(student$);
               console.log(this.placeholders);
             } else {
               // If the student is not in the db, fill the email field
@@ -67,12 +60,18 @@ export class StudentAddComponent implements OnInit {
           },
           (err) => {
             console.log(err);
-          },
-          () => {
-            console.log('completed');
           }
         );
       });
+  }
+
+  updatePlaceholders(student): any {
+    let tmpPlaceholders;
+    tmpPlaceholders.unityid = student.username;
+    tmpPlaceholders.email = student.email;
+    tmpPlaceholders.firstname = student.firstname;
+    tmpPlaceholders.lastname = student.lastname;
+    return tmpPlaceholders;
   }
 
   ngOnInit() {
@@ -90,12 +89,7 @@ export class StudentAddComponent implements OnInit {
             this.student = result;
             console.log(this.student);
             // Load the student property values in the form fields
-            this.placeholders = {
-              unityid: this.student.unityid,
-              email: this.student.email,
-              firstname: this.student.firstname,
-              lastname: this.student.lastname
-            };
+            this.placeholders = this.updatePlaceholders(this.student);
             this.renderForm(this.placeholders);
           },
           error => console.log(error)
@@ -136,10 +130,9 @@ export class StudentAddComponent implements OnInit {
           this.student = result;
           console.log(this.student);
           this.eventService.addStudentToEvent(this.student);
-          this.router.navigate([`/event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`]);
+          this.router.navigate([`/event-dashboard/`]);
         },
-        error => console.log(error),
-        () => {}
+        error => console.log(error)
         );
     } else {
       Object.assign(this.student, this.studentAddForm.value);
@@ -149,10 +142,10 @@ export class StudentAddComponent implements OnInit {
           // add the student to the event
           console.log(data);
           this.eventService.addStudentToEvent(this.student);
-          this.router.navigate([`/event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`]);
+          this.router.navigate([`/event-dashboard/`]);
         },
         error => console.log(error),
-        () => {}
+        () => { }
         );
     }
     this.studentAddForm.reset();
@@ -183,8 +176,7 @@ export class StudentAddComponent implements OnInit {
   }
 
   goBack() {
-    // this.currentEvent = this.eventService.getSelectedEvent();
-    let link = `./event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id )}`;
+    let link = `./event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id)}`;
     this.router.navigate([link]);
   }
 

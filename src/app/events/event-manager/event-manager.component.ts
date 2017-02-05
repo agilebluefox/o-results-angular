@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 
 import { Entry } from '../../models/entry.model';
+import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-event-manager',
@@ -18,8 +19,11 @@ export class EventManagerComponent implements OnInit {
 
   ngOnInit() {
     // Get the students already registered for the event
-    //this.results = this.eventService.getSelectedEvent().results;
-    // console.log(`The results on the event manager is: `, this.eventService.getSelectedEvent());
+    this.eventService.getSelectedEvent()
+      .subscribe(
+      (event: Event) => {
+        this.results = event.results;
+      });
   }
 
 }

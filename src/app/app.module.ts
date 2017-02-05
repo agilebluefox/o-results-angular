@@ -47,8 +47,7 @@ import { ResultComponent } from './events/event-manager/result/result.component'
   ],
   providers: [
     EventService,
-    StudentService,
-    ResultService
+    StudentService
   ],
   bootstrap: [AppComponent]
 })

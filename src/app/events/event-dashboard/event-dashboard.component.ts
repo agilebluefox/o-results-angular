@@ -15,7 +15,6 @@ import { EventService } from '../../services/event.service';
 })
 export class EventDashboardComponent implements OnInit {
 
-  events: Event[] = [];
   currentEvent: Event;
 
   constructor(

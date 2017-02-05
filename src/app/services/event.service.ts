@@ -108,6 +108,7 @@ export class EventService {
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
       .map((res: Response) => {
         this.selectedEvent.next(res.json().data);
+        console.log(`The event was updated successfully`);
       })
       .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -119,8 +120,7 @@ export class EventService {
   // Add a student to the event
   addStudentToEvent(student: Student): void {
     let event = this.selectedEvent.getValue();
-    console.log(`The selected event:`);
-    console.log(event);
+    console.log(`The selected event: `, event);
     let index = event.results.findIndex((entry) => {
       return entry.student._id === student._id;
     });
@@ -133,17 +133,19 @@ export class EventService {
     // then update the event in the database
     let entry = new Entry(student);
     event.results.push(entry);
-    let res = this.updateEvent(event);
-    res.subscribe(
-      (result: any) => {
-        this.selectedEvent.next(result);
-      }
-    );
+    this.updateEvent(event);
+    // let res = this.updateEvent(event);
+    // res.subscribe(
+    //   (e: Event) => {
+    //     this.selectedEvent.next(e);
+    //   }
+    // );
   }
 
   // Remove a student from the event
   removeStudentFromEvent(student: Student): void {
     let event = this.selectedEvent.getValue();
+    console.log(`The event to modify is: ${event}`);
     let index = event.results.findIndex((entry) => {
       return entry.student._id === student._id;
     });

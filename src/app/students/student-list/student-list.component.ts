@@ -27,18 +27,13 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventService.getSelectedEvent()
-      .subscribe((e: Event) => {
-        this.selectedEvent = e;
-      });
-   // this.entries = this.getEntries();
-   // console.log(`The entries property is: `, this.entries);
+      .subscribe(
+        (event: Event) => {
+          this.selectedEvent = event;
+          this.entries = event.results;
+        }
+      );
   }
-
-  // Retrieve the currently selected event and grab the student property
-  // getEntries(): Entry[] {
-  //   //this.selectedEvent = this.eventService.getSelectedEvent();
-  //   //return this.eventService.getSelectedEvent().getValue().results;
-  // }
 
   goToDetails(student: Student): void {
     let link = ['/student-details', student._id];
@@ -57,17 +52,10 @@ export class StudentListComponent implements OnInit {
 
   setStudentStatus(checkboxValue, student: Student) {
     console.log(checkboxValue);
-    let event = this.eventService.getSelectedEvent();
-    let response: Observable<Event> | void;
     if (checkboxValue.checked) {
-
       this.eventService.addStudentToEvent(student);
-      console.log(event);
     } else {
-
       this.eventService.removeStudentFromEvent(student);
-      // Update the list of students on the page
-     // this.entries = this.getEntries();
     }
   }
 
