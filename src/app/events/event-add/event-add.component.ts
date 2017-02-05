@@ -73,7 +73,7 @@ export class EventAddComponent implements OnInit {
       this.eventService.getSelectedEvent()
         .subscribe(
         (event$: Event) => {
-          Object.assign(event, this.eventAddForm.value);
+          Object.assign(event$, this.eventAddForm.value);
           console.log(`The event assigned to the object to update is: `, event$);
           this.eventService.updateEvent(event$)
             .subscribe(
