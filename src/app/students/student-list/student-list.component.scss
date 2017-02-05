@@ -2,7 +2,7 @@
 @import '../../../assets/styles/oresults-app-theme.scss';
 
 md-nav-list.students {
-    max-width: 70%;
+    max-width: 100%;
 }
 
 span.student-id-item {
@@ -23,8 +23,9 @@ th {
 
 .table {
   border-collapse: collapse !important;
-  max-width: 100%;
+  width: 80%;
   margin-bottom: 1rem;
+  margin: auto;
 }
 
 .table td {
