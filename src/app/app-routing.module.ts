@@ -15,6 +15,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
+    // Match the entire route since the empty string can match multiple routes
     pathMatch: 'full'
   },
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
     path: 'student-add/:id',
     component: StudentAddComponent
   }
+  // {
+  //   path: '**',
+  //   pathMatch: 'full',
+  //   component: PageNotFoundComponent
+  // }
 
 ];
 
