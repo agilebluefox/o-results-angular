@@ -78,7 +78,7 @@ export class EventAddComponent implements OnInit {
           this.eventService.updateEvent(event$)
             .subscribe(
             () => {
-              this.router.navigate([`/event-dashboard/`]);
+              this.router.navigate([`/dashboard`]);
             },
             error => console.log(error)
             );
@@ -88,7 +88,7 @@ export class EventAddComponent implements OnInit {
         .subscribe(
         (event$: Event) => {
           console.log(`The event was added: `, event$);
-          this.router.navigate([`/event-dashboard/`]);
+          this.router.navigate([`/dashboard`]);
         },
         error => console.log(error),
       );
