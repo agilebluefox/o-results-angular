@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Event } from '../models/event.model';
 import { EventService } from '../services/event.service';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
 
   // Add an event
   addNewEvent(): void {
-    this.eventService.setSelectedEvent(null);
+    //this.eventService.setSelectedEvent(null);
     let link = ['/event-add'];
     // Navigate to the add form component
     this.router.navigate(link);

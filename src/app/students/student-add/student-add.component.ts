@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { EventService } from '../../services/event.service';
 import { StudentService } from '../../services/student.service';
@@ -51,7 +54,7 @@ export class StudentAddComponent implements OnInit {
               console.log(`The student already exists in the student collection: `, student$);
               this.student = student$;
               this.eventService.addStudentToEvent(this.student);
-              this.placeholders = this.updatePlaceholders(student$);
+              this.updatePlaceholders(student$);
               console.log(this.placeholders);
             } else {
               // If the student is not in the db, fill the email field
@@ -65,13 +68,11 @@ export class StudentAddComponent implements OnInit {
       });
   }
 
-  updatePlaceholders(student): any {
-    let tmpPlaceholders;
-    tmpPlaceholders.unityid = student.username;
-    tmpPlaceholders.email = student.email;
-    tmpPlaceholders.firstname = student.firstname;
-    tmpPlaceholders.lastname = student.lastname;
-    return tmpPlaceholders;
+  updatePlaceholders(student: Student): any {
+    this.placeholders.unityid = student.unityid;
+    this.placeholders.email = student.email;
+    this.placeholders.firstname = student.firstname;
+    this.placeholders.lastname = student.lastname;
   }
 
   ngOnInit() {
@@ -80,15 +81,17 @@ export class StudentAddComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       // Route params are always strings
       let id: string = params['id'];
+      console.log(`The id of the student to edit is: ${id}`);
       if (id) {
         // Get event from service
         this.studentService.getStudentById(id)
           .subscribe(
-          (result) => {
-            this.student = result;
+          (s) => {
+            this.student = s;
             console.log(this.student);
             // Load the student property values in the form fields
-            this.placeholders = this.updatePlaceholders(this.student);
+            this.updatePlaceholders(s);
+            console.log(this.placeholders);
             this.renderForm(this.placeholders);
           },
           error => console.log(error)
@@ -175,7 +178,7 @@ export class StudentAddComponent implements OnInit {
   }
 
   goBack() {
-    let link = `./event-dashboard/${this.eventService.getSelectedEvent().subscribe((e: Event) => e._id)}`;
+    let link = `./event-dashboard`;
     this.router.navigate([link]);
   }
 
