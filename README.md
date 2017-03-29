@@ -1,31 +1,19 @@
-# OResultsAngular
+# O-Results Angular
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+The O-Results App tracks students participating on various courses at an orienteering event.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Technical Skills
 
-## Code scaffolding
+Angular, Angular CLI, CSS, Javascript, HTML, SASS, Typescript
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Breakdown
 
-## Build
+This is the frontend interface for the O-Results application built using the Angular framework. The user can add an event or select an already existing event to manage, view, or track participants as their status changes during the event. All data changes are saved to the associated Mongo collections through API calls to the routes on the Node server setup using Express. This project presented numerous challenges beginning with the database design to managing the state of the application using Observables, the foundation of reactive programming. Although manipulating and passing data through Angular parent and child components is relatively simple, I ran into issues when data was altered in components with no direct connection. As a result, I had the opportunity to solve problems dealing with the concepts of application state, object immutability, and the asynchronous nature of the web browser.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Notable Features
 
-## Running unit tests
+The interface is designed using an alpha release of Material Design. I really like the consistent look and feel of Google's CSS framework and since our university relies heavily on Google Apps I intend to use it frequently in future applications. To implement the forms in the application I chose Angular's Reactive Forms technology which allowed me to keep most of the form logic in the component and maintain a cleaner, more maintainable template file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Run the Code
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To run the application, first setup the MongoDB and start the Node server from the o-results-node repository. Then use `npm start` to activate the interface in the browser at `http://localhost:4200/`.
