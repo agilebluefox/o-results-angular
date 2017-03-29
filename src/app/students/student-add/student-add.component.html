@@ -3,7 +3,7 @@
 <div class="fx-component-container">
   <div class="fx-content-container">
     <form id="add-student" [formGroup]="studentAddForm" (ngSubmit)="onSubmit()">
-      <md-input class="full-width form-control" placeholder="Unity Id" formControlName="unityid" (change)="checkStudent(studentAddForm.controls.unityid.value)"></md-input>
+      <md-input class="full-width form-control" placeholder="Unity Id" formControlName="unityid" (change)="checkStudent(studentAddForm.controls.unityid.value)" [value]="placeholders.unityid"></md-input>
       <md-input class="full-width form-control" placeholder="Email Address" formControlName="email" [value]="placeholders.email"></md-input>
       <md-input class="full-width form-control" placeholder="First Name" formControlName="firstname" [value]="placeholders.firstname"></md-input>
       <md-input class="full-width form-control" placeholder="Last Name" formControlName="lastname" [value]="placeholders.lastname"></md-input>

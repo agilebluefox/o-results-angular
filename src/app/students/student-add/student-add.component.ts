@@ -36,6 +36,7 @@ export class StudentAddComponent implements OnInit {
   ) { }
 
   checkStudent(username: string) {
+    // Search for an existing student as the username is entered in the field
     const input = Observable.from(username);
     input
       .map(value => value)
@@ -147,7 +148,7 @@ export class StudentAddComponent implements OnInit {
           this.router.navigate([`/event-dashboard/`]);
         },
         error => console.log(error),
-        () => { }
+        () => { console.log('done'); }
         );
     }
     this.studentAddForm.reset();
