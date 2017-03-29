@@ -109,10 +109,13 @@ export class EventService {
     const body = JSON.stringify(event);
     return this.http.put(this.eventsUrl, body, { headers: this.headers })
       .map((res: Response) => {
-        this.selectedEvent.next(res.json().data);
         console.log(`The event was updated successfully`);
+        // Update the event property on the service
+        this.selectedEvent.next(res.json().data);
+        this.loadEvents();
+        return res.json().data;
       })
-      .catch((error: Response) => Observable.throw(error.json()));
+      .catch((error: Response) => Observable.throw(error.json() || 'Server Error'));
   }
 
   /**
@@ -129,13 +132,19 @@ export class EventService {
     console.log(`The index of the student in the result property of the event is: ${index}`);
     // Check if the student is already registered in the event
     if (index !== -1) {
+      Object.assign(event.results[index].student, student);
       return;
     }
     // Add the student to the event stored in the event service
     // then update the event in the database
     let entry = new Entry(student);
     event.results.push(entry);
-    this.updateEvent(event);
+    // Make sure changes to the event update the event property
+    this.updateEvent(event).subscribe(
+      (e: Event) => {
+        console.log(e);
+      }
+    );
   }
 
   // Remove a student from the event
@@ -150,7 +159,12 @@ export class EventService {
     if (index === -1) { return; }
     console.log(`The index of the student id is: ${index}`);
     event.results.splice(index, 1);
-    this.updateEvent(event);
+    // Make sure changes to the event update the event property
+    this.updateEvent(event).subscribe(
+      (e: Event) => {
+        console.log(e);
+      }
+    );
   }
 
   updateResultOnEvent(result) {
@@ -159,7 +173,12 @@ export class EventService {
       return entry._id === result._id;
     });
     event.results.splice(index, 1, result);
-    this.updateEvent(event);
+    // Make sure changes to the event update the event property
+    this.updateEvent(event).subscribe(
+      (e: Event) => {
+        console.log(e);
+      }
+    );
   }
 
 }
