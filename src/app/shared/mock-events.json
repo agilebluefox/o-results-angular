@@ -1,0 +1,1001 @@
+[{
+  "_id": "57fc2a432e75cf056c899035",
+  "location": "Lake Raleigh",
+  "name": "Lake Raleigh Score Event",
+  "date": "2016-02-09T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899036",
+  "location": "Lake Johnson",
+  "name": "Lake Johnson Event",
+  "date": "2016-02-16T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899037",
+  "location": "Schenck Forest",
+  "name": "Schenck Forest Event",
+  "date": "2016-02-20T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899038",
+  "location": "Umstead Park",
+  "name": "Umstead Park Event",
+  "date": "2016-02-27T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c899039",
+  "location": "Lake Raleigh",
+  "name": "Lake Raleigh Score Event",
+  "date": "2015-11-02T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c89903a",
+  "location": "Lake Johnson",
+  "name": "Lake Johnson Event",
+  "date": "2015-11-07T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c89903b",
+  "location": "Schenck Forest",
+  "name": "Schenck Forest Event",
+  "date": "2015-11-14T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}, {
+  "_id": "57fc2a432e75cf056c89903c",
+  "location": "Umstead Park",
+  "name": "Umstead Park Event",
+  "date": "2016-12-02T00:00:00.000Z",
+  "classes": [{
+    "_id": "57fc2a422e75cf056c89902f",
+    "year": 2016,
+    "semester": "Spring",
+    "prefix": "HESO",
+    "number": "253",
+    "name": "Orienteering",
+    "section": "196",
+    "active": true
+  }],
+  "courses": [{
+    "_id": "57fc2a422e75cf056c899032",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park North Course",
+    "codename": "upnc201371-7086",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "81",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "86",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "96",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "85",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }, {
+    "_id": "57fc2a422e75cf056c899033",
+    "location": "Umstead Park",
+    "mapdate": "Mon, July 1, 2013 00:00:00 GMT -0600",
+    "name": "Umstead Park South Course",
+    "codename": "upsc201371-8918",
+    "type": "classic",
+    "inorder": true,
+    "controls": [{
+      "number": "2",
+      "type": "clear",
+      "points": 0
+    }, {
+      "number": "3",
+      "type": "start",
+      "points": 0
+    }, {
+      "number": "91",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "83",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "84",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "90",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "82",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "95",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "93",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "97",
+      "type": "control",
+      "points": 0
+    }, {
+      "number": "4",
+      "type": "finish",
+      "points": 0
+    }],
+    "active": true
+  }],
+  "active": true
+}]
