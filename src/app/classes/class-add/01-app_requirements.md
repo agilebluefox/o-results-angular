@@ -1,0 +1,4 @@
+1. Users should be able to select an event that already exists or add a new event.
+1.  Everything is based around the selected event. When an event is selected, everything that occurs in the app which modifies the event needs to be updated on the event object and on the database. When the event changes, all of the components that depend on it must also be updated.
+1. Entering student information should be limited to make registration fairly quick. For now, students may be stored on the event object, probably as Mongo Ids if a distinct student object is stored in the database.
+1. The component that makes this app useful is the registration. It should provide a list of students, allow the input of the cardNo, show a status field which can easily be modified, and show a course field to designate which course the student is running.
